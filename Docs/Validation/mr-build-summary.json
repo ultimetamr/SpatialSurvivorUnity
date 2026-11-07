@@ -1,0 +1,11 @@
+{
+  "version": "1.3.0",
+  "versionCode": 4,
+  "result": "Succeeded",
+  "size": 94211760,
+  "modifiedUtc": "2026-11-05T00:44:31.7076907Z",
+  "sha256": "6eb68ec22bec581e7dcbf5acebd0fbf08357cbc74b4c189678857a54c3ce899b",
+  "signatureVerified": true,
+  "tests": 45,
+  "hardwareValidated": false
+}

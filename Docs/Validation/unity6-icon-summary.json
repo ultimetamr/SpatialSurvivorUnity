@@ -1,0 +1,53 @@
+{
+  "checkedAt": "2026-11-06T18:24:03.542234+08:00",
+  "editor": "6000.6.8f1",
+  "versionName": "2.2.2",
+  "versionCode": 14,
+  "package": "com.example.spatialsurvivor.unity",
+  "deviceId": "PB314XHGKC160016G",
+  "issue": "Launcher app icon is Unity default, not a startup hang.",
+  "cause": "Only the generic fallback icon was configured. Empty Android adaptive slots exported the Unity default foreground.",
+  "change": "Configure every supported Android adaptive icon size and required layer with the existing AppIcon.png during project initialization.",
+  "build": {
+    "result": "Success",
+    "apk": "E:\\DEMO\\SpatialSurvivorUnity\\Builds\\SpatialSurvivorUnity.apk",
+    "bytes": 76188222,
+    "sha256": "abc977dc03f836d978ae1cf1f8439a4edaded5b86a25cf1ddde2031afaa66745",
+    "log": "Logs/unity6-android-build.log"
+  },
+  "installation": {
+    "result": "Success",
+    "replace": true,
+    "versionVerified": true,
+    "installedApkSha256": "abc977dc03f836d978ae1cf1f8439a4edaded5b86a25cf1ddde2031afaa66745",
+    "matchesBuild": true
+  },
+  "iconVerification": {
+    "result": "passed_apk_resources",
+    "manifestIcon": "res/mipmap-anydpi-v26/app_icon.xml",
+    "foregroundAndBackgroundLayersVerified": 12,
+    "sizes": [
+      81,
+      108,
+      162,
+      216,
+      324,
+      432
+    ],
+    "maxMeanPixelDifferenceFromResizedOriginal": 2.1559213534522175,
+    "extractedForeground": "unity6-ic_launcher_foreground.png",
+    "resourceReport": "unity6-icon-resource-check.json"
+  },
+  "wearerConfirmation": "failed: app library still shows Unity icon after 2.2.2",
+  "runtime": {
+    "runningAtPostInstallCheck": false,
+    "launchedForThisIconOnlyChange": false
+  },
+  "regression": {
+    "scope": "Editor icon configuration and build resources only; gameplay scripts unchanged.",
+    "newTestRun": false,
+    "previousFullRun": "95/95 passed for 2.2.1 (unity6-pointer-tests.xml).",
+    "previousWearerCheck": "2.2.1 controller ray complete and clicking normal."
+  },
+  "remainingIssue": "Installed APK still contains a Unity default app_icon.png fallback; adaptive layer verification alone was insufficient."
+}

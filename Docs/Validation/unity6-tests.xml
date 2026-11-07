@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="94" result="Passed" total="94" passed="94" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-06 06:20:21Z" end-time="2026-11-06 06:20:23Z" duration="1.8292205">
+  <test-suite type="TestSuite" id="1000" name="空间幸存者 Unity" fullname="空间幸存者 Unity" runstate="Runnable" testcasecount="288" result="Passed" start-time="2026-11-06 06:20:21Z" end-time="2026-11-06 06:20:23Z" duration="1.829221" total="94" passed="94" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1343" name="SpatialSurvivor.Tests.dll" fullname="E:/DEMO/SpatialSurvivorUnity/Library/ScriptAssemblies/SpatialSurvivor.Tests.dll" runstate="Runnable" testcasecount="94" result="Passed" start-time="2026-11-06 06:20:21Z" end-time="2026-11-06 06:20:23Z" duration="1.690051" total="94" passed="94" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="55756" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1344" name="SpatialSurvivor" fullname="SpatialSurvivor" runstate="Runnable" testcasecount="94" result="Passed" start-time="2026-11-06 06:20:21Z" end-time="2026-11-06 06:20:23Z" duration="1.688485" total="94" passed="94" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1345" name="Tests" fullname="SpatialSurvivor.Tests" runstate="Runnable" testcasecount="94" result="Passed" start-time="2026-11-06 06:20:21Z" end-time="2026-11-06 06:20:23Z" duration="1.686714" total="94" passed="94" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1232" name="LegacyProgressTests" fullname="SpatialSurvivor.Tests.LegacyProgressTests" classname="SpatialSurvivor.Tests.LegacyProgressTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-11-06 06:19:47Z" end-time="2026-11-06 06:19:47Z" duration="0.035591" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1234" name="ImportDoesNotDuplicateCurrencyOrDiscardUnityProgress" fullname="SpatialSurvivor.Tests.LegacyProgressTests.ImportDoesNotDuplicateCurrencyOrDiscardUnityProgress" methodname="ImportDoesNotDuplicateCurrencyOrDiscardUnityProgress" classname="SpatialSurvivor.Tests.LegacyProgressTests" runstate="Runnable" seed="1967242668" result="Passed" start-time="2026-11-06 06:19:47Z" end-time="2026-11-06 06:19:47Z" duration="0.012835" asserts="0">
+              <properties />
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1239" name="InvalidOrUnsafeLegacyFilesDoNotChangeProgress" fullname="SpatialSurvivor.Tests.LegacyProgressTests.InvalidOrUnsafeLegacyFilesDoNotChangeProgress" classname="SpatialSurvivor.Tests.LegacyProgressTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-11-06 06:19:47Z" end-time="2026-11-06 06:19:47Z" duration="0.006006" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1235" name="InvalidOrUnsafeLegacyFilesDoNotChangeProgress(&quot;&lt;map&gt;&lt;int name=\&quot;total_crystals\&quot; value=\&quot;-3\&quot;/&gt;&lt;/map&gt;&quot;)" fullname="SpatialSurvivor.Tests.LegacyProgressTests.InvalidOrUnsafeLegacyFilesDoNotChangeProgress(&quot;&lt;map&gt;&lt;int name=\&quot;total_crystals\&quot; value=\&quot;-3\&quot;/&gt;&lt;/map&gt;&quot;)" methodname="InvalidOrUnsafeLegacyFilesDoNotChangeProgress" classname="SpatialSurvivor.Tests.LegacyProgressTests" runstate="Runnable" seed="1656918825" result="Passed" start-time="2026-11-06 06:19:47Z" end-time="2026-11-06 06:19:47Z" duration="0.000964" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1236" name="InvalidOrUnsafeLegacyFilesDoNotChangeProgress(&quot;&lt;map&gt;&lt;int name=\&quot;total_crystals\&quot; value=\&quot;broken\&quot;/&gt;&lt;/map&gt;&quot;)" fullname="SpatialSurvivor.Tests.LegacyProgressTests.InvalidOrUnsafeLegacyFilesDoNotChangeProgress(&quot;&lt;map&gt;&lt;int name=\&quot;total_crystals\&quot; value=\&quot;broken\&quot;/&gt;&lt;/map&gt;&quot;)" methodname="InvalidOrUnsafeLegacyFilesDoNotChangeProgress" classname="SpatialSurvivor.Tests.LegacyProgressTests" runstate="Runnable" seed="1268492195" result="Passed" start-time="2026-11-06 06:19:47Z" end-time="2026-11-06 06:19:47Z" duration="0.000136" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1237" name="InvalidOrUnsafeLegacyFilesDoNotChangeProgress(&quot;&lt;map/&gt;&quot;)" fullname="SpatialSurvivor.Tests.LegacyProgressTests.InvalidOrUnsafeLegacyFilesDoNotChangeProgress(&quot;&lt;map/&gt;&quot;)" methodname="InvalidOrUnsafeLegacyFilesDoNotChangeProgress" classname="SpatialSurvivor.Tests.LegacyProgressTests" runstate="Runnable" seed="450781184" result="Passed" start-time="2026-11-06 06:19:47Z" end-time="2026-11-06 06:19:47Z" duration="0.000100" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1238" name="InvalidOrUnsafeLegacyFilesDoNotChangeProgress(&quot;&lt;!DOCTYPE map [&lt;!ENTITY ext SYSTEM 'file:///should-never-read'&gt;]&gt;&lt;map&gt;&amp;ext;&lt;/map&gt;&quot;)" fullname="SpatialSurvivor.Tests.LegacyProgressTests.InvalidOrUnsafeLegacyFilesDoNotChangeProgress(&quot;&lt;!DOCTYPE map [&lt;!ENTITY ext SYSTEM 'file:///should-never-read'&gt;]&gt;&lt;map&gt;&amp;ext;&lt;/map&gt;&quot;)" methodname="InvalidOrUnsafeLegacyFilesDoNotChangeProgress" classname="SpatialSurvivor.Tests.LegacyProgressTests" runstate="Runnable" seed="268252514" result="Passed" start-time="2026-11-06 06:19:47Z" end-time="2026-11-06 06:19:47Z" duration="0.000888" asserts="0">
+                <properties />
+              </test-case>
+            </test-suite>
+            <test-case id="1240" name="LegacyLevelsAreClampedToCurrentCaps" fullname="SpatialSurvivor.Tests.LegacyProgressTests.LegacyLevelsAreClampedToCurrentCaps" methodname="LegacyLevelsAreClampedToCurrentCaps" classname="SpatialSurvivor.Tests.LegacyProgressTests" runstate="Runnable" seed="1642736643" result="Passed" start-time="2026-11-06 06:19:47Z" end-time="2026-11-06 06:19:47Z" duration="0.000219" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1233" name="OriginalSharedPreferencesImportsCurrencyAndBonuses" fullname="SpatialSurvivor.Tests.LegacyProgressTests.OriginalSharedPreferencesImportsCurrencyAndBonuses" methodname="OriginalSharedPreferencesImportsCurrencyAndBonuses" classname="SpatialSurvivor.Tests.LegacyProgressTests" runstate="Runnable" seed="1522363148" result="Passed" start-time="2026-11-06 06:19:47Z" end-time="2026-11-06 06:19:47Z" duration="0.000902" asserts="0">
+              <properties />
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1241" name="SurvivorArmoryTests" fullname="SpatialSurvivor.Tests.SurvivorArmoryTests" classname="SpatialSurvivor.Tests.SurvivorArmoryTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-11-06 06:20:00Z" end-time="2026-11-06 06:20:00Z" duration="0.619449" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1246" name="CatalogHasRealAssetsAndAllSkillDescriptions" fullname="SpatialSurvivor.Tests.SurvivorArmoryTests.CatalogHasRealAssetsAndAllSkillDescriptions" methodname="CatalogHasRealAssetsAndAllSkillDescriptions" classname="SpatialSurvivor.Tests.SurvivorArmoryTests" runstate="Runnable" seed="455827908" result="Passed" start-time="2026-11-06 06:19:47Z" end-time="2026-11-06 06:19:47Z" duration="0.147584" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1248" name="EveryHandWeaponDamagesAirTargetsAndFreezesWithPause" fullname="SpatialSurvivor.Tests.SurvivorArmoryTests.EveryHandWeaponDamagesAirTargetsAndFreezesWithPause" methodname="EveryHandWeaponDamagesAirTargetsAndFreezesWithPause" classname="SpatialSurvivor.Tests.SurvivorArmoryTests" runstate="Runnable" seed="1437261583" result="Passed" start-time="2026-11-06 06:19:47Z" end-time="2026-11-06 06:19:51Z" duration="3.229621" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+              </properties>
+            </test-case>
+            <test-case id="1250" name="FlyingCrowdUsesAirSpaceWithoutPassingThroughWalls" fullname="SpatialSurvivor.Tests.SurvivorArmoryTests.FlyingCrowdUsesAirSpaceWithoutPassingThroughWalls" methodname="FlyingCrowdUsesAirSpaceWithoutPassingThroughWalls" classname="SpatialSurvivor.Tests.SurvivorArmoryTests" runstate="Runnable" seed="275788514" result="Passed" start-time="2026-11-06 06:19:51Z" end-time="2026-11-06 06:19:54Z" duration="3.130834" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+              </properties>
+            </test-case>
+            <test-case id="1245" name="GoldRewardsComeFromPlayAndVictory" fullname="SpatialSurvivor.Tests.SurvivorArmoryTests.GoldRewardsComeFromPlayAndVictory" methodname="GoldRewardsComeFromPlayAndVictory" classname="SpatialSurvivor.Tests.SurvivorArmoryTests" runstate="Runnable" seed="798955810" result="Passed" start-time="2026-11-06 06:19:54Z" end-time="2026-11-06 06:19:54Z" duration="0.003639" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1249" name="HandSpellSpecialEffectsAndRoomCollisionMatchShopDescriptions" fullname="SpatialSurvivor.Tests.SurvivorArmoryTests.HandSpellSpecialEffectsAndRoomCollisionMatchShopDescriptions" methodname="HandSpellSpecialEffectsAndRoomCollisionMatchShopDescriptions" classname="SpatialSurvivor.Tests.SurvivorArmoryTests" runstate="Runnable" seed="2102836369" result="Passed" start-time="2026-11-06 06:19:54Z" end-time="2026-11-06 06:19:57Z" duration="3.132204" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+              </properties>
+            </test-case>
+            <test-case id="1244" name="InvalidArmoryFieldsAreNormalizedWithoutLosingUpgrades" fullname="SpatialSurvivor.Tests.SurvivorArmoryTests.InvalidArmoryFieldsAreNormalizedWithoutLosingUpgrades" methodname="InvalidArmoryFieldsAreNormalizedWithoutLosingUpgrades" classname="SpatialSurvivor.Tests.SurvivorArmoryTests" runstate="Runnable" seed="1779722411" result="Passed" start-time="2026-11-06 06:19:57Z" end-time="2026-11-06 06:19:57Z" duration="0.007728" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1247" name="LibraryShopSettlementAndFlightWorkTogether" fullname="SpatialSurvivor.Tests.SurvivorArmoryTests.LibraryShopSettlementAndFlightWorkTogether" methodname="LibraryShopSettlementAndFlightWorkTogether" classname="SpatialSurvivor.Tests.SurvivorArmoryTests" runstate="Runnable" seed="994516883" result="Passed" start-time="2026-11-06 06:19:57Z" end-time="2026-11-06 06:20:00Z" duration="3.441607" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+              </properties>
+              <output><![CDATA[存档失败：Cannot create 'C:\Users\ADMINI~1\AppData\Local\Temp\SurvivorArmory\99f4d8345728475db76f596beef5fedf\blocked' because a file or directory with the same name already exists.
+]]></output>
+            </test-case>
+            <test-case id="1243" name="OldSavesRetainCrystalsAndReceiveFreeWandOnly" fullname="SpatialSurvivor.Tests.SurvivorArmoryTests.OldSavesRetainCrystalsAndReceiveFreeWandOnly" methodname="OldSavesRetainCrystalsAndReceiveFreeWandOnly" classname="SpatialSurvivor.Tests.SurvivorArmoryTests" runstate="Runnable" seed="637188843" result="Passed" start-time="2026-11-06 06:20:00Z" end-time="2026-11-06 06:20:00Z" duration="0.010707" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1242" name="WeaponPurchasesChargeOnceAndRejectUnaffordableOrLockedEquip" fullname="SpatialSurvivor.Tests.SurvivorArmoryTests.WeaponPurchasesChargeOnceAndRejectUnaffordableOrLockedEquip" methodname="WeaponPurchasesChargeOnceAndRejectUnaffordableOrLockedEquip" classname="SpatialSurvivor.Tests.SurvivorArmoryTests" runstate="Runnable" seed="373090156" result="Passed" start-time="2026-11-06 06:20:00Z" end-time="2026-11-06 06:20:00Z" duration="0.000378" asserts="0">
+              <properties />
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1251" name="SurvivorArtTests" fullname="SpatialSurvivor.Tests.SurvivorArtTests" classname="SpatialSurvivor.Tests.SurvivorArtTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-11-06 06:20:00Z" end-time="2026-11-06 06:20:01Z" duration="0.465905" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1259" name="CreatureHasPaintedSkinAndSixWorkingJointClips" fullname="SpatialSurvivor.Tests.SurvivorArtTests.CreatureHasPaintedSkinAndSixWorkingJointClips" classname="SpatialSurvivor.Tests.SurvivorArtTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-11-06 06:20:00Z" end-time="2026-11-06 06:20:01Z" duration="0.443771" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1252" name="CreatureHasPaintedSkinAndSixWorkingJointClips(&quot;Mossling&quot;)" fullname="SpatialSurvivor.Tests.SurvivorArtTests.CreatureHasPaintedSkinAndSixWorkingJointClips(&quot;Mossling&quot;)" methodname="CreatureHasPaintedSkinAndSixWorkingJointClips" classname="SpatialSurvivor.Tests.SurvivorArtTests" runstate="Runnable" seed="1629177595" result="Passed" start-time="2026-11-06 06:20:00Z" end-time="2026-11-06 06:20:01Z" duration="0.065170" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1253" name="CreatureHasPaintedSkinAndSixWorkingJointClips(&quot;EmberImp&quot;)" fullname="SpatialSurvivor.Tests.SurvivorArtTests.CreatureHasPaintedSkinAndSixWorkingJointClips(&quot;EmberImp&quot;)" methodname="CreatureHasPaintedSkinAndSixWorkingJointClips" classname="SpatialSurvivor.Tests.SurvivorArtTests" runstate="Runnable" seed="268538946" result="Passed" start-time="2026-11-06 06:20:01Z" end-time="2026-11-06 06:20:01Z" duration="0.058838" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1254" name="CreatureHasPaintedSkinAndSixWorkingJointClips(&quot;CrystalGuardian&quot;)" fullname="SpatialSurvivor.Tests.SurvivorArtTests.CreatureHasPaintedSkinAndSixWorkingJointClips(&quot;CrystalGuardian&quot;)" methodname="CreatureHasPaintedSkinAndSixWorkingJointClips" classname="SpatialSurvivor.Tests.SurvivorArtTests" runstate="Runnable" seed="1367013509" result="Passed" start-time="2026-11-06 06:20:01Z" end-time="2026-11-06 06:20:01Z" duration="0.061378" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1255" name="CreatureHasPaintedSkinAndSixWorkingJointClips(&quot;MoonWisp&quot;)" fullname="SpatialSurvivor.Tests.SurvivorArtTests.CreatureHasPaintedSkinAndSixWorkingJointClips(&quot;MoonWisp&quot;)" methodname="CreatureHasPaintedSkinAndSixWorkingJointClips" classname="SpatialSurvivor.Tests.SurvivorArtTests" runstate="Runnable" seed="938168819" result="Passed" start-time="2026-11-06 06:20:01Z" end-time="2026-11-06 06:20:01Z" duration="0.057833" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1256" name="CreatureHasPaintedSkinAndSixWorkingJointClips(&quot;ElderBloom&quot;)" fullname="SpatialSurvivor.Tests.SurvivorArtTests.CreatureHasPaintedSkinAndSixWorkingJointClips(&quot;ElderBloom&quot;)" methodname="CreatureHasPaintedSkinAndSixWorkingJointClips" classname="SpatialSurvivor.Tests.SurvivorArtTests" runstate="Runnable" seed="517943977" result="Passed" start-time="2026-11-06 06:20:01Z" end-time="2026-11-06 06:20:01Z" duration="0.069850" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1257" name="CreatureHasPaintedSkinAndSixWorkingJointClips(&quot;SkyMoth&quot;)" fullname="SpatialSurvivor.Tests.SurvivorArtTests.CreatureHasPaintedSkinAndSixWorkingJointClips(&quot;SkyMoth&quot;)" methodname="CreatureHasPaintedSkinAndSixWorkingJointClips" classname="SpatialSurvivor.Tests.SurvivorArtTests" runstate="Runnable" seed="2018127253" result="Passed" start-time="2026-11-06 06:20:01Z" end-time="2026-11-06 06:20:01Z" duration="0.063037" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1258" name="CreatureHasPaintedSkinAndSixWorkingJointClips(&quot;StormDrake&quot;)" fullname="SpatialSurvivor.Tests.SurvivorArtTests.CreatureHasPaintedSkinAndSixWorkingJointClips(&quot;StormDrake&quot;)" methodname="CreatureHasPaintedSkinAndSixWorkingJointClips" classname="SpatialSurvivor.Tests.SurvivorArtTests" runstate="Runnable" seed="1326971943" result="Passed" start-time="2026-11-06 06:20:01Z" end-time="2026-11-06 06:20:01Z" duration="0.062396" asserts="0">
+                <properties />
+              </test-case>
+            </test-suite>
+            <test-case id="1261" name="EveryWeaponHasNewSourceMeshAndEverySkillCreates" fullname="SpatialSurvivor.Tests.SurvivorArtTests.EveryWeaponHasNewSourceMeshAndEverySkillCreates" methodname="EveryWeaponHasNewSourceMeshAndEverySkillCreates" classname="SpatialSurvivor.Tests.SurvivorArtTests" runstate="Runnable" seed="1957897056" result="Passed" start-time="2026-11-06 06:20:01Z" end-time="2026-11-06 06:20:01Z" duration="0.017387" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1260" name="WalkClockSurvivesSparseMovementUpdates" fullname="SpatialSurvivor.Tests.SurvivorArtTests.WalkClockSurvivesSparseMovementUpdates" methodname="WalkClockSurvivesSparseMovementUpdates" classname="SpatialSurvivor.Tests.SurvivorArtTests" runstate="Runnable" seed="1657979403" result="Passed" start-time="2026-11-06 06:20:01Z" end-time="2026-11-06 06:20:01Z" duration="0.001026" asserts="0">
+              <properties />
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1262" name="SurvivorEnemyCrowdTests" fullname="SpatialSurvivor.Tests.SurvivorEnemyCrowdTests" classname="SpatialSurvivor.Tests.SurvivorEnemyCrowdTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-11-06 06:20:04Z" end-time="2026-11-06 06:20:05Z" duration="1.007823" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1267" name="BlockedApproachDetoursAroundStationaryPeer" fullname="SpatialSurvivor.Tests.SurvivorEnemyCrowdTests.BlockedApproachDetoursAroundStationaryPeer" methodname="BlockedApproachDetoursAroundStationaryPeer" classname="SpatialSurvivor.Tests.SurvivorEnemyCrowdTests" runstate="Runnable" seed="284368565" result="Passed" start-time="2026-11-06 06:20:01Z" end-time="2026-11-06 06:20:01Z" duration="0.011718" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1271" name="CombatStepKeepsFullMixedWaveSeparatedAfterLanding" fullname="SpatialSurvivor.Tests.SurvivorEnemyCrowdTests.CombatStepKeepsFullMixedWaveSeparatedAfterLanding" methodname="CombatStepKeepsFullMixedWaveSeparatedAfterLanding" classname="SpatialSurvivor.Tests.SurvivorEnemyCrowdTests" runstate="Runnable" seed="1652981944" result="Passed" start-time="2026-11-06 06:20:01Z" end-time="2026-11-06 06:20:05Z" duration="3.573242" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+              </properties>
+            </test-case>
+            <test-case id="1269" name="CrowdedBoundarySkipsOccupiedSpawnAndFullRoomDefers" fullname="SpatialSurvivor.Tests.SurvivorEnemyCrowdTests.CrowdedBoundarySkipsOccupiedSpawnAndFullRoomDefers" methodname="CrowdedBoundarySkipsOccupiedSpawnAndFullRoomDefers" classname="SpatialSurvivor.Tests.SurvivorEnemyCrowdTests" runstate="Runnable" seed="187976325" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.005835" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1263" name="EighteenPursuersKeepMovingAndBodySpaceAroundStationaryPlayer" fullname="SpatialSurvivor.Tests.SurvivorEnemyCrowdTests.EighteenPursuersKeepMovingAndBodySpaceAroundStationaryPlayer" methodname="EighteenPursuersKeepMovingAndBodySpaceAroundStationaryPlayer" classname="SpatialSurvivor.Tests.SurvivorEnemyCrowdTests" runstate="Runnable" seed="615595410" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.245068" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1264" name="ExactCoincidenceRecoversWithoutRandomNaNs" fullname="SpatialSurvivor.Tests.SurvivorEnemyCrowdTests.ExactCoincidenceRecoversWithoutRandomNaNs" methodname="ExactCoincidenceRecoversWithoutRandomNaNs" classname="SpatialSurvivor.Tests.SurvivorEnemyCrowdTests" runstate="Runnable" seed="1485394996" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.004601" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1266" name="FastMovementCannotTunnelThroughCreature" fullname="SpatialSurvivor.Tests.SurvivorEnemyCrowdTests.FastMovementCannotTunnelThroughCreature" methodname="FastMovementCannotTunnelThroughCreature" classname="SpatialSurvivor.Tests.SurvivorEnemyCrowdTests" runstate="Runnable" seed="1057836413" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.007384" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1265" name="FrozenCreatureRemainsStillWhileNeighborStepsAway" fullname="SpatialSurvivor.Tests.SurvivorEnemyCrowdTests.FrozenCreatureRemainsStillWhileNeighborStepsAway" methodname="FrozenCreatureRemainsStillWhileNeighborStepsAway" classname="SpatialSurvivor.Tests.SurvivorEnemyCrowdTests" runstate="Runnable" seed="806996626" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.004309" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1272" name="PausedResolverDoesNotMoveAnOverlap" fullname="SpatialSurvivor.Tests.SurvivorEnemyCrowdTests.PausedResolverDoesNotMoveAnOverlap" methodname="PausedResolverDoesNotMoveAnOverlap" classname="SpatialSurvivor.Tests.SurvivorEnemyCrowdTests" runstate="Runnable" seed="547485950" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.004015" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1268" name="SpawnReservesLandingSpaceAndDyingBodies" fullname="SpatialSurvivor.Tests.SurvivorEnemyCrowdTests.SpawnReservesLandingSpaceAndDyingBodies" methodname="SpawnReservesLandingSpaceAndDyingBodies" classname="SpatialSurvivor.Tests.SurvivorEnemyCrowdTests" runstate="Runnable" seed="226961230" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.003974" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1270" name="WallPreventsSeparationFromPushingIntoFurniture" fullname="SpatialSurvivor.Tests.SurvivorEnemyCrowdTests.WallPreventsSeparationFromPushingIntoFurniture" methodname="WallPreventsSeparationFromPushingIntoFurniture" classname="SpatialSurvivor.Tests.SurvivorEnemyCrowdTests" runstate="Runnable" seed="1680192699" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.007950" asserts="0">
+              <properties />
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1273" name="SurvivorMrRenderingTests" fullname="SpatialSurvivor.Tests.SurvivorMrRenderingTests" classname="SpatialSurvivor.Tests.SurvivorMrRenderingTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.039018" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1274" name="RoomNeverOccludesModelsOrWorldUiAndRetainsNavigationColliders" fullname="SpatialSurvivor.Tests.SurvivorMrRenderingTests.RoomNeverOccludesModelsOrWorldUiAndRetainsNavigationColliders" methodname="RoomNeverOccludesModelsOrWorldUiAndRetainsNavigationColliders" classname="SpatialSurvivor.Tests.SurvivorMrRenderingTests" runstate="Runnable" seed="1403024541" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.035411" asserts="0">
+              <properties />
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1275" name="SurvivorMrTests" fullname="SpatialSurvivor.Tests.SurvivorMrTests" classname="SpatialSurvivor.Tests.SurvivorMrTests" runstate="Runnable" testcasecount="13" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.028480" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1289" name="ClosedScannedPolygonAcceptsRepeatedAndCollinearBoundaryPoints" fullname="SpatialSurvivor.Tests.SurvivorMrTests.ClosedScannedPolygonAcceptsRepeatedAndCollinearBoundaryPoints" methodname="ClosedScannedPolygonAcceptsRepeatedAndCollinearBoundaryPoints" classname="SpatialSurvivor.Tests.SurvivorMrTests" runstate="Runnable" seed="964450015" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.001821" asserts="0">
+              <properties />
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1287" name="ConcaveRoomTriangulationPreservesBoundaryAndWinding" fullname="SpatialSurvivor.Tests.SurvivorMrTests.ConcaveRoomTriangulationPreservesBoundaryAndWinding" classname="SpatialSurvivor.Tests.SurvivorMrTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.003157" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1285" name="ConcaveRoomTriangulationPreservesBoundaryAndWinding(False)" fullname="SpatialSurvivor.Tests.SurvivorMrTests.ConcaveRoomTriangulationPreservesBoundaryAndWinding(False)" methodname="ConcaveRoomTriangulationPreservesBoundaryAndWinding" classname="SpatialSurvivor.Tests.SurvivorMrTests" runstate="Runnable" seed="1938967991" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.000624" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1286" name="ConcaveRoomTriangulationPreservesBoundaryAndWinding(True)" fullname="SpatialSurvivor.Tests.SurvivorMrTests.ConcaveRoomTriangulationPreservesBoundaryAndWinding(True)" methodname="ConcaveRoomTriangulationPreservesBoundaryAndWinding" classname="SpatialSurvivor.Tests.SurvivorMrTests" runstate="Runnable" seed="2099927979" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.000330" asserts="0">
+                <properties />
+              </test-case>
+            </test-suite>
+            <test-case id="1288" name="DegeneratePolygonIsRejected" fullname="SpatialSurvivor.Tests.SurvivorMrTests.DegeneratePolygonIsRejected" methodname="DegeneratePolygonIsRejected" classname="SpatialSurvivor.Tests.SurvivorMrTests" runstate="Runnable" seed="961937197" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.000971" asserts="0">
+              <properties />
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1283" name="IncompleteMrNeverAllowsCombatEvenWithAnOldNavigationGrid" fullname="SpatialSurvivor.Tests.SurvivorMrTests.IncompleteMrNeverAllowsCombatEvenWithAnOldNavigationGrid" classname="SpatialSurvivor.Tests.SurvivorMrTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.004645" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1276" name="IncompleteMrNeverAllowsCombatEvenWithAnOldNavigationGrid(Booting)" fullname="SpatialSurvivor.Tests.SurvivorMrTests.IncompleteMrNeverAllowsCombatEvenWithAnOldNavigationGrid(Booting)" methodname="IncompleteMrNeverAllowsCombatEvenWithAnOldNavigationGrid" classname="SpatialSurvivor.Tests.SurvivorMrTests" runstate="Runnable" seed="106079982" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.000410" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1277" name="IncompleteMrNeverAllowsCombatEvenWithAnOldNavigationGrid(Permission)" fullname="SpatialSurvivor.Tests.SurvivorMrTests.IncompleteMrNeverAllowsCombatEvenWithAnOldNavigationGrid(Permission)" methodname="IncompleteMrNeverAllowsCombatEvenWithAnOldNavigationGrid" classname="SpatialSurvivor.Tests.SurvivorMrTests" runstate="Runnable" seed="559086820" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.000140" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1278" name="IncompleteMrNeverAllowsCombatEvenWithAnOldNavigationGrid(Starting)" fullname="SpatialSurvivor.Tests.SurvivorMrTests.IncompleteMrNeverAllowsCombatEvenWithAnOldNavigationGrid(Starting)" methodname="IncompleteMrNeverAllowsCombatEvenWithAnOldNavigationGrid" classname="SpatialSurvivor.Tests.SurvivorMrTests" runstate="Runnable" seed="1029799708" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.000103" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1279" name="IncompleteMrNeverAllowsCombatEvenWithAnOldNavigationGrid(Loading)" fullname="SpatialSurvivor.Tests.SurvivorMrTests.IncompleteMrNeverAllowsCombatEvenWithAnOldNavigationGrid(Loading)" methodname="IncompleteMrNeverAllowsCombatEvenWithAnOldNavigationGrid" classname="SpatialSurvivor.Tests.SurvivorMrTests" runstate="Runnable" seed="1639630143" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.000096" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1280" name="IncompleteMrNeverAllowsCombatEvenWithAnOldNavigationGrid(Scanning)" fullname="SpatialSurvivor.Tests.SurvivorMrTests.IncompleteMrNeverAllowsCombatEvenWithAnOldNavigationGrid(Scanning)" methodname="IncompleteMrNeverAllowsCombatEvenWithAnOldNavigationGrid" classname="SpatialSurvivor.Tests.SurvivorMrTests" runstate="Runnable" seed="1490184561" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.000084" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1281" name="IncompleteMrNeverAllowsCombatEvenWithAnOldNavigationGrid(Denied)" fullname="SpatialSurvivor.Tests.SurvivorMrTests.IncompleteMrNeverAllowsCombatEvenWithAnOldNavigationGrid(Denied)" methodname="IncompleteMrNeverAllowsCombatEvenWithAnOldNavigationGrid" classname="SpatialSurvivor.Tests.SurvivorMrTests" runstate="Runnable" seed="317277824" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.000084" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1282" name="IncompleteMrNeverAllowsCombatEvenWithAnOldNavigationGrid(Failed)" fullname="SpatialSurvivor.Tests.SurvivorMrTests.IncompleteMrNeverAllowsCombatEvenWithAnOldNavigationGrid(Failed)" methodname="IncompleteMrNeverAllowsCombatEvenWithAnOldNavigationGrid" classname="SpatialSurvivor.Tests.SurvivorMrTests" runstate="Runnable" seed="1509322832" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.000082" asserts="0">
+                <properties />
+              </test-case>
+            </test-suite>
+            <test-case id="1290" name="MeshUpdatesReplaceCollisionAndRemovalInvalidatesRoom" fullname="SpatialSurvivor.Tests.SurvivorMrTests.MeshUpdatesReplaceCollisionAndRemovalInvalidatesRoom" methodname="MeshUpdatesReplaceCollisionAndRemovalInvalidatesRoom" classname="SpatialSurvivor.Tests.SurvivorMrTests" runstate="Runnable" seed="1779434380" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.011609" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1284" name="RoomTrackingAndMrMustAllBeReady" fullname="SpatialSurvivor.Tests.SurvivorMrTests.RoomTrackingAndMrMustAllBeReady" methodname="RoomTrackingAndMrMustAllBeReady" classname="SpatialSurvivor.Tests.SurvivorMrTests" runstate="Runnable" seed="1022174858" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.000385" asserts="0">
+              <properties />
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1291" name="SurvivorPhysicalWeaponTests" fullname="SpatialSurvivor.Tests.SurvivorPhysicalWeaponTests" classname="SpatialSurvivor.Tests.SurvivorPhysicalWeaponTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-11-06 06:20:11Z" end-time="2026-11-06 06:20:11Z" duration="0.173761" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1292" name="BriefDropoutKeepsWeaponVisibleButNeverAuthorizesDamage" fullname="SpatialSurvivor.Tests.SurvivorPhysicalWeaponTests.BriefDropoutKeepsWeaponVisibleButNeverAuthorizesDamage" methodname="BriefDropoutKeepsWeaponVisibleButNeverAuthorizesDamage" classname="SpatialSurvivor.Tests.SurvivorPhysicalWeaponTests" runstate="Runnable" seed="220615505" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.000820" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1295" name="FreePistolAndPaidShotgunPreserveExistingWeaponIndices" fullname="SpatialSurvivor.Tests.SurvivorPhysicalWeaponTests.FreePistolAndPaidShotgunPreserveExistingWeaponIndices" methodname="FreePistolAndPaidShotgunPreserveExistingWeaponIndices" classname="SpatialSurvivor.Tests.SurvivorPhysicalWeaponTests" runstate="Runnable" seed="2049576387" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:05Z" duration="0.000416" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1297" name="GunsKillGroundAndAirTargetsKeepRewardsAndShowRealModels" fullname="SpatialSurvivor.Tests.SurvivorPhysicalWeaponTests.GunsKillGroundAndAirTargetsKeepRewardsAndShowRealModels" methodname="GunsKillGroundAndAirTargetsKeepRewardsAndShowRealModels" classname="SpatialSurvivor.Tests.SurvivorPhysicalWeaponTests" runstate="Runnable" seed="1697724171" result="Passed" start-time="2026-11-06 06:20:05Z" end-time="2026-11-06 06:20:08Z" duration="3.222949" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+              </properties>
+            </test-case>
+            <test-case id="1293" name="MissingRightFrameCannotTeleportWeaponIntoLeftHand" fullname="SpatialSurvivor.Tests.SurvivorPhysicalWeaponTests.MissingRightFrameCannotTeleportWeaponIntoLeftHand" methodname="MissingRightFrameCannotTeleportWeaponIntoLeftHand" classname="SpatialSurvivor.Tests.SurvivorPhysicalWeaponTests" runstate="Runnable" seed="932797197" result="Passed" start-time="2026-11-06 06:20:08Z" end-time="2026-11-06 06:20:08Z" duration="0.003436" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1294" name="RecoveredPoseStartsNewSwingAndInvalidCoordinatesAreRejected" fullname="SpatialSurvivor.Tests.SurvivorPhysicalWeaponTests.RecoveredPoseStartsNewSwingAndInvalidCoordinatesAreRejected" methodname="RecoveredPoseStartsNewSwingAndInvalidCoordinatesAreRejected" classname="SpatialSurvivor.Tests.SurvivorPhysicalWeaponTests" runstate="Runnable" seed="533217778" result="Passed" start-time="2026-11-06 06:20:08Z" end-time="2026-11-06 06:20:08Z" duration="0.000596" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1296" name="RotatingBladeSweepsBetweenFramesWithoutTriggerAndCannotHitThroughWalls" fullname="SpatialSurvivor.Tests.SurvivorPhysicalWeaponTests.RotatingBladeSweepsBetweenFramesWithoutTriggerAndCannotHitThroughWalls" methodname="RotatingBladeSweepsBetweenFramesWithoutTriggerAndCannotHitThroughWalls" classname="SpatialSurvivor.Tests.SurvivorPhysicalWeaponTests" runstate="Runnable" seed="339918971" result="Passed" start-time="2026-11-06 06:20:08Z" end-time="2026-11-06 06:20:11Z" duration="3.084610" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1298" name="SurvivorPointerTests" fullname="SpatialSurvivor.Tests.SurvivorPointerTests" classname="SpatialSurvivor.Tests.SurvivorPointerTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-11-06 06:20:17Z" end-time="2026-11-06 06:20:18Z" duration="0.199078" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1304" name="AnalogTriggerHasSeparatePressAndReleaseThresholds" fullname="SpatialSurvivor.Tests.SurvivorPointerTests.AnalogTriggerHasSeparatePressAndReleaseThresholds" methodname="AnalogTriggerHasSeparatePressAndReleaseThresholds" classname="SpatialSurvivor.Tests.SurvivorPointerTests" runstate="Runnable" seed="947141235" result="Passed" start-time="2026-11-06 06:20:11Z" end-time="2026-11-06 06:20:11Z" duration="0.001192" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1308" name="ControllerRayClicksMenuThroughNoisyRoomMeshAndRequiresRelease" fullname="SpatialSurvivor.Tests.SurvivorPointerTests.ControllerRayClicksMenuThroughNoisyRoomMeshAndRequiresRelease" methodname="ControllerRayClicksMenuThroughNoisyRoomMeshAndRequiresRelease" classname="SpatialSurvivor.Tests.SurvivorPointerTests" runstate="Runnable" seed="1880119719" result="Passed" start-time="2026-11-06 06:20:11Z" end-time="2026-11-06 06:20:14Z" duration="3.084257" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+              </properties>
+              <output><![CDATA[[SurvivorUI] Click RightController -> MR 设置 · 扫描房间
+[SurvivorUI] Click RightController -> 返回
+[SurvivorUI] Miss RightController (no button at press) 
+]]></output>
+            </test-case>
+            <test-case id="1303" name="HeldTriggerCannotClickNewModalOrTrackingRecovery" fullname="SpatialSurvivor.Tests.SurvivorPointerTests.HeldTriggerCannotClickNewModalOrTrackingRecovery" methodname="HeldTriggerCannotClickNewModalOrTrackingRecovery" classname="SpatialSurvivor.Tests.SurvivorPointerTests" runstate="Runnable" seed="867188441" result="Passed" start-time="2026-11-06 06:20:14Z" end-time="2026-11-06 06:20:14Z" duration="0.001385" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1301" name="LeftPinchIsNotSwallowedByValidRightHand" fullname="SpatialSurvivor.Tests.SurvivorPointerTests.LeftPinchIsNotSwallowedByValidRightHand" methodname="LeftPinchIsNotSwallowedByValidRightHand" classname="SpatialSurvivor.Tests.SurvivorPointerTests" runstate="Runnable" seed="577406273" result="Passed" start-time="2026-11-06 06:20:14Z" end-time="2026-11-06 06:20:14Z" duration="0.000574" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1299" name="LeftTriggerTakesOverFromIdleRightController" fullname="SpatialSurvivor.Tests.SurvivorPointerTests.LeftTriggerTakesOverFromIdleRightController" methodname="LeftTriggerTakesOverFromIdleRightController" classname="SpatialSurvivor.Tests.SurvivorPointerTests" runstate="Runnable" seed="1752519809" result="Passed" start-time="2026-11-06 06:20:14Z" end-time="2026-11-06 06:20:14Z" duration="0.000263" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1302" name="LostSourceFallsBackAndBothLostAreInvalid" fullname="SpatialSurvivor.Tests.SurvivorPointerTests.LostSourceFallsBackAndBothLostAreInvalid" methodname="LostSourceFallsBackAndBothLostAreInvalid" classname="SpatialSurvivor.Tests.SurvivorPointerTests" runstate="Runnable" seed="1038200221" result="Passed" start-time="2026-11-06 06:20:14Z" end-time="2026-11-06 06:20:14Z" duration="0.000225" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1300" name="PressedRightControllerTakesOverFromIdleLeft" fullname="SpatialSurvivor.Tests.SurvivorPointerTests.PressedRightControllerTakesOverFromIdleLeft" methodname="PressedRightControllerTakesOverFromIdleLeft" classname="SpatialSurvivor.Tests.SurvivorPointerTests" runstate="Runnable" seed="896733671" result="Passed" start-time="2026-11-06 06:20:14Z" end-time="2026-11-06 06:20:14Z" duration="0.000171" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1305" name="RayFilterDampsTremorAndFollowsIntentionalTurns" fullname="SpatialSurvivor.Tests.SurvivorPointerTests.RayFilterDampsTremorAndFollowsIntentionalTurns" methodname="RayFilterDampsTremorAndFollowsIntentionalTurns" classname="SpatialSurvivor.Tests.SurvivorPointerTests" runstate="Runnable" seed="479423751" result="Passed" start-time="2026-11-06 06:20:14Z" end-time="2026-11-06 06:20:14Z" duration="0.003627" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1306" name="RayFilterResetsWhenSourceOrTrackingChanges" fullname="SpatialSurvivor.Tests.SurvivorPointerTests.RayFilterResetsWhenSourceOrTrackingChanges" methodname="RayFilterResetsWhenSourceOrTrackingChanges" classname="SpatialSurvivor.Tests.SurvivorPointerTests" runstate="Runnable" seed="386970515" result="Passed" start-time="2026-11-06 06:20:14Z" end-time="2026-11-06 06:20:14Z" duration="0.000945" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1307" name="SmallTriggerPullWobbleKeepsHoveredTargetButCannotClickFarAwayOrDisabledButtons" fullname="SpatialSurvivor.Tests.SurvivorPointerTests.SmallTriggerPullWobbleKeepsHoveredTargetButCannotClickFarAwayOrDisabledButtons" methodname="SmallTriggerPullWobbleKeepsHoveredTargetButCannotClickFarAwayOrDisabledButtons" classname="SpatialSurvivor.Tests.SurvivorPointerTests" runstate="Runnable" seed="1136311411" result="Passed" start-time="2026-11-06 06:20:14Z" end-time="2026-11-06 06:20:18Z" duration="3.288573" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+              </properties>
+              <output><![CDATA[[SurvivorUI] Click RightController -> MR 设置 · 扫描房间
+[SurvivorUI] Miss RightController (no button at press) 
+[SurvivorUI] Miss LeftController (no button at press) 
+[SurvivorUI] Miss RightController (no button at press) 
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1309" name="SurvivorProgressStoreTests" fullname="SpatialSurvivor.Tests.SurvivorProgressStoreTests" classname="SpatialSurvivor.Tests.SurvivorProgressStoreTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.073335" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1312" name="DamagedPrimaryRecoversLastValidBackup" fullname="SpatialSurvivor.Tests.SurvivorProgressStoreTests.DamagedPrimaryRecoversLastValidBackup" methodname="DamagedPrimaryRecoversLastValidBackup" classname="SpatialSurvivor.Tests.SurvivorProgressStoreTests" runstate="Runnable" seed="1761372402" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.029835" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1310" name="FreshInstallStartsWithoutAndroidFiles" fullname="SpatialSurvivor.Tests.SurvivorProgressStoreTests.FreshInstallStartsWithoutAndroidFiles" methodname="FreshInstallStartsWithoutAndroidFiles" classname="SpatialSurvivor.Tests.SurvivorProgressStoreTests" runstate="Runnable" seed="923170862" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.002215" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1313" name="InterruptedFirstWriteRecoversCompleteTemporaryFile" fullname="SpatialSurvivor.Tests.SurvivorProgressStoreTests.InterruptedFirstWriteRecoversCompleteTemporaryFile" methodname="InterruptedFirstWriteRecoversCompleteTemporaryFile" classname="SpatialSurvivor.Tests.SurvivorProgressStoreTests" runstate="Runnable" seed="29945199" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.002915" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1316" name="InvalidLevelsAreClampedAndOldAudioDefaultsAreUpgraded" fullname="SpatialSurvivor.Tests.SurvivorProgressStoreTests.InvalidLevelsAreClampedAndOldAudioDefaultsAreUpgraded" methodname="InvalidLevelsAreClampedAndOldAudioDefaultsAreUpgraded" classname="SpatialSurvivor.Tests.SurvivorProgressStoreTests" runstate="Runnable" seed="1872528707" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.003108" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1315" name="MissingFieldsAndOversizedFilesFallBackSafely" fullname="SpatialSurvivor.Tests.SurvivorProgressStoreTests.MissingFieldsAndOversizedFilesFallBackSafely" methodname="MissingFieldsAndOversizedFilesFallBackSafely" classname="SpatialSurvivor.Tests.SurvivorProgressStoreTests" runstate="Runnable" seed="766537726" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.014181" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1311" name="PurchasesAndSettingsSurviveReload" fullname="SpatialSurvivor.Tests.SurvivorProgressStoreTests.PurchasesAndSettingsSurviveReload" methodname="PurchasesAndSettingsSurviveReload" classname="SpatialSurvivor.Tests.SurvivorProgressStoreTests" runstate="Runnable" seed="1252310195" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.007414" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1314" name="ValidPrimaryWinsOverStaleTemporaryFile" fullname="SpatialSurvivor.Tests.SurvivorProgressStoreTests.ValidPrimaryWinsOverStaleTemporaryFile" methodname="ValidPrimaryWinsOverStaleTemporaryFile" classname="SpatialSurvivor.Tests.SurvivorProgressStoreTests" runstate="Runnable" seed="1802180426" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.007323" asserts="0">
+              <properties />
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1317" name="SurvivorRulesTests" fullname="SpatialSurvivor.Tests.SurvivorRulesTests" classname="SpatialSurvivor.Tests.SurvivorRulesTests" runstate="Runnable" testcasecount="16" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.044722" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1326" name="DraftNeverOffersDuplicatesOrMaxedCards" fullname="SpatialSurvivor.Tests.SurvivorRulesTests.DraftNeverOffersDuplicatesOrMaxedCards" methodname="DraftNeverOffersDuplicatesOrMaxedCards" classname="SpatialSurvivor.Tests.SurvivorRulesTests" runstate="Runnable" seed="665418142" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.005984" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1327" name="EligibleEvolutionAlwaysReplacesOneOption" fullname="SpatialSurvivor.Tests.SurvivorRulesTests.EligibleEvolutionAlwaysReplacesOneOption" methodname="EligibleEvolutionAlwaysReplacesOneOption" classname="SpatialSurvivor.Tests.SurvivorRulesTests" runstate="Runnable" seed="2039877108" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.000569" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1332" name="EmptyRoomNeverSpawnsEnemies" fullname="SpatialSurvivor.Tests.SurvivorRulesTests.EmptyRoomNeverSpawnsEnemies" methodname="EmptyRoomNeverSpawnsEnemies" classname="SpatialSurvivor.Tests.SurvivorRulesTests" runstate="Runnable" seed="1430806195" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.000746" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1325" name="EvolutionNeedsBothMaxedPrerequisites" fullname="SpatialSurvivor.Tests.SurvivorRulesTests.EvolutionNeedsBothMaxedPrerequisites" methodname="EvolutionNeedsBothMaxedPrerequisites" classname="SpatialSurvivor.Tests.SurvivorRulesTests" runstate="Runnable" seed="1572254257" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.002092" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1329" name="FourthOptionRequiresPassive" fullname="SpatialSurvivor.Tests.SurvivorRulesTests.FourthOptionRequiresPassive" methodname="FourthOptionRequiresPassive" classname="SpatialSurvivor.Tests.SurvivorRulesTests" runstate="Runnable" seed="1346764801" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.000360" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1334" name="LargeBossCanSpawnInsideScannedWalls" fullname="SpatialSurvivor.Tests.SurvivorRulesTests.LargeBossCanSpawnInsideScannedWalls" methodname="LargeBossCanSpawnInsideScannedWalls" classname="SpatialSurvivor.Tests.SurvivorRulesTests" runstate="Runnable" seed="1769478047" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.007449" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1328" name="LateDraftGuaranteesRareWhenAvailable" fullname="SpatialSurvivor.Tests.SurvivorRulesTests.LateDraftGuaranteesRareWhenAvailable" methodname="LateDraftGuaranteesRareWhenAvailable" classname="SpatialSurvivor.Tests.SurvivorRulesTests" runstate="Runnable" seed="1750684928" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.005443" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1333" name="MissingAndDisconnectedFloorRejectsSpawns" fullname="SpatialSurvivor.Tests.SurvivorRulesTests.MissingAndDisconnectedFloorRejectsSpawns" methodname="MissingAndDisconnectedFloorRejectsSpawns" classname="SpatialSurvivor.Tests.SurvivorRulesTests" runstate="Runnable" seed="443919265" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.004964" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1324" name="PressureNeverExceedsPreallocatedPool" fullname="SpatialSurvivor.Tests.SurvivorRulesTests.PressureNeverExceedsPreallocatedPool" methodname="PressureNeverExceedsPreallocatedPool" classname="SpatialSurvivor.Tests.SurvivorRulesTests" runstate="Runnable" seed="601901480" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.000687" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1330" name="PurchaseCannotOverspendOrExceedCap" fullname="SpatialSurvivor.Tests.SurvivorRulesTests.PurchaseCannotOverspendOrExceedCap" methodname="PurchaseCannotOverspendOrExceedCap" classname="SpatialSurvivor.Tests.SurvivorRulesTests" runstate="Runnable" seed="65680270" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.000779" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1331" name="RewardsMatchOriginalSettlementRules" fullname="SpatialSurvivor.Tests.SurvivorRulesTests.RewardsMatchOriginalSettlementRules" methodname="RewardsMatchOriginalSettlementRules" classname="SpatialSurvivor.Tests.SurvivorRulesTests" runstate="Runnable" seed="753826177" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.000397" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1323" name="StarterWeaponSurvivesFreshRun" fullname="SpatialSurvivor.Tests.SurvivorRulesTests.StarterWeaponSurvivesFreshRun" methodname="StarterWeaponSurvivesFreshRun" classname="SpatialSurvivor.Tests.SurvivorRulesTests" runstate="Runnable" seed="1825708375" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.000317" asserts="0">
+              <properties />
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1322" name="WaveTransitionsKeepOriginalTwoMinuteTiming" fullname="SpatialSurvivor.Tests.SurvivorRulesTests.WaveTransitionsKeepOriginalTwoMinuteTiming" classname="SpatialSurvivor.Tests.SurvivorRulesTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.005838" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1318" name="WaveTransitionsKeepOriginalTwoMinuteTiming(0,1)" fullname="SpatialSurvivor.Tests.SurvivorRulesTests.WaveTransitionsKeepOriginalTwoMinuteTiming(0,1)" methodname="WaveTransitionsKeepOriginalTwoMinuteTiming" classname="SpatialSurvivor.Tests.SurvivorRulesTests" runstate="Runnable" seed="1238920024" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.000434" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1319" name="WaveTransitionsKeepOriginalTwoMinuteTiming(119.99f,1)" fullname="SpatialSurvivor.Tests.SurvivorRulesTests.WaveTransitionsKeepOriginalTwoMinuteTiming(119.99f,1)" methodname="WaveTransitionsKeepOriginalTwoMinuteTiming" classname="SpatialSurvivor.Tests.SurvivorRulesTests" runstate="Runnable" seed="1998565783" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.000072" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1320" name="WaveTransitionsKeepOriginalTwoMinuteTiming(120,2)" fullname="SpatialSurvivor.Tests.SurvivorRulesTests.WaveTransitionsKeepOriginalTwoMinuteTiming(120,2)" methodname="WaveTransitionsKeepOriginalTwoMinuteTiming" classname="SpatialSurvivor.Tests.SurvivorRulesTests" runstate="Runnable" seed="275727078" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.000064" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1321" name="WaveTransitionsKeepOriginalTwoMinuteTiming(600,6)" fullname="SpatialSurvivor.Tests.SurvivorRulesTests.WaveTransitionsKeepOriginalTwoMinuteTiming(600,6)" methodname="WaveTransitionsKeepOriginalTwoMinuteTiming" classname="SpatialSurvivor.Tests.SurvivorRulesTests" runstate="Runnable" seed="925563240" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:18Z" duration="0.000060" asserts="0">
+                <properties />
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestFixture" id="1335" name="SurvivorSceneTests" fullname="SpatialSurvivor.Tests.SurvivorSceneTests" classname="SpatialSurvivor.Tests.SurvivorSceneTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-06 06:20:21Z" end-time="2026-11-06 06:20:23Z" duration="1.655656" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1336" name="SceneRunsCombatUpgradeAndBossWithoutMissingAssets" fullname="SpatialSurvivor.Tests.SurvivorSceneTests.SceneRunsCombatUpgradeAndBossWithoutMissingAssets" methodname="SceneRunsCombatUpgradeAndBossWithoutMissingAssets" classname="SpatialSurvivor.Tests.SurvivorSceneTests" runstate="Runnable" seed="595063432" result="Passed" start-time="2026-11-06 06:20:18Z" end-time="2026-11-06 06:20:23Z" duration="4.864083" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1337" name="SurvivorUIPlacementTests" fullname="SpatialSurvivor.Tests.SurvivorUIPlacementTests" classname="SpatialSurvivor.Tests.SurvivorUIPlacementTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-11-06 06:20:23Z" end-time="2026-11-06 06:20:23Z" duration="0.011316" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1338" name="HudStartsBelowEyesAndFacesTheEye" fullname="SpatialSurvivor.Tests.SurvivorUIPlacementTests.HudStartsBelowEyesAndFacesTheEye" methodname="HudStartsBelowEyesAndFacesTheEye" classname="SpatialSurvivor.Tests.SurvivorUIPlacementTests" runstate="Runnable" seed="1534299166" result="Passed" start-time="2026-11-06 06:20:23Z" end-time="2026-11-06 06:20:23Z" duration="0.003297" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1339" name="LookingDownAndRollingDoesNotPushHudAway" fullname="SpatialSurvivor.Tests.SurvivorUIPlacementTests.LookingDownAndRollingDoesNotPushHudAway" methodname="LookingDownAndRollingDoesNotPushHudAway" classname="SpatialSurvivor.Tests.SurvivorUIPlacementTests" runstate="Runnable" seed="1168703262" result="Passed" start-time="2026-11-06 06:20:23Z" end-time="2026-11-06 06:20:23Z" duration="0.000837" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1342" name="NearVerticalGazeKeepsLastHeading" fullname="SpatialSurvivor.Tests.SurvivorUIPlacementTests.NearVerticalGazeKeepsLastHeading" methodname="NearVerticalGazeKeepsLastHeading" classname="SpatialSurvivor.Tests.SurvivorUIPlacementTests" runstate="Runnable" seed="805677032" result="Passed" start-time="2026-11-06 06:20:23Z" end-time="2026-11-06 06:20:23Z" duration="0.000570" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1340" name="SmallGlancesLeaveHudStableAndLargeTurnsCatchUp" fullname="SpatialSurvivor.Tests.SurvivorUIPlacementTests.SmallGlancesLeaveHudStableAndLargeTurnsCatchUp" methodname="SmallGlancesLeaveHudStableAndLargeTurnsCatchUp" classname="SpatialSurvivor.Tests.SurvivorUIPlacementTests" runstate="Runnable" seed="755300507" result="Passed" start-time="2026-11-06 06:20:23Z" end-time="2026-11-06 06:20:23Z" duration="0.000793" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1341" name="TrackingTeleportReanchorsWithoutFlyingThroughScene" fullname="SpatialSurvivor.Tests.SurvivorUIPlacementTests.TrackingTeleportReanchorsWithoutFlyingThroughScene" methodname="TrackingTeleportReanchorsWithoutFlyingThroughScene" classname="SpatialSurvivor.Tests.SurvivorUIPlacementTests" runstate="Runnable" seed="876412344" result="Passed" start-time="2026-11-06 06:20:23Z" end-time="2026-11-06 06:20:23Z" duration="0.000637" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Game tests: 94 passed, 0 failed
+Saving results to: C:/Users/Administrator/AppData/LocalLow/SpatialSurvivor/空间幸存者 Unity\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

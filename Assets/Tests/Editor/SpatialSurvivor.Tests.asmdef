@@ -1,0 +1,12 @@
+{
+  "name": "SpatialSurvivor.Tests",
+  "references": [
+    "SpatialSurvivor.Runtime"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}

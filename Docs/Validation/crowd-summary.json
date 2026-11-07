@@ -1,0 +1,25 @@
+{
+  "version": "2.0.2",
+  "versionCode": 8,
+  "package": "com.example.spatialsurvivor.unity",
+  "device": "PB314XHGKC160016G",
+  "tests": {
+    "result": "Passed",
+    "passed": 72,
+    "failed": 0,
+    "total": 72
+  },
+  "apk": {
+    "sha256": "f13e88e2f9d4fa3f56b4aa8367a3eefd077ee67443b4bbe7beada374aca4f958",
+    "bytes": 82304919
+  },
+  "fixes": [
+    "Body-sized peer avoidance",
+    "Melee stopping distance",
+    "Spawn and landing space reservation",
+    "Bounded post-landing and black-hole separation",
+    "Frozen and telegraph immobility",
+    "Room boundary validation"
+  ],
+  "deployment": "Installed 2.0.2 / code 8; running PID 23754; resumed UnityPlayerActivity; device awake. Runtime visual spacing awaits wearer verification."
+}

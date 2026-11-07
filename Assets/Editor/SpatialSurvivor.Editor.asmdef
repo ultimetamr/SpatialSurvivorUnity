@@ -1,0 +1,18 @@
+{
+  "name": "SpatialSurvivor.Editor",
+  "references": [
+    "SpatialSurvivor.Runtime",
+    "ByteDance.PICO.XR",
+    "Unity.XR.Management",
+    "Unity.XR.Management.Editor",
+    "Compiler",
+    "UnityEditor.TestRunner",
+    "UnityEngine.TestRunner",
+    "Unity.XR.OpenXR",
+    "Unity.XR.OpenXR.Editor"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "autoReferenced": true
+}

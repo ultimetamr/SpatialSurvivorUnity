@@ -1,0 +1,8 @@
+Succeeded: Unity Android build 1.3.0 (code 4), ARM64 IL2CPP OpenGLES3; debug development build.
+Bytes: 
+94211760
+UTC: 
+2026-11-05T00:44:31.7076907Z
+SHA256: 
+6eb68ec22bec581e7dcbf5acebd0fbf08357cbc74b4c189678857a54c3ce899b
+APK signature: verified

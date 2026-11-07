@@ -1,0 +1,43 @@
+{
+  "recordedAt": "2026-11-06T12:08:08.630484+08:00",
+  "versionName": "2.2.0",
+  "versionCode": 12,
+  "project": "E:\\DEMO\\SpatialSurvivorUnity",
+  "tests": {
+    "result": "Passed",
+    "total": "94",
+    "passed": "94",
+    "failed": "0",
+    "skipped": "0"
+  },
+  "build": {
+    "result": "Success",
+    "apk": "E:\\DEMO\\SpatialSurvivorUnity\\Builds\\SpatialSurvivorUnity.apk",
+    "bytes": 82921279,
+    "sha256": "13bccf20a1458916ef5efd1f57bd57bdd48ded141b8fa29bc1931598d1ab7612"
+  },
+  "features": {
+    "weapons": 8,
+    "newGuns": [
+      "ArcPistol (free, shop page 2)",
+      "Scattergun (240 coins, shop page 2)"
+    ],
+    "melee": "Continuous swept blade collision including stationary-wrist rotation; per-enemy cooldown and generation checks.",
+    "tracking": "Full rotation; 0.22 seconds visible hold during brief dropouts, no stale-pose attacks, no immediate hand switch."
+  },
+  "device": {
+    "id": "PB314XHGKC160016G",
+    "package": "com.example.spatialsurvivor.unity",
+    "installed": true,
+    "versionName": "2.2.0",
+    "versionCode": 12,
+    "running": false,
+    "awake": false,
+    "launchStatus": "not_running_while_headset_asleep",
+    "systemEvidence": "App info confirms version 2.2.0/code 12 installed, running=false; activity dump mAwake=false, mScreenOnEarly=false, mScreenOnFully=false."
+  },
+  "limitations": [
+    "Screenshots are Unity editor renders, not hardware captures.",
+    "Physical swing comfort, long hardware tracking dropouts, stereo rendering and device combat still require worn-headset verification."
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "version": "2.0.0",
+  "versionCode": 6,
+  "package": "com.example.spatialsurvivor.unity",
+  "device": "PB314XHGKC160016G",
+  "tests": {
+    "result": "Passed",
+    "total": 58,
+    "passed": 58,
+    "failed": 0
+  },
+  "apk": {
+    "path": "Builds/SpatialSurvivorUnity.apk",
+    "bytes": 82299143,
+    "sha256": "eb8a8ed298114b80374b21a4c4bca6b8adecd712a0526dd8cb9a5bc896d6daab"
+  },
+  "installation": "Success; device app info confirms 2.0.0 / 6",
+  "launch": "Running in foreground after headset wake; app info PID 21274, version 2.0.0 / code 6; activity dump confirms resumed UnityPlayerActivity.",
+  "visualEvidence": "Editor renders; not hardware validation",
+  "authoring": {
+    "creatures": 5,
+    "jointsPerCreature": 12,
+    "clips": 30,
+    "weapons": 5,
+    "generatedTextures": 2
+  },
+  "hardwareInput": "screen=Playing; source=RightController; valid=True; clicks=1; lastClick=开始生存"
+}

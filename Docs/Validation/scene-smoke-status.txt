@@ -1,0 +1,1 @@
+Passed: scene boot, simulated room, all weapon/evolution models, combat/XP/card selection, 14 swords/48 crystals, boss, audio clips, crystal attraction latch/acceleration, merged EXP rounding, paused combat rings, freeze pulse on new spawns, one-shot settlement, terminal combat stop, menu cleanup.

@@ -1,0 +1,48 @@
+{
+  "recordedAt": "2026-11-05T15:19:46.901672+08:00",
+  "project": "E:\\DEMO\\SpatialSurvivorUnity",
+  "referenceProject": "D:\\Would\\DOME\\my-pico-unity-app",
+  "versionName": "2.1.0",
+  "versionCode": 11,
+  "tests": {
+    "result": "Passed",
+    "total": "88",
+    "passed": "88",
+    "failed": "0",
+    "skipped": "0",
+    "start-time": "2026-11-05 07:14:29Z",
+    "end-time": "2026-11-05 07:14:31Z"
+  },
+  "build": {
+    "result": "Success",
+    "apk": "E:\\DEMO\\SpatialSurvivorUnity\\Builds\\SpatialSurvivorUnity.apk",
+    "bytes": 82869799,
+    "sha256": "031c1f99188f18cee05b3182921879f729acdcdd31c6674c1abbe7602cc16dff"
+  },
+  "device": {
+    "id": "PB314XHGKC160016G",
+    "package": "com.example.spatialsurvivor.unity",
+    "installed": true,
+    "installedVersion": "2.1.0",
+    "installedVersionCode": 11,
+    "running": true,
+    "awake": true,
+    "launchStatus": "foreground_verified",
+    "systemEvidence": "UnityPlayerActivity is ResumedActivity; mAwake=true, mScreenOnEarly=true, mScreenOnFully=true. App info confirms 2.1.0/code 11 running.",
+    "deviceLogClock": "Device log date is 10-21; host verification date is 2026-11-05. Device clock is not used as host release time.",
+    "verifiedAt": "2026-11-06T11:48:14.712469+08:00",
+    "pid": 32593,
+    "uiInputEvidence": "screen=Skills; source=RightController; valid=True; clicks=3; lastClick=毒雾光环; missedPresses=0; trackingLosses=0"
+  },
+  "features": {
+    "skillDescriptions": 39,
+    "creatureDescriptions": 7,
+    "handWeapons": 6,
+    "newFlyingEnemies": 2,
+    "coins": "Persistent, awarded once per settled run; separate from crystals"
+  },
+  "limitations": [
+    "Screenshots are Unity editor renders, not headset captures.",
+    "Foreground launch and three controller UI clicks verified; full combat balance, comfort, stereo appearance and runtime performance are not yet verified in this deployment."
+  ]
+}

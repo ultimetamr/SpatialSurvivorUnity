@@ -1,0 +1,27 @@
+{
+  "version": "2.0.1",
+  "versionCode": 7,
+  "package": "com.example.spatialsurvivor.unity",
+  "device": "PB314XHGKC160016G",
+  "scope": "Combat HUD only",
+  "tests": {
+    "passed": 63,
+    "result": "Passed",
+    "failed": 0,
+    "total": 63
+  },
+  "apk": {
+    "bytes": 82298251,
+    "sha256": "90952c863e9affce4a6adc192ef17cf1dfc9b30d27c25f81db6795a22b0b5b19"
+  },
+  "placement": {
+    "turnDelaySeconds": 0.3,
+    "distance": 1.6,
+    "facesEye": true,
+    "pitchAndRollIndependent": true,
+    "drop": 0.48,
+    "maxYawSpeed": 55,
+    "turnThresholdDegrees": 24
+  },
+  "deployment": "Installed and running in foreground; app info 2.0.1 / code 7 / PID 22584; resumed UnityPlayerActivity; device awake. Comfort requires wearer verification."
+}

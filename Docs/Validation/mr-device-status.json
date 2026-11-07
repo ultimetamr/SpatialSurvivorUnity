@@ -1,0 +1,10 @@
+{
+  "date": "2026-11-05",
+  "tool_status": "PARTIAL",
+  "summary": "pico-cli spatial environment is usable, with non-blocking warnings that may need action for selected workflows.",
+  "deviceCount": 0,
+  "deviceCheck": "pico-cli device list --format json returned devices: []",
+  "hardwareValidation": "Not performed",
+  "projectSdk": "Embedded PICO Unity SDK 6.1.1",
+  "globalTooling": "Spatial; unchanged"
+}

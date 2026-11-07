@@ -1,0 +1,78 @@
+{
+  "checkedAt": "2026-11-06T17:51:01.760109+08:00",
+  "editor": "6000.6.8f1",
+  "package": "com.example.spatialsurvivor.unity",
+  "versionName": "2.2.1",
+  "versionCode": 13,
+  "build": {
+    "result": "Success",
+    "log": "Logs/unity6-android-build.log",
+    "apk": "E:\\DEMO\\SpatialSurvivorUnity\\Builds\\SpatialSurvivorUnity.apk",
+    "bytes": 75069772,
+    "sha256": "ac9fa013cb8f0ba1cb3ba4a1859bcd1cc56009a3b7f157375f4944d41c2698cb"
+  },
+  "device": {
+    "id": "PB314XHGKC160016G",
+    "type": "real-device",
+    "model": "B3110",
+    "product": "swan",
+    "android": "16",
+    "api": 36,
+    "abi": "arm64-v8a"
+  },
+  "installation": {
+    "result": "Success",
+    "replace": true,
+    "installedApkSha256": "ac9fa013cb8f0ba1cb3ba4a1859bcd1cc56009a3b7f157375f4944d41c2698cb",
+    "matchesBuild": true
+  },
+  "tests": {
+    "result": "Passed",
+    "total": "95",
+    "passed": "95",
+    "failed": "0",
+    "skipped": "0"
+  },
+  "runtime": {
+    "result": "foreground_running",
+    "lastPowerState": "Awake",
+    "running": true,
+    "pid": 24774,
+    "foregroundActivity": "com.unity3d.player.UnityPlayerActivity",
+    "crashBufferEntries": 0,
+    "criticalManagedExceptionsObserved": false,
+    "warnings": [
+      "Eye tracking native service reports unavailable shared-memory fd (-10002)."
+    ],
+    "evidence": [
+      "Logs/unity6-pointer-device-info.json",
+      "Logs/unity6-pointer-device-errors.json",
+      "Logs/unity6-pointer-device-crash.json",
+      "Logs/unity6-pointer-input.txt"
+    ]
+  },
+  "visualVerification": {
+    "result": "passed_pointer_wearer_confirmation",
+    "change": "Pointer uses a stereo-capable overlay shader; visual ray endpoint stops at active canvas surface.",
+    "screenshot": "Unavailable: device screencap rejects --spatial and ordinary capture fails. No screenshot-based visual pass claimed.",
+    "confirmedAt": "2026-11-06T18:14:48.321221+08:00",
+    "originalSymptom": "User clarified that the portion nearest the controller was invisible.",
+    "wearerFeedback": "2.2.1: ray is complete and clicking works normally.",
+    "scope": [
+      "controller ray completeness",
+      "menu clicking"
+    ],
+    "remainingUnverified": [
+      "full combat with melee and pistol",
+      "long-session comfort",
+      "performance"
+    ]
+  },
+  "previousBuild": {
+    "versionName": "2.2.0",
+    "versionCode": 12,
+    "foregroundRunningVerified": true,
+    "wearerFeedback": "Buttons work; the part of the ray nearest the controller is invisible.",
+    "inputEvidence": "Shop interaction recorded with five clicks and zero tracking losses."
+  }
+}

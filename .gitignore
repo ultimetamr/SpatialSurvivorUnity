@@ -1,0 +1,22 @@
+/Library/
+/Temp/
+/Obj/
+/Logs/
+/UserSettings/
+/Builds/
+*.csproj
+*.sln
+.vs/
+/.utmp/
+/mocktest/
+/editor-asset/
+# PICO's embedded SDK license prohibits unapproved public redistribution.
+/Packages/com.bytedance.pico.xr/
+/Packages/com.bytedance.pico.xr.meta
+# Local SimHei font; public clones restore bundled OFL Noto Sans SC instead.
+/Assets/Resources/Fonts/Chinese.ttf
+*.keystore
+*.jks
+*.pfx
+.env
+.env.*

@@ -1,0 +1,34 @@
+{
+  "result": "PARTIAL",
+  "overview": {
+    "cli": "0.6.1 (public)",
+    "pluginName": null,
+    "pluginStatus": "not-configured",
+    "targetPlatform": "spatial",
+    "sdk": {
+      "status": "no-project",
+      "version": null
+    },
+    "picoDevelopmentKnowledge": "0.13",
+    "profilingTool": "0.2.1",
+    "emulator": "6.1.0",
+    "editor": "6.0.0"
+  },
+  "node": "v24.18.0",
+  "npm": "11.16.0",
+  "cliPath": "C:\\Users\\Administrator\\AppData\\Roaming\\npm\\pico-cli.ps1",
+  "cliUpdateNeeded": false,
+  "workflow": "Unity build through installed Unity editor; platform-neutral device commands through pico-cli",
+  "findings": [
+    "Global tooling platform is Spatial; Unity assertion correctly failed. Following its nextAction, doctor without assertion reported PARTIAL with no required execution errors.",
+    "PICO_HOME is resolved through config file; no shell export needed for the selected commands.",
+    "No host recorded in global PICO setup; project routing warning does not block build or ADB device commands.",
+    "No Spatial SDK in this Unity project; knowledge alignment is not used for build/device-only workflow."
+  ],
+  "actions": [
+    "pico-cli update --check --format json (no update installed)",
+    "pico-cli doctor --format json --platform unity",
+    "pico-cli doctor --format json"
+  ],
+  "hostRestartRequired": false
+}

@@ -1,0 +1,22 @@
+using System;
+using System.Linq;
+using NUnit.Framework;
+using UnityEngine;
+namespace SpatialSurvivor.Tests {
+public class SurvivorRulesTests {
+ [TestCase(0,1)][TestCase(119.99f,1)][TestCase(120,2)][TestCase(600,6)]
+ public void WaveTransitionsKeepOriginalTwoMinuteTiming(float time,int expected){Assert.That(SurvivorRules.Wave(time),Is.EqualTo(expected));}
+ [Test] public void StarterWeaponSurvivesFreshRun(){var p=new MetaSave().NewPlayer();Assert.That(p.Stack(UpgradeId.ENERGY_PROJECTILE),Is.EqualTo(1));Assert.That(p.health,Is.EqualTo(100));Assert.That(p.damage,Is.EqualTo(20));}
+ [Test] public void PressureNeverExceedsPreallocatedPool(){for(int wave=1;wave<100;wave++)Assert.That(SurvivorRules.MonsterLimit(wave),Is.InRange(12,18));}
+ [Test] public void EvolutionNeedsBothMaxedPrerequisites(){var p=new PlayerState();p.stacks[(int)UpgradeId.ORBITING_SWORD]=5;Assert.That(SurvivorRules.Evolutions(p),Has.No.Member(UpgradeId.MYRIAD_SWORDS));p.stacks[(int)UpgradeId.ATTACK_DAMAGE]=5;Assert.That(SurvivorRules.Evolutions(p),Has.Member(UpgradeId.MYRIAD_SWORDS));p.Apply(UpgradeId.MYRIAD_SWORDS);Assert.That(SurvivorRules.Evolutions(p),Has.No.Member(UpgradeId.MYRIAD_SWORDS));}
+ [Test] public void DraftNeverOffersDuplicatesOrMaxedCards(){var p=new PlayerState();p.stacks[(int)UpgradeId.ATTACK_DAMAGE]=5;for(int seed=0;seed<300;seed++){var cards=SurvivorRules.Draw(p,new System.Random(seed));Assert.That(cards.Select(c=>c.id).Distinct().Count(),Is.EqualTo(cards.Count));Assert.That(cards.Any(c=>c.id==UpgradeId.ATTACK_DAMAGE),Is.False);}}
+ [Test] public void EligibleEvolutionAlwaysReplacesOneOption(){var p=new PlayerState();p.stacks[(int)UpgradeId.ORBITING_SWORD]=p.stacks[(int)UpgradeId.ATTACK_DAMAGE]=5;Assert.That(SurvivorRules.Draw(p,new System.Random(1)).Any(c=>c.id==UpgradeId.MYRIAD_SWORDS),Is.True);}
+ [Test] public void LateDraftGuaranteesRareWhenAvailable(){var p=new PlayerState{completed=9};for(int seed=0;seed<300;seed++)Assert.That(SurvivorRules.Draw(p,new System.Random(seed)).Any(c=>c.rarity!=Rarity.COMMON),Is.True);}
+ [Test] public void FourthOptionRequiresPassive(){var p=new PlayerState();Assert.That(SurvivorRules.Draw(p,new System.Random(0)).Count,Is.EqualTo(3));p.Apply(UpgradeId.EXTRA_OPTION);Assert.That(SurvivorRules.Draw(p,new System.Random(0)).Count,Is.EqualTo(4));}
+ [Test] public void PurchaseCannotOverspendOrExceedCap(){var save=new MetaSave();Assert.That(save.Buy(0),Is.False);save.crystals=100000;for(int i=0;i<10;i++)Assert.That(save.Buy(0),Is.True);int left=save.crystals;Assert.That(save.Buy(0),Is.False);Assert.That(save.crystals,Is.EqualTo(left));Assert.That(save.NewPlayer().maxHealth,Is.EqualTo(200));}
+ [Test] public void RewardsMatchOriginalSettlementRules(){Assert.That(SurvivorRules.Reward(600,100,true,0,0),Is.EqualTo(220));Assert.That(SurvivorRules.Reward(0,0,false,0,0),Is.Zero);}
+ [Test] public void EmptyRoomNeverSpawnsEnemies(){var nav=new RoomNavigation();Assert.That(nav.Spawn(Vector3.zero,2,.2f,new System.Random(1),out _,out _),Is.False);}
+ [Test] public void MissingAndDisconnectedFloorRejectsSpawns(){var floor=GameObject.CreatePrimitive(PrimitiveType.Cube);floor.layer=RoomNavigation.Layer;floor.transform.position=new Vector3(0,-.1f,0);floor.transform.localScale=new Vector3(4,.2f,4);try{Physics.SyncTransforms();var nav=new RoomNavigation();nav.Rebuild(new Vector3(0,1.65f,0));Assert.That(nav.Ready,Is.True);Assert.That(nav.Contains(new Vector3(10,0,10)),Is.False);Assert.That(nav.Spawn(Vector3.zero,10,.2f,new System.Random(0),out _,out _),Is.False);}finally{UnityEngine.Object.DestroyImmediate(floor);}}
+ [Test] public void LargeBossCanSpawnInsideScannedWalls(){var objects=new System.Collections.Generic.List<GameObject>();try{Action<Vector3,Vector3> box=(p,s)=>{var go=GameObject.CreatePrimitive(PrimitiveType.Cube);go.layer=RoomNavigation.Layer;go.transform.position=p;go.transform.localScale=s;objects.Add(go);};box(new Vector3(0,-.1f,0),new Vector3(10,.2f,10));box(new Vector3(0,1.3f,5),new Vector3(10,2.6f,.15f));box(new Vector3(0,1.3f,-5),new Vector3(10,2.6f,.15f));box(new Vector3(5,1.3f,0),new Vector3(.15f,2.6f,10));box(new Vector3(-5,1.3f,0),new Vector3(.15f,2.6f,10));Physics.SyncTransforms();var nav=new RoomNavigation();nav.Rebuild(new Vector3(0,1.65f,0));Assert.That(nav.Spawn(Vector3.zero,3,.95f,new System.Random(4),out var point,out _),Is.True);Assert.That(nav.Contains(point,.95f),Is.True);Assert.That(point.magnitude,Is.GreaterThanOrEqualTo(3));}finally{foreach(var go in objects)UnityEngine.Object.DestroyImmediate(go);}}
+}
+}

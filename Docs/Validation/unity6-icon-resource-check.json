@@ -1,0 +1,98 @@
+[
+  {
+    "path": "res/mipmap-hdpi-v4/ic_launcher_background.png",
+    "pixels": [
+      162,
+      162
+    ],
+    "meanPixelDifferenceFromResizedOriginal": 1.7676294264085761
+  },
+  {
+    "path": "res/mipmap-hdpi-v4/ic_launcher_foreground.png",
+    "pixels": [
+      162,
+      162
+    ],
+    "meanPixelDifferenceFromResizedOriginal": 1.7676294264085761
+  },
+  {
+    "path": "res/mipmap-ldpi-v4/ic_launcher_background.png",
+    "pixels": [
+      81,
+      81
+    ],
+    "meanPixelDifferenceFromResizedOriginal": 2.1559213534522175
+  },
+  {
+    "path": "res/mipmap-ldpi-v4/ic_launcher_foreground.png",
+    "pixels": [
+      81,
+      81
+    ],
+    "meanPixelDifferenceFromResizedOriginal": 2.1559213534522175
+  },
+  {
+    "path": "res/mipmap-mdpi-v4/ic_launcher_background.png",
+    "pixels": [
+      108,
+      108
+    ],
+    "meanPixelDifferenceFromResizedOriginal": 1.984653635116598
+  },
+  {
+    "path": "res/mipmap-mdpi-v4/ic_launcher_foreground.png",
+    "pixels": [
+      108,
+      108
+    ],
+    "meanPixelDifferenceFromResizedOriginal": 1.984653635116598
+  },
+  {
+    "path": "res/mipmap-xhdpi-v4/ic_launcher_background.png",
+    "pixels": [
+      216,
+      216
+    ],
+    "meanPixelDifferenceFromResizedOriginal": 1.6424968564243254
+  },
+  {
+    "path": "res/mipmap-xhdpi-v4/ic_launcher_foreground.png",
+    "pixels": [
+      216,
+      216
+    ],
+    "meanPixelDifferenceFromResizedOriginal": 1.6424968564243254
+  },
+  {
+    "path": "res/mipmap-xxhdpi-v4/ic_launcher_background.png",
+    "pixels": [
+      324,
+      324
+    ],
+    "meanPixelDifferenceFromResizedOriginal": 1.5631922217141696
+  },
+  {
+    "path": "res/mipmap-xxhdpi-v4/ic_launcher_foreground.png",
+    "pixels": [
+      324,
+      324
+    ],
+    "meanPixelDifferenceFromResizedOriginal": 1.5631922217141696
+  },
+  {
+    "path": "res/mipmap-xxxhdpi-v4/ic_launcher_background.png",
+    "pixels": [
+      432,
+      432
+    ],
+    "meanPixelDifferenceFromResizedOriginal": 1.5593760716735254
+  },
+  {
+    "path": "res/mipmap-xxxhdpi-v4/ic_launcher_foreground.png",
+    "pixels": [
+      432,
+      432
+    ],
+    "meanPixelDifferenceFromResizedOriginal": 1.5593760716735254
+  }
+]

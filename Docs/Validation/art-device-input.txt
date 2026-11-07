@@ -1,0 +1,7 @@
+screen=Playing
+source=RightController
+valid=True
+pressed=False
+hover=
+clicks=1
+lastClick=开始生存

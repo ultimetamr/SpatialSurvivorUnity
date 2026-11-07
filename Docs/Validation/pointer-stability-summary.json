@@ -1,0 +1,29 @@
+{
+  "version": "2.0.4",
+  "versionCode": 10,
+  "package": "com.example.spatialsurvivor.unity",
+  "device": "PB314XHGKC160016G",
+  "recordedAt": "2026-11-05T14:41:22.9049984+08:00",
+  "tests": {
+    "result": "Passed",
+    "passed": 77,
+    "failed": 0,
+    "total": 77
+  },
+  "reproduction": {
+    "after": "Passed actual UI listener regression, including far-away, disabled and different-source rejection",
+    "before": "Expected failure: MR button edge wobble by approximately 6 mm consumed press without opening MR"
+  },
+  "apk": {
+    "bytes": 82313211,
+    "sha256": "4720f1153c08e30a804e283bd5b7a798c0ed501e647432ae48e98a4b2b18cfd3"
+  },
+  "fixes": [
+    "Shared adaptive ray smoothing for beam and hit testing",
+    "Bounded 12-unit retention of hovered same-source button",
+    "Analog trigger press 0.55 / release 0.25 hysteresis",
+    "Preserved release requirement on modal change and tracking recovery",
+    "Added miss, source switch, tracking loss and trigger diagnostics"
+  ],
+  "deployment": "Installed 2.0.4 / code 10; running PID 31655; resumed UnityPlayerActivity; device awake. Targeted runtime error query returned no matching exceptions. First startup diagnostic reported source None / valid False; wearer controller interaction and physical pointing feel remain unverified."
+}

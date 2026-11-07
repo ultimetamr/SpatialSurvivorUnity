@@ -1,0 +1,14 @@
+{
+  "project": "SpatialSurvivorUnity",
+  "version": "2.2.3",
+  "publicFileCount": 954,
+  "gameSourceFiles": 48,
+  "missingGameSourceFiles": [],
+  "restrictedSdkExcluded": true,
+  "localSimHeiExcluded": true,
+  "credentialScan": "passed",
+  "gitHubObjectSizeCheck": "passed",
+  "dependencyRestore": "Passed in isolated directory using existing SDK 6.1.1; repeated run passed. No full Unity build after public font replacement.",
+  "openFontSha256": "d68bafcb48a2707749396aa12bbbd833cb70401f3a9a689fd2902c7e0d295964",
+  "poster": "Marketing/SpatialSurvivor-poster.png"
+}

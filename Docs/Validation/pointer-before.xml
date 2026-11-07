@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Failed(Child)" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-05 06:33:08Z" end-time="2026-11-05 06:33:10Z" duration="1.1358277">
+  <test-suite type="TestSuite" id="1000" name="空间幸存者 Unity" fullname="空间幸存者 Unity" runstate="Runnable" testcasecount="4461" result="Failed" site="Child" start-time="2026-11-05 06:33:08Z" end-time="2026-11-05 06:33:10Z" duration="1.135828" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1322" name="SpatialSurvivor.Tests.dll" fullname="E:/DEMO/SpatialSurvivorUnity/Library/ScriptAssemblies/SpatialSurvivor.Tests.dll" runstate="Runnable" testcasecount="74" result="Failed" site="Child" start-time="2026-11-05 06:33:09Z" end-time="2026-11-05 06:33:10Z" duration="0.119287" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="51568" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1323" name="SpatialSurvivor" fullname="SpatialSurvivor" runstate="Runnable" testcasecount="74" result="Failed" site="Child" start-time="2026-11-05 06:33:09Z" end-time="2026-11-05 06:33:10Z" duration="0.115883" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1324" name="Tests" fullname="SpatialSurvivor.Tests" runstate="Runnable" testcasecount="74" result="Failed" site="Child" start-time="2026-11-05 06:33:09Z" end-time="2026-11-05 06:33:10Z" duration="0.114520" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1280" name="SurvivorPointerTests" fullname="SpatialSurvivor.Tests.SurvivorPointerTests" classname="SpatialSurvivor.Tests.SurvivorPointerTests" runstate="Runnable" testcasecount="7" result="Failed" site="Child" start-time="2026-11-05 06:33:09Z" end-time="2026-11-05 06:33:10Z" duration="0.112353" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1286" name="SmallTriggerPullWobbleKeepsHoveredTargetButCannotClickFarAwayOrDisabledButtons" fullname="SpatialSurvivor.Tests.SurvivorPointerTests.SmallTriggerPullWobbleKeepsHoveredTargetButCannotClickFarAwayOrDisabledButtons" methodname="SmallTriggerPullWobbleKeepsHoveredTargetButCannotClickFarAwayOrDisabledButtons" classname="SpatialSurvivor.Tests.SurvivorPointerTests" runstate="Runnable" seed="1874367603" result="Failed" start-time="2026-11-05 06:33:07Z" end-time="2026-11-05 06:33:10Z" duration="2.192624" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+              </properties>
+              <failure>
+                <message><![CDATA[  A single press must survive a small edge wobble
+  Expected: MR
+  But was:  Menu
+]]></message>
+                <stack-trace><![CDATA[at SpatialSurvivor.Tests.SurvivorPointerTests+<SmallTriggerPullWobbleKeepsHoveredTargetButCannotClickFarAwayOrDisabledButtons>d__6.MoveNext () [0x00175] in E:\DEMO\SpatialSurvivorUnity\Assets\Tests\Editor\SurvivorPointerTests.cs:22
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Packages\com.unity.test-framework\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:46
+]]></stack-trace>
+              </failure>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

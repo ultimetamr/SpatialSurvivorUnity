@@ -1,0 +1,82 @@
+{
+  "checkedAt": "2026-11-06T18:44:20.618750+08:00",
+  "editor": "6000.6.8f1",
+  "versionName": "2.2.3",
+  "versionCode": 15,
+  "package": "com.example.spatialsurvivor.unity",
+  "deviceId": "PB314XHGKC160016G",
+  "issue": "2.2.2 wearer still saw Unity icon in app library.",
+  "confirmedEvidence": "2.2.2 installed APK contained a Unity default flat app_icon.png despite correct adaptive layers.",
+  "change": "Post-generate hook writes the existing game PNG as an explicit drawable and overrides application icon, roundIcon and launcher activity icon. Also replaces every generated flat app_icon.png fallback.",
+  "build": {
+    "result": "Success",
+    "apk": "E:\\DEMO\\SpatialSurvivorUnity\\Builds\\SpatialSurvivorUnity.apk",
+    "bytes": 80097055,
+    "sha256": "d9eb34edc75b621f3e190dc39ce201bf4b0c68965434db0bdb8b93c992cd4019",
+    "log": "Logs/unity6-android-build.log"
+  },
+  "iconVerification": {
+    "result": "passed_manifest_and_png_pixels",
+    "advertisedIconForAllDensities": "res/drawable-nodpi-v4/spatial_survivor_icon.png",
+    "applicationAndActivityReferenceSameIcon": true,
+    "roundIconReferenceMatches": true,
+    "pngResources": [
+      {
+        "path": "res/drawable-nodpi-v4/spatial_survivor_icon.png",
+        "size": [
+          1024,
+          1024
+        ],
+        "pixelsMatchOriginal": true
+      },
+      {
+        "path": "res/mipmap-mdpi-v4/app_icon.png",
+        "size": [
+          1024,
+          1024
+        ],
+        "pixelsMatchOriginal": true
+      }
+    ],
+    "extractedIcon": "unity6-launcher-flat-icon.png"
+  },
+  "installation": {
+    "result": "Success",
+    "freshInstall": true,
+    "preInstallPackageListEmpty": true,
+    "versionName": "2.2.3",
+    "versionCode": 15,
+    "installedApkSha256": "d9eb34edc75b621f3e190dc39ce201bf4b0c68965434db0bdb8b93c992cd4019",
+    "matchesBuild": true
+  },
+  "wearerConfirmation": {
+    "result": "Passed",
+    "confirmedAt": "2026-11-06T18:44:20.618750+08:00",
+    "feedback": "已显示游戏图标",
+    "context": "After user uninstalled the previous package, rebuilt and installed fresh."
+  },
+  "regression": {
+    "scope": "Editor Android export only; gameplay scripts unchanged.",
+    "fullTestsRerun": false,
+    "previousTests": "2.2.1: 95 passed; wearer confirmed ray complete and clicking normal."
+  },
+  "packageManagerVerification": {
+    "activityIcon": "0x7f020000",
+    "applicationIcon": "0x7f020000",
+    "matchesApkGameDrawable": true,
+    "evidence": "Logs/unity6-icon-resolved-activity.txt"
+  },
+  "launcherRefresh": {
+    "package": "com.picoxr.launcher",
+    "action": "force-stop and launch MainActivity",
+    "result": "running",
+    "pid": 11372,
+    "dataCleared": false
+  },
+  "buildEnvironmentFix": {
+    "file": "Assets/Editor/SurvivorAndroidBuildEnvironment.cs",
+    "change": "Set project-local java.io.tmpdir and org.gradle.daemon=false in generated gradle.properties.",
+    "reason": "Shared daemon had retained a different project temporary folder; first rebuild failed compressDebugAssets.",
+    "retryResult": "Success"
+  }
+}

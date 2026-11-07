@@ -1,0 +1,11 @@
+{
+  "name": "SpatialSurvivor.Runtime",
+  "references": [
+    "UnityEngine.UI",
+    "ByteDance.PICO.XR",
+    "Unity.XR.Management",
+    "Unity.InputSystem",
+    "Unity.XR.CoreUtils"
+  ],
+  "autoReferenced": true
+}

@@ -1,0 +1,24 @@
+{
+  "version": "2.0.3",
+  "versionCode": 9,
+  "package": "com.example.spatialsurvivor.unity",
+  "device": "PB314XHGKC160016G",
+  "recordedAt": "2026-11-05T14:11:46.3344618+08:00",
+  "tests": {
+    "total": 73,
+    "failed": 0,
+    "passed": 73,
+    "result": "Passed"
+  },
+  "apk": {
+    "bytes": 82306823,
+    "sha256": "b63937110d36458f34f15f35af8df3ed1d28071c942a72ec7676639bd6962e13"
+  },
+  "fixes": [
+    "No real-room depth occlusion for models and world UI",
+    "All five creatures at 50 percent previous scale and collision radii",
+    "Continuous close-range circling and peer detours",
+    "Preserved room navigation, freeze, pause and boss telegraph"
+  ],
+  "deployment": "Installed and verified 2.0.3 / code 9. Not running: headset asleep (mAwake=false). VrGuardian explicitly deferred pending UnityPlayerActivity because screenUsable=false, displayInteractive=false, safeZoneReady=false. Awaiting wearer wake; hardware visuals not yet verified."
+}

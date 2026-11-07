@@ -1,0 +1,7 @@
+screen=MR
+source=RightController
+valid=True
+pressed=False
+hover=
+clicks=4
+lastClick=扫描 / 重扫房间

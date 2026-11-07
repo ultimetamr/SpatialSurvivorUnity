@@ -1,0 +1,11 @@
+screen=Menu
+source=None
+valid=False
+pressed=False
+hover=
+clicks=0
+lastClick=
+missedPresses=0
+sourceSwitches=0
+trackingLosses=0
+trigger=
