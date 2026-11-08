@@ -42,6 +42,7 @@ public sealed class SurvivorAndroidIcon : IPostGenerateGradleAndroidProject {
 
  static void SetIcon(XmlElement element){
   element.SetAttribute("icon",AndroidNamespace,IconReference);
+  element.SetAttribute("label",AndroidNamespace,SurvivorIdentity.Name);
   if(element.Name=="application")element.SetAttribute("roundIcon",AndroidNamespace,IconReference);
  }
  static XmlNamespaceManager Namespaces(XmlDocument doc){

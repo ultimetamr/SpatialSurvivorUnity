@@ -1,6 +1,7 @@
 param(
     [string]$UnityEditor = "D:\Would\Unity\6000.6.8f1\Editor\Unity.exe",
-    [string]$ProjectPath = (Split-Path $PSScriptRoot -Parent)
+    [string]$ProjectPath = (Split-Path $PSScriptRoot -Parent),
+    [string]$TestFilter = ''
 )
 $ErrorActionPreference = 'Stop'
 $editorPath = (Resolve-Path -LiteralPath $UnityEditor).Path
@@ -11,13 +12,14 @@ New-Item -ItemType Directory -Force -Path $logFolder | Out-Null
 # the current process so Unity Package Manager can locate its config folder.
 if (-not $env:ALLUSERSPROFILE) { $env:ALLUSERSPROFILE = $env:ProgramData }
 $arguments = @(
-    '-batchmode', '-force-d3d11',
+    '-batchmode', '-force-d3d11', '-buildTarget', 'Win64',
     '-projectPath', ('"' + $projectFolder + '"'),
     '-runTests', '-testPlatform', 'EditMode',
     '-assemblyNames', 'SpatialSurvivor.Tests',
     '-testResults', ('"' + (Join-Path $logFolder 'game-tests.xml') + '"'),
     '-logFile', ('"' + (Join-Path $logFolder 'rewrite-tests.log') + '"')
 )
+if ($TestFilter) { $arguments += @('-testFilter', $TestFilter) }
 $process = Start-Process -FilePath $editorPath -WorkingDirectory $projectFolder -WindowStyle Hidden -ArgumentList $arguments -PassThru -Wait
 Write-Output "Test result: $(Join-Path $logFolder 'game-tests.xml')"
 exit $process.ExitCode

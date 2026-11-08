@@ -1,0 +1,20 @@
+{
+  "version": "2.4.0",
+  "versionCode": 17,
+  "packageName": "com.example.spatialsurvivor.unity",
+  "testTotal": 109,
+  "testPassed": 109,
+  "testFailed": 0,
+  "apkBytes": 81091859,
+  "apkSha256": "03c9e2eff3ce6e171d189b5ed1510cd0f0c519ecad0392f1136e0d182f15a529",
+  "deviceSerial": "PB314XHGKC160016G",
+  "installResult": "Success",
+  "launchResult": "Running in foreground",
+  "githubRelease": "v2.2.3 (unchanged)",
+  "runtimePid": 13024,
+  "runtimeLinesScanned": 2001,
+  "gameplayExceptions": 0,
+  "crashBufferLines": 0,
+  "deviceApkHashMatches": true,
+  "deviceNotes": "Known PICO EyeTrackingClient -10002 messages; no gameplay exceptions found in sampled process logs. Long headset play remains unverified."
+}

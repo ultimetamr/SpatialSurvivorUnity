@@ -1,3 +1,17 @@
+## 2.6.1 幻域守卫 / 剑方向
+
+完整回归 **142/142 通过**。手持/环绕/剑雨的剑尖、运动方向与拖尾验证及更名记录见 [BLADE_BRANDING_FIX.md](BLADE_BRANDING_FIX.md)。
+
+## 2.6.0 生灵律动
+
+完整回归 137/137 通过，新增模型蒙皮、循环接缝、攻击计时、冻结与过渡测试。模型图集、动画 GIF 和限制见 [ART_MOTION_POLISH.md](ART_MOTION_POLISH.md)。
+
+## 2.4.0 新增验证（2026-11-07）
+
+完整回归 109/109 通过，包含四种玩法、普通/精英主动技能和混合怪群避让。结果与渲染图见 [多模式与精英验证](MODES_AND_ELITES.md)。Android 构建及真机结果以该文档最终记录为准。
+
+2026-11-07：2.3.0（code 16）领域法阵、2/5/10 分钟首领战与实时怪物血量已完成。完整回归 100/100；最终通关边界修正后专项回归 5/5，通过血条实际渲染像素验证。Android 构建和 PICO 覆盖安装成功，设备版本核对为 2.3.0/16。头显观感待佩戴验收。详见 DOMAIN_BOSS_HEALTH.md 和 Validation/domain-boss-health-summary.json。
+
 2026-11-06 最终图标验收：用户卸载旧包后重新构建并全新安装 2.2.3（code 15），设备版本与回读 APK 哈希核对通过。用户佩戴确认“已显示游戏图标”。图标问题验收通过。构建同时隔离本工程 Gradle 临时目录，避免共享 daemon 使用其他工程已删除的临时路径。完整证据见 Validation/unity6-flat-icon-summary.json；下文保留排查历史。
 
 2026-11-06 最新图标修正 2.2.3（code 15）：构建成功，应用/启动入口/所有密度的图标引用和圆形图标 ID 已核对为原游戏图标；两个平面 PNG 与原图逐像素一致。设备重新连接后已覆盖安装 2.2.3，回读哈希一致；用户仍看到 Unity 图标，已重启 PICO 桌面，应用列表验收未完成。详见 UNITY6_APP_ICON_FIX.md、Validation/unity6-flat-icon-summary.json。
@@ -61,3 +75,8 @@ pico-cli device list --format json 返回空设备列表，未向任何设备安
 
 原模型、字体和 SDK 权利说明见 README 与 SDK_PATCHES.md。
 
+
+
+## 2.5.0 · 2026-11-08
+
+完整回归 119/119 通过，含 12 分钟无尽逻辑模拟；Android APK 构建、包信息/图标回读与签名验证成功。按用户安排本轮最后打包，未真机安装。详细范围与 SHA256 见 [QUALITY_PASS.md](QUALITY_PASS.md)。

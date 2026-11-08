@@ -1,12 +1,12 @@
 Shader "Survivor/Storybook" {
- Properties { _Tint("Tint",Color)=(1,1,1,1) }
+ Properties { _Tint("Tint",Color)=(1,1,1,1) _Hit("Hit",Range(0,1))=0 }
  SubShader { Tags {"RenderType"="Opaque" "Queue"="Geometry"} Cull Back ZWrite On
  Pass { CGPROGRAM
  #pragma vertex vert
  #pragma fragment frag
  #pragma multi_compile_instancing
  #include "UnityCG.cginc"
- fixed4 _Tint;
+ fixed4 _Tint;float _Hit;
  struct appdata {float4 vertex:POSITION;float3 normal:NORMAL;fixed4 color:COLOR;UNITY_VERTEX_INPUT_INSTANCE_ID};
  struct v2f {float4 pos:SV_POSITION;float3 world:TEXCOORD0;float3 normal:TEXCOORD1;fixed4 color:COLOR;UNITY_VERTEX_OUTPUT_STEREO};
  v2f vert(appdata v){v2f o;UNITY_SETUP_INSTANCE_ID(v);UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);o.pos=UnityObjectToClipPos(v.vertex);o.world=mul(unity_ObjectToWorld,v.vertex).xyz;o.normal=UnityObjectToWorldNormal(v.normal);o.color=v.color*_Tint;return o;}
@@ -14,7 +14,7 @@ Shader "Survivor/Storybook" {
  #ifndef UNITY_COLORSPACE_GAMMA
  paint=GammaToLinearSpace(paint);
  #endif
- float3 rgb=paint*shade+float3(.12,.19,.28)*rim+spec;return fixed4(rgb,1);}
+ float3 rgb=paint*shade+float3(.12,.19,.28)*rim+spec;return fixed4(lerp(rgb,float3(1,.94,.75),saturate(_Hit)*.65),1);}
  ENDCG }
  }
 }

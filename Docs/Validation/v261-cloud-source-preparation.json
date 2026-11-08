@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-08",
+  "version": "2.6.1",
+  "cleanStagedSourceExport": true,
+  "unpreparedSourceRejected": true,
+  "officialSdkCommit": "8ed808855c1dbc2a071abd709824b593977d6c24",
+  "sdkVersion": "6.1.1",
+  "sdkFetchedFromPublisher": true,
+  "compatibilityGuardsApplied": true,
+  "fontMatchesBundledNotoSansSC": true,
+  "fontGuidPreserved": true,
+  "preparationIdempotent": true,
+  "preparedSourceCheckPassed": true,
+  "cloudBuildExecuted": false,
+  "picoReviewStatus": "not verified"
+}

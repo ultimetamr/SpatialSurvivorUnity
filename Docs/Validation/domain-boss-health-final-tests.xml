@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Passed" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-07 10:00:43Z" end-time="2026-11-07 10:00:43Z" duration="0.5580119">
+  <test-suite type="TestSuite" id="1000" name="空间幸存者 Unity" fullname="空间幸存者 Unity" runstate="Runnable" testcasecount="294" result="Passed" start-time="2026-11-07 10:00:43Z" end-time="2026-11-07 10:00:43Z" duration="0.558012" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1352" name="SpatialSurvivor.Tests.dll" fullname="E:/DEMO/SpatialSurvivorUnity/Library/ScriptAssemblies/SpatialSurvivor.Tests.dll" runstate="Runnable" testcasecount="100" result="Passed" start-time="2026-11-07 10:00:43Z" end-time="2026-11-07 10:00:43Z" duration="0.467462" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="26816" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1353" name="SpatialSurvivor" fullname="SpatialSurvivor" runstate="Runnable" testcasecount="100" result="Passed" start-time="2026-11-07 10:00:43Z" end-time="2026-11-07 10:00:43Z" duration="0.463075" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1354" name="Tests" fullname="SpatialSurvivor.Tests" runstate="Runnable" testcasecount="100" result="Passed" start-time="2026-11-07 10:00:43Z" end-time="2026-11-07 10:00:43Z" duration="0.461674" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1262" name="SurvivorDomainBossTests" fullname="SpatialSurvivor.Tests.SurvivorDomainBossTests" classname="SpatialSurvivor.Tests.SurvivorDomainBossTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-11-07 10:00:43Z" end-time="2026-11-07 10:00:43Z" duration="0.459429" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1268" name="DomainsBossesAndLiveHealthSurviveCombatAndLifecycle" fullname="SpatialSurvivor.Tests.SurvivorDomainBossTests.DomainsBossesAndLiveHealthSurviveCombatAndLifecycle" methodname="DomainsBossesAndLiveHealthSurviveCombatAndLifecycle" classname="SpatialSurvivor.Tests.SurvivorDomainBossTests" runstate="Runnable" seed="1422090379" result="Passed" start-time="2026-11-07 10:00:41Z" end-time="2026-11-07 10:00:43Z" duration="2.600855" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1267" name="DomainsHaveAnimatedBatchedArtworkAtTheirDamageRadius" fullname="SpatialSurvivor.Tests.SurvivorDomainBossTests.DomainsHaveAnimatedBatchedArtworkAtTheirDamageRadius" classname="SpatialSurvivor.Tests.SurvivorDomainBossTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-11-07 10:00:43Z" end-time="2026-11-07 10:00:43Z" duration="0.016836" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1263" name="DomainsHaveAnimatedBatchedArtworkAtTheirDamageRadius(PoisonAura)" fullname="SpatialSurvivor.Tests.SurvivorDomainBossTests.DomainsHaveAnimatedBatchedArtworkAtTheirDamageRadius(PoisonAura)" methodname="DomainsHaveAnimatedBatchedArtworkAtTheirDamageRadius" classname="SpatialSurvivor.Tests.SurvivorDomainBossTests" runstate="Runnable" seed="1226699088" result="Passed" start-time="2026-11-07 10:00:43Z" end-time="2026-11-07 10:00:43Z" duration="0.007897" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1264" name="DomainsHaveAnimatedBatchedArtworkAtTheirDamageRadius(NetherPoison)" fullname="SpatialSurvivor.Tests.SurvivorDomainBossTests.DomainsHaveAnimatedBatchedArtworkAtTheirDamageRadius(NetherPoison)" methodname="DomainsHaveAnimatedBatchedArtworkAtTheirDamageRadius" classname="SpatialSurvivor.Tests.SurvivorDomainBossTests" runstate="Runnable" seed="390365686" result="Passed" start-time="2026-11-07 10:00:43Z" end-time="2026-11-07 10:00:43Z" duration="0.001911" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1265" name="DomainsHaveAnimatedBatchedArtworkAtTheirDamageRadius(LightningField)" fullname="SpatialSurvivor.Tests.SurvivorDomainBossTests.DomainsHaveAnimatedBatchedArtworkAtTheirDamageRadius(LightningField)" methodname="DomainsHaveAnimatedBatchedArtworkAtTheirDamageRadius" classname="SpatialSurvivor.Tests.SurvivorDomainBossTests" runstate="Runnable" seed="1133493343" result="Passed" start-time="2026-11-07 10:00:43Z" end-time="2026-11-07 10:00:43Z" duration="0.001330" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1266" name="DomainsHaveAnimatedBatchedArtworkAtTheirDamageRadius(MagneticField)" fullname="SpatialSurvivor.Tests.SurvivorDomainBossTests.DomainsHaveAnimatedBatchedArtworkAtTheirDamageRadius(MagneticField)" methodname="DomainsHaveAnimatedBatchedArtworkAtTheirDamageRadius" classname="SpatialSurvivor.Tests.SurvivorDomainBossTests" runstate="Runnable" seed="946594362" result="Passed" start-time="2026-11-07 10:00:43Z" end-time="2026-11-07 10:00:43Z" duration="0.001223" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Game tests: 5 passed, 0 failed
+Saving results to: C:/Users/Administrator/AppData/LocalLow/SpatialSurvivor/空间幸存者 Unity\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

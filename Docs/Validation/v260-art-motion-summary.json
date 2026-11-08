@@ -1,0 +1,26 @@
+{
+  "id": "2",
+  "testcasecount": "137",
+  "result": "Passed",
+  "total": "137",
+  "passed": "137",
+  "failed": "0",
+  "inconclusive": "0",
+  "skipped": "0",
+  "asserts": "0",
+  "engine-version": "3.5.0.0",
+  "clr-version": "4.0.30319.42000",
+  "start-time": "2026-11-08 09:19:43Z",
+  "end-time": "2026-11-08 09:19:45Z",
+  "duration": "1.7382852",
+  "version": "2.6.0",
+  "versionCode": 19,
+  "apk": {
+    "bytes": 81458055,
+    "sha256": "3222f76ff056a2f7a56b15e412cb9289fd6e9e41cf9bc34d0ed3307b06201008",
+    "package": "com.example.spatialsurvivor.unity",
+    "signature": "v2 verified",
+    "installed": false
+  },
+  "visualReview": "Unity Editor models, attack contact sheet, gameplay screenshots and animation frame sequences; no headset validation"
+}

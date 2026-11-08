@@ -55,7 +55,7 @@ namespace SpatialSurvivor.Tests {
    for(int frame=0;frame<45;frame++){if(game.screen==ScreenState.Upgrade)game.Select(0);game.Step(SurvivorRules.Step);}Assert.That(victim.deathRemaining,Is.Zero);
    game.options=SurvivorRules.Draw(game.player,new System.Random(30));game.screen=ScreenState.Upgrade;yield return new WaitForSecondsRealtime(.2f);Capture(game,"upgrade");game.Select(0);
    Assert.That(game.Feedback,Is.Not.Null);
-   var clips=(AudioClip[])typeof(SurvivorFeedback).GetField("clips",System.Reflection.BindingFlags.NonPublic|System.Reflection.BindingFlags.Instance).GetValue(game.Feedback);Assert.That(clips.Length,Is.EqualTo(13));Assert.That(clips.All(clip=>clip&&clip.samples>0),Is.True);
+   var clips=(AudioClip[])typeof(SurvivorFeedback).GetField("clips",System.Reflection.BindingFlags.NonPublic|System.Reflection.BindingFlags.Instance).GetValue(game.Feedback);Assert.That(clips.Length,Is.EqualTo(System.Enum.GetValues(typeof(FeedbackCue)).Length));Assert.That(clips.All(clip=>clip&&clip.samples>0),Is.True);
    game.player.elapsed=600;game.Step(SurvivorRules.Step);
    var pool=(SurvivorGame.Enemy[])typeof(SurvivorGame).GetField("enemies",System.Reflection.BindingFlags.NonPublic|System.Reflection.BindingFlags.Instance).GetValue(game);
    Assert.That(pool.Any(e=>e.active&&e.type==4),Is.True,"Boss must spawn within scanned boundaries");

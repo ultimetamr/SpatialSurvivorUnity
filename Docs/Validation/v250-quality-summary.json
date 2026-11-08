@@ -1,0 +1,29 @@
+{
+  "version": "2.5.0",
+  "versionCode": 18,
+  "date": "2026-11-08",
+  "tests": {
+    "total": "119",
+    "passed": "119",
+    "failed": "0",
+    "skipped": "0"
+  },
+  "editorTestTarget": "WindowsStandalone64",
+  "logicSoakMinutes": 12,
+  "deviceInstalled": false,
+  "deviceValidation": "按用户本轮安排，先完成优化后最后打包，暂缓安装与真机长时验收。",
+  "screenshots": "Docs/Validation/v250-*.png 为编辑器模拟房间渲染。",
+  "apk": {
+    "path": "Builds\\SpatialSurvivorUnity.apk",
+    "bytes": 97100835,
+    "sha256": "5223b2b3c4f40cd212f856c251af85ab93c845ecd66c794ca0e2f37237e26f01",
+    "package": "com.example.spatialsurvivor.unity",
+    "versionName": "2.5.0",
+    "versionCode": 18,
+    "abi": "arm64-v8a",
+    "minSdk": 29,
+    "targetSdk": 35,
+    "signature": "apksigner verify passed; v2 signature; one signer",
+    "icon": "res/drawable-nodpi-v4/spatial_survivor_icon.png"
+  }
+}

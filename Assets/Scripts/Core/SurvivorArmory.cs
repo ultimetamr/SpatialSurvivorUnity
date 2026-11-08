@@ -28,14 +28,21 @@ public sealed class CreatureDefinition {
 }
 public static class SurvivorBestiary {
  public static readonly CreatureDefinition[] Creatures={
-  new CreatureDefinition("苔芽精","Mossling","成群沿地面追逐的小生物，会绕开同伴和家具。","保持走位，让飞剑或毒雾处理近身群体。",40,8,.65f,1,.32f),
-  new CreatureDefinition("余烬小鬼","EmberImp","动作轻快，快速逼近玩家并持续近战攻击。","优先处理靠近的一只；冰系减速可以拉开距离。",30,7,1.2f,2,.33f),
-  new CreatureDefinition("晶岩守卫","CrystalGuardian","移动缓慢但生命较高，身体占据更大的空间。","利用穿透和持续伤害，同时注意它身后的快怪。",140,18,.38f,3,.515f),
-  new CreatureDefinition("月翼灵","MoonWisp","从天花板落入房间，落地后加入地面追击。","留意降落点，避免被突然落下的生物包围。",55,11,.78f,4,.36f),
-  new CreatureDefinition("古树守望者","ElderBloom","十分钟时登场。周期性蓄力后发动 2.5 米范围冲击。","看见红色预警环时离开范围，蓄力结束后继续输出。",6000,30,.48f,6,1.075f),
-  new CreatureDefinition("星粉飞蛾","SkyMoth","第二波开始出现，拍翼悬浮，沿空中弧线追击。","举起手部武器瞄准空中目标；自动技能也能命中。",35,7,.85f,2,.32f),
-  new CreatureDefinition("雷翼幼龙","StormDrake","第三波开始出现，速度更快、生命更高，会从空中逼近。","用冰弹或连锁雷弹处理空中群体，避免贴脸。",85,13,1.05f,3,.4f)
+  new CreatureDefinition("苔芽精","Mossling","追逐时会在目标脚下生长荆棘，预警后造成范围伤害。","离开橙色荆棘圈；用飞剑清理近身群体。",40,8,.65f,1,.32f),
+  new CreatureDefinition("余烬小鬼","EmberImp","先用橙线锁定目标位置，再发动直线冲锋。","看到冲锋预警后横向走位，冰系减速可阻止逼近。",30,7,1.2f,2,.33f),
+  new CreatureDefinition("晶岩守卫","CrystalGuardian","周期生成吸收最大生命 20% 伤害的晶盾，持续 3 秒。","护盾到期再集中输出，或用高伤害武器击破晶盾。",140,18,.38f,3,.515f),
+  new CreatureDefinition("月翼灵","MoonWisp","从天花板降落，落地后在目标位置施放月影法阵。","法阵锁定位置后不会跟随，及时离开预警范围。",55,11,.78f,4,.36f),
+  new CreatureDefinition("古树守望者","ElderBloom","第 2、5、10 分钟挑战独立首领：盾矛守卫、月冠女王和古树守望者。拥有突刺、月环、荆棘和扇形弹，低血量进入狂怒。","红圈外缘即危险边界。荆棘锁定后及时移动；击败前两位首领恢复 20% 生命并获得晶核，最终首领被击败后通关。",6000,30,.48f,6,1.075f),
+  new CreatureDefinition("星粉飞蛾","SkyMoth","拍翼悬浮，沿空中弧线追击并发射单枚星粉弹。","举起手部武器瞄准空中目标；自动技能也能命中。",35,7,.85f,2,.32f),
+  new CreatureDefinition("雷翼幼龙","StormDrake","飞行追击，周期发射三枚扇形雷弹封锁前方。","用冰弹或连锁雷弹处理空中群体，避免贴脸。",85,13,1.05f,3,.4f),
+  new CreatureDefinition("孢帽投手","Sporecap","发射孢子弹，同时在目标脚下留下短时毒区。","横向移动避开弹道，优先打断后排投手。",65,10,.58f,2,.37f),
+  new CreatureDefinition("符叶祭司","RuneShaman","每次施法为 3 米内同伴恢复最大生命 10%，并发射符文弹。","优先击杀祭司，阻止敌群反复回血。",90,9,.52f,3,.38f),
+  new CreatureDefinition("铁角甲虫","IronBeetle","厚重甲壳与长角，蓄力后沿锁定方向重装冲撞。","侧向躲过橙线，不要沿冲撞路径后退。",180,17,.48f,4,.43f),
+  new CreatureDefinition("霜铃巫灵","FrostWitch","戴着冰晶冠，在目标脚下生成持续 2.5 秒的霜阵。","预警后离开固定霜阵，利用远程武器击杀。",100,14,.62f,4,.39f)
  };
+ public static readonly int[] Experience={1,2,4,3,0,3,5,3,4,4,5};
+ public static readonly float[] Radii={.1f,.1f,.21f,.135f,.475f,.14f,.18f,.15f,.15f,.21f,.16f};
+ public static readonly string[] EliteSkills={"荆棘范围扩大，持续 3 秒", "冲锋蓄力更短、距离更远", "晶盾吸收最大生命 35% 的伤害", "同时释放两处月影法阵", "首领独立拥有三阶段技能", "同时发射三枚高速星粉弹", "扇形雷弹速度提升、施法更频繁", "三发孢子弹并留下持续毒区", "治疗提升至 18%，更频繁施法", "缩短蓄力，延长重装冲撞", "同时释放两处持续霜阵"};
  public static bool Flying(int type)=>type==5||type==6;
  public static string Evolution(UpgradeId id){switch(id){case UpgradeId.MYRIAD_SWORDS:return "进化条件：环绕飞剑 Lv.5 ＋ 全伤害 Lv.5";case UpgradeId.NINE_HEAVENS_THUNDER:return "进化条件：连锁闪电 Lv.5 ＋ 攻击速度 Lv.5";case UpgradeId.NETHER_POISON_DOMAIN:return "进化条件：毒雾光环 Lv.5 ＋ 攻击范围 Lv.5";case UpgradeId.METEOR_LAVA:return "进化条件：熔岩爆弹 Lv.5 ＋ 投射物数量 Lv.3";case UpgradeId.ABSOLUTE_ZERO:return "进化条件：穿透冰锥 Lv.5 ＋ 攻击速度 Lv.5";case UpgradeId.VOID_BLACK_HOLE:return "进化条件：引力黑洞 Lv.3 ＋ 攻击范围 Lv.5";default:return "升级时随机获得，可与其他魔法搭配。";}}
 }

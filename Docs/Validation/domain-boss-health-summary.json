@@ -1,0 +1,41 @@
+{
+  "version": "2.3.0",
+  "versionCode": 16,
+  "date": "2026-11-07",
+  "packageName": "com.example.spatialsurvivor.unity",
+  "tests": {
+    "full": {
+      "total": "100",
+      "passed": "100",
+      "failed": "0",
+      "result": "Passed"
+    },
+    "finalBossRegression": {
+      "total": "5",
+      "passed": "5",
+      "failed": "0",
+      "result": "Passed"
+    }
+  },
+  "apk": {
+    "path": "E:\\DEMO\\SpatialSurvivorUnity\\Builds\\SpatialSurvivorUnity.apk",
+    "bytes": 95553793,
+    "sha256": "33d647943ddf904670c54c2f1a01324d808147b096de183b1419501b7f83948d"
+  },
+  "device": {
+    "serial": "PB314XHGKC160016G",
+    "installed": true,
+    "verifiedVersion": "2.3.0",
+    "verifiedVersionCode": "16",
+    "visualAcceptance": "pending wearer verification",
+    "running": true,
+    "pid": 10557,
+    "foreground": true,
+    "power": "Awake",
+    "crashBufferEntries": 0,
+    "keyManagedExceptions": 0,
+    "launchNote": "CLI launch timed out before process creation; subsequent app info and foreground activity verified running"
+  },
+  "screenshots": "Editor simulated room, not headset capture",
+  "publishedRelease": "v2.2.3; new changes local"
+}

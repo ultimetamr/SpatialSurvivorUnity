@@ -3,7 +3,7 @@ namespace SpatialSurvivor {
 // Small fixed crowd: navigation checks the room; these discs check each other.
 // Collision footprints include the new creatures' arms and wings.
 public static class SurvivorEnemyCrowd {
- static readonly float[] radii={.135f,.145f,.23f,.2f,.525f,.18f,.24f};
+ static readonly float[] radii={.135f,.145f,.23f,.2f,.525f,.18f,.24f,.19f,.19f,.25f,.2f};
  public static float Radius(SurvivorGame.Enemy e)=>radii[e.type];
  public static bool Occupied(SurvivorGame.Enemy e)=>!SurvivorBestiary.Flying(e.type)&&(e.active||e.deathRemaining>0);
  public static bool SpawnClear(Vector3 p,int type,SurvivorGame.Enemy self,SurvivorGame.Enemy[] crowd){float radius=radii[type];foreach(var other in crowd){if(other==null||other==self||!Occupied(other))continue;if(RoomNavigation.Horizontal(p-other.go.transform.position).sqrMagnitude<Mathf.Pow(radius+Radius(other)+.12f,2))return false;}return true;}

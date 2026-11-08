@@ -17,7 +17,7 @@ public static class SurvivorRules {
  public static readonly Card[] Cards={
             new Card(UpgradeId.ORBITING_SWORD, Rarity.COMMON, "环绕飞剑", "3把飞剑环绕玩家，接触造成单体伤害。", 5),
             new Card(UpgradeId.ENERGY_PROJECTILE, Rarity.COMMON, "能量弹", "自动锁定最近怪物发射直线能量弹。", 5),
-            new Card(UpgradeId.POISON_AURA, Rarity.COMMON, "毒雾光环", "玩家周身持续造成毒素范围伤害。", 5),
+            new Card(UpgradeId.POISON_AURA, Rarity.COMMON, "毒雾光环", "脚下展开荧光毒阵，边缘即伤害范围；符文与毒素粒子持续流动，对范围内生物造成持续伤害。", 5),
             new Card(UpgradeId.ATTACK_DAMAGE, Rarity.COMMON, "全伤害 +20%", "所有武器伤害提高20%。", 5),
             new Card(UpgradeId.ATTACK_SPEED, Rarity.COMMON, "攻击速度 +15%", "所有自动攻击间隔缩短。", 5),
             new Card(UpgradeId.ATTACK_RANGE, Rarity.COMMON, "攻击范围 +15%", "锁定与范围技能距离提高15%。", 5),
@@ -34,13 +34,13 @@ public static class SurvivorRules {
             new Card(UpgradeId.PIERCE_COUNT, Rarity.RARE, "穿透次数 +1", "投射物额外贯穿1个目标。", 3),
             new Card(UpgradeId.CRITICAL_CHANCE, Rarity.RARE, "暴击概率 +10%", "攻击暴击概率提高10%。", 5),
             new Card(UpgradeId.DAMAGE_REDUCTION, Rarity.RARE, "伤害减免 +10%", "受到的伤害降低10%。", 5),
-            new Card(UpgradeId.MAGNETIC_FIELD, Rarity.RARE, "磁吸领域", "更远处晶石也会缓慢吸附。", 1),
+            new Card(UpgradeId.MAGNETIC_FIELD, Rarity.RARE, "磁吸领域", "金色磁吸法阵将晶石吸附距离扩大至两倍，流动箭纹标示朝向玩家的吸引方向。", 1),
             new Card(UpgradeId.EXPLOSIVE_REMAINS, Rarity.RARE, "爆炸残骸", "怪物死亡时对周围敌人造成爆炸伤害。", 1),
             new Card(UpgradeId.FREEZE_PULSE, Rarity.RARE, "冻结脉冲", "每次升级确认后冻结全场怪物2秒。", 1),
             new Card(UpgradeId.REROLL_MASTER, Rarity.RARE, "重roll大师", "每次升级获得1次刷新卡牌机会。", 1),
             new Card(UpgradeId.GRAVITY_BLACK_HOLE, Rarity.EPIC, "引力黑洞", "每5秒生成黑洞牵引并持续伤害。", 3),
             new Card(UpgradeId.SWORD_RAIN, Rarity.EPIC, "剑雨轰击", "每4秒从上空进行大范围多段轰击。", 3),
-            new Card(UpgradeId.LIGHTNING_DOMAIN, Rarity.EPIC, "雷电领域", "常驻雷击领域并有10%概率麻痹。", 3),
+            new Card(UpgradeId.LIGHTNING_DOMAIN, Rarity.EPIC, "雷电领域", "常驻六芒雷阵，脉冲时电弧连接命中的生物；造成范围伤害并有 10% 概率麻痹。", 3),
             new Card(UpgradeId.CRITICAL_DAMAGE, Rarity.EPIC, "暴击伤害 +50%", "暴击额外伤害提高50%。", 3),
             new Card(UpgradeId.DODGE_CHANCE, Rarity.EPIC, "闪避概率 +10%", "获得10%闪避概率。", 3),
             new Card(UpgradeId.REGENERATING_SHIELD, Rarity.EPIC, "再生护盾", "获得20%最大生命护盾，脱战5秒恢复。", 3),
@@ -71,6 +71,7 @@ public static class SurvivorRules {
  case UpgradeId.ATTACK_DAMAGE:damage=Mathf.CeilToInt(damage*1.2f);break;case UpgradeId.ATTACK_SPEED:interval=Mathf.Max(.12f,interval/1.15f);break;case UpgradeId.ATTACK_RANGE:range=Mathf.Min(8,range*1.15f);break;case UpgradeId.PICKUP_RANGE:pickup=Mathf.Min(8,pickup+.3f);break;case UpgradeId.EXPERIENCE_GAIN:experienceMultiplier*=1.2f;break;case UpgradeId.MAX_HEALTH:maxHealth+=25;health=Mathf.Min(maxHealth,health+25);break;case UpgradeId.HEALTH_REGENERATION:regeneration++;break;case UpgradeId.PROJECTILE_COUNT:projectiles++;break;case UpgradeId.PIERCE_COUNT:pierce++;break;case UpgradeId.CRITICAL_CHANCE:critChance=Mathf.Min(.5f,critChance+.1f);break;case UpgradeId.CRITICAL_DAMAGE:critMultiplier+=.5f;break;case UpgradeId.DAMAGE_REDUCTION:damageReduction=Mathf.Min(.5f,damageReduction+.1f);break;case UpgradeId.DODGE_CHANCE:dodge=Mathf.Min(.3f,dodge+.1f);break;case UpgradeId.REGENERATING_SHIELD:shield=maxHealth*.2f*Stack(id);break;}}
 }
 [Serializable] public class MetaSave {
+ public int totalKills,totalElites,totalBosses,completedModes,claimedChallenges,weaponModification;public float bestEndless,hudDistance=1.6f,hudDrop=.48f,hudScale=1;public bool compactHud=true,fixedHud,lowEffects,showEnemyNames;
  public int version=3,crystals,coins,equippedWeapon;public int ownedWeapons=1;public bool soundEnabled=true,hapticsEnabled=true;public string legacyImportHash="";public int[] levels=new int[8];
  public bool OwnsWeapon(int i)=>SurvivorArmory.ValidIndex(i)&&(ownedWeapons&(1<<i))!=0;
  public bool BuyWeapon(int i){if(!SurvivorArmory.ValidIndex(i)||OwnsWeapon(i)||coins<SurvivorArmory.Get(i).cost)return false;coins-=SurvivorArmory.Get(i).cost;ownedWeapons|=1<<i;equippedWeapon=i;return true;}

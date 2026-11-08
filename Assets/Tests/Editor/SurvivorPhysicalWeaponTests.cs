@@ -21,14 +21,14 @@ public class SurvivorPhysicalWeaponTests {
   var pool=(SurvivorGame.Enemy[])Get(game,"enemies");var target=pool[19];Assert.That((bool)Call(game,"Spawn",target,5));target.go.transform.position=new Vector3(0,1.25f,.68f);target.hp=1000;
   var pose=new SurvivorWeaponTracking();var origin=new Vector3(0,1.37f,0);var a=Quaternion.Euler(0,-45,0);var b=Quaternion.Euler(0,45,0);
   pose.Sample(Sample(origin,a),a,0);Call(game,"ProcessHandPose",pose,.02f);Assert.That(target.hp,Is.EqualTo(1000),"Holding a still blade does no swing damage");
-  pose.Sample(Sample(origin,b),b,.02f);Call(game,"ProcessHandPose",pose,.02f);Assert.That(target.hp,Is.EqualTo(966),"Rotation alone sweeps through a target missed by both endpoint rays");
-  pose.Sample(Sample(origin,a),a,.04f);Call(game,"ProcessHandPose",pose,.02f);Assert.That(target.hp,Is.EqualTo(966),"An overlapping reverse sweep cannot repeatedly hit the same enemy");
-  Set(game,"meleeClock",.4f);pose.Sample(Sample(origin,b),b,.06f);Call(game,"ProcessHandPose",pose,.02f);Assert.That(target.hp,Is.EqualTo(932));
+  pose.Sample(Sample(origin,b),b,.02f);Call(game,"ProcessHandPose",pose,.02f);Assert.That(target.hp,Is.EqualTo(945),"Rotation alone sweeps through a target missed by both endpoint rays");
+  pose.Sample(Sample(origin,a),a,.04f);Call(game,"ProcessHandPose",pose,.02f);Assert.That(target.hp,Is.EqualTo(945),"An overlapping reverse sweep cannot repeatedly hit the same enemy");
+  Set(game,"meleeClock",.4f);pose.Sample(Sample(origin,b),b,.06f);Call(game,"ProcessHandPose",pose,.02f);Assert.That(target.hp,Is.EqualTo(890));
   // Lost samples may keep the mesh visible, but cannot strike from the old pose.
-  pose.Sample(default,Quaternion.identity,.08f);Call(game,"ProcessHandPose",pose,.02f);Set(game,"meleeClock",.8f);pose.Sample(Sample(origin,a,true),a,.1f);Call(game,"ProcessHandPose",pose,.02f);Assert.That(target.hp,Is.EqualTo(932),"Recovery while trigger is held must rearm first");
+  pose.Sample(default,Quaternion.identity,.08f);Call(game,"ProcessHandPose",pose,.02f);Set(game,"meleeClock",.8f);pose.Sample(Sample(origin,a,true),a,.1f);Call(game,"ProcessHandPose",pose,.02f);Assert.That(target.hp,Is.EqualTo(890),"Recovery while trigger is held must rearm first");
   pose.Sample(Sample(origin,a),a,.12f);Call(game,"ProcessHandPose",pose,.02f);
   var wall=GameObject.CreatePrimitive(PrimitiveType.Cube);wall.layer=RoomNavigation.Layer;wall.transform.position=new Vector3(0,1.37f,.38f);wall.transform.localScale=new Vector3(1.5f,.6f,.1f);Physics.SyncTransforms();
-  pose.Sample(Sample(origin,b),b,.14f);Call(game,"ProcessHandPose",pose,.02f);Assert.That(target.hp,Is.EqualTo(932),"Scanned furniture blocks the swept blade");Object.DestroyImmediate(wall);
+  pose.Sample(Sample(origin,b),b,.14f);Call(game,"ProcessHandPose",pose,.02f);Assert.That(target.hp,Is.EqualTo(890),"Scanned furniture blocks the swept blade");Object.DestroyImmediate(wall);
   target.hp=34;pose.Sample(Sample(origin,a),a,.16f);Call(game,"ProcessHandPose",pose,.02f);Assert.That(target.active,Is.False);Assert.That(game.player.kills,Is.EqualTo(1));
   // A restored/teleported pose must not form a long damage sweep through the room.
   Assert.That((bool)Call(game,"Spawn",target,5));target.go.transform.position=new Vector3(0,1.25f,.68f);target.hp=1000;Call(game,"ResetHandCombat",true);pose.Reset();

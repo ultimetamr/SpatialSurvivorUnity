@@ -1,0 +1,28 @@
+{
+  "id": "2",
+  "testcasecount": "142",
+  "result": "Passed",
+  "total": "142",
+  "passed": "142",
+  "failed": "0",
+  "inconclusive": "0",
+  "skipped": "0",
+  "asserts": "0",
+  "engine-version": "3.5.0.0",
+  "clr-version": "4.0.30319.42000",
+  "start-time": "2026-11-08 10:06:06Z",
+  "end-time": "2026-11-08 10:06:07Z",
+  "duration": "1.7141441",
+  "name": "幻域守卫",
+  "version": "2.6.1",
+  "versionCode": 20,
+  "apk": {
+    "bytes": 80833747,
+    "sha256": "7acdd3b9f05a7a7d0f3af722d217309a236cd4dae22a80aa166fb78bffd99576",
+    "package": "com.example.spatialsurvivor.unity",
+    "signature": "v2 verified",
+    "iconMatchesSource": true,
+    "installed": false
+  },
+  "visualReview": "Unity Editor blade direction renders and main menu; headset not verified"
+}

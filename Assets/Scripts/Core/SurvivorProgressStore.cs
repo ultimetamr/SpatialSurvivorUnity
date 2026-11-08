@@ -81,6 +81,12 @@ public sealed class SurvivorProgressStore {
             loaded.coins=Math.Max(0,loaded.coins);
             loaded.ownedWeapons=(loaded.ownedWeapons&((1<<SurvivorArmory.Weapons.Length)-1))|1;
             if(!loaded.OwnsWeapon(loaded.equippedWeapon))loaded.equippedWeapon=0;
+            loaded.totalKills=Math.Max(0,loaded.totalKills);loaded.totalElites=Math.Max(0,loaded.totalElites);loaded.totalBosses=Math.Max(0,loaded.totalBosses);loaded.completedModes&=15;loaded.claimedChallenges&=15;
+            loaded.bestEndless=float.IsNaN(loaded.bestEndless)||float.IsInfinity(loaded.bestEndless)?0:Math.Max(0,loaded.bestEndless);
+            loaded.hudDistance=loaded.hudDistance==0?1.6f:SurvivorQualityRules.HudDistance(loaded.hudDistance);
+            loaded.hudDrop=float.IsNaN(loaded.hudDrop)||float.IsInfinity(loaded.hudDrop)||loaded.hudDrop==0?.48f:Mathf.Clamp(loaded.hudDrop,.25f,.8f);
+            loaded.hudScale=float.IsNaN(loaded.hudScale)||float.IsInfinity(loaded.hudScale)||loaded.hudScale==0?1:Mathf.Clamp(loaded.hudScale,.75f,1.2f);
+            if(!SurvivorQualityRules.ModUnlocked(loaded,loaded.weaponModification))loaded.weaponModification=0;
             loaded.version=3;
             progress = loaded;
             return true;
