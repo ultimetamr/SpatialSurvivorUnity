@@ -1,0 +1,32 @@
+plugins { id 'com.android.library' }
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    ['PxrPlatform', 'tobservicelib-release', 'LoaderForUnitySDK', 'tob_api-release',
+     'capturelib-release', 'platformloader', 'CameraRenderingPlugin'].each {
+        implementation(name: it, ext: 'aar')
+    }
+    implementation 'androidx.games:games-frame-pacing:2.1.2'
+}
+
+android {
+    namespace 'com.unity3d.player'
+    compileSdk 35
+    buildToolsVersion '35.0.0'
+    defaultConfig {
+        minSdk 29
+        targetSdk 35
+        consumerProguardFiles 'proguard-unity.txt'
+        ndk { abiFilters 'arm64-v8a' }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    packaging { jniLibs { useLegacyPackaging true; keepDebugSymbols += ['**/*.so'] } }
+    androidResources {
+        ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:!CVS:!thumbs.db:!picasa.ini:!*~'
+        noCompress += ['.unity3d', '.ress', '.resource', '.obb', '.bundle', '.unityexp']
+    }
+    lint { abortOnError false }
+}

@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-09",
+  "cause": "Cloud runs assembleRelease at repository root, which previously only contained Unity source",
+  "gradle": "8.11.1",
+  "agp": "8.10.1",
+  "jdk": 17,
+  "compileSdk": 35,
+  "buildTools": "35.0.0",
+  "cleanStagedGradleProjectBuild": "passed",
+  "cleanBuildTasksExecuted": 86,
+  "runtimeDependenciesDownloadedAndVerified": 11,
+  "versionCodeInjectionTest": {
+    "injected": 1,
+    "apk": 1,
+    "passed": true
+  },
+  "defaultApk": {
+    "version": "2.6.1",
+    "versionCode": 20,
+    "bytes": 74409495,
+    "sha256": "570d394a228840a538f7657ba12f2e7bfbd0947e88e7f594dc74c5e452b261b9",
+    "iconBytesMatch1024Source": true,
+    "v2SignatureVerified": true,
+    "signing": "debug"
+  },
+  "gameCode": "precompiled Unity IL2CPP runtime snapshot; full C# source retained",
+  "picoRuntimeChange": "official PICO 6.1.1 PxrPlatform archive replaces differing local development archive",
+  "headsetTested": false,
+  "picoCloudBuildExecuted": false,
+  "picoReviewStatus": "not verified",
+  "network": "GitHub Blob API succeeded; initial raw/CDN attempts encountered timeouts; hashes enforced"
+}

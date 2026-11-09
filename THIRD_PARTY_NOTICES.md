@@ -28,3 +28,11 @@ licenses continue to apply.
   editable generator source in `Assets/Editor/SurvivorArtBuilder.cs`.
 
 Publishing the repository publicly does not change the rights of any author.
+
+## Android cloud runtime snapshot
+
+`AndroidCloud` contains application-specific compiled Unity player/game binaries and data exported from the tested 2.6.1 application, plus Android Java entry source and resources. These are runtime build inputs, not a redistribution of the full Unity Editor or PICO SDK. The existing third-party rights still apply. SDK AAR/JAR and PICO native runtime dependencies are excluded from Git; root Gradle restores the exact required files from the publisher at a pinned revision (with a checksum-verified CDN fallback) and checks their SHA-256. See `AndroidCloud/snapshot.json`. The compiled snapshot retains the assets/font of the tested development application; the Noto Sans SC preparation instructions above apply to fresh Unity source builds.
+
+The Gradle 8.11.1 wrapper scripts and JAR are from the Gradle project, Apache-2.0; see `ThirdPartyNotices/Gradle-Apache-2.0.txt`.
+
+The cloud snapshot uses the official PICO 6.1.1 `PxrPlatform.aar`, which differs from the local development SDK runtime. This substitution is explicitly recorded in `AndroidCloud/snapshot.json`; device verification remains required.

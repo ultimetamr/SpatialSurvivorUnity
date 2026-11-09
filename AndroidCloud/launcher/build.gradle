@@ -1,0 +1,32 @@
+plugins { id 'com.android.application' }
+
+dependencies { implementation project(':unityLibrary') }
+
+android {
+    namespace 'com.example.spatialsurvivor.unity'
+    compileSdk 35
+    buildToolsVersion '35.0.0'
+    defaultConfig {
+        applicationId 'com.example.spatialsurvivor.unity'
+        minSdk 29
+        targetSdk 35
+        versionCode 20
+        versionName '2.6.1'
+        ndk { abiFilters 'arm64-v8a' }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            crunchPngs false
+            // Cloud test build; the review service can replace signing downstream.
+            signingConfig signingConfigs.debug
+        }
+    }
+    packaging { jniLibs { useLegacyPackaging true; keepDebugSymbols += ['**/*.so'] } }
+    androidResources { noCompress += ['.unity3d', '.ress', '.resource', '.obb', '.bundle', '.unityexp'] }
+    lint { abortOnError false }
+}

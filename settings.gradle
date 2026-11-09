@@ -1,0 +1,79 @@
+pluginManagement {
+    repositories { google(); mavenCentral(); gradlePluginPortal() }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        flatDir { dirs file('AndroidCloud/unityLibrary/libs') }
+    }
+}
+rootProject.name = 'RealmWardens'
+include ':launcher', ':unityLibrary'
+project(':launcher').projectDir = file('AndroidCloud/launcher')
+project(':unityLibrary').projectDir = file('AndroidCloud/unityLibrary')
+
+// The public repository excludes the restricted SDK. Fetch only the required
+// runtime binaries from its publisher, pinned and verified, before AGP resolves them.
+def snapshot = new groovy.json.JsonSlurper().parse(file('AndroidCloud/snapshot.json'))
+snapshot.dependencies.each { dependency ->
+    def destination = file('AndroidCloud/' + dependency.path)
+    def sha256 = { target ->
+        def digest = java.security.MessageDigest.getInstance('SHA-256')
+        target.withInputStream { stream ->
+            byte[] buffer = new byte[65536]
+            int count
+            while ((count = stream.read(buffer)) != -1) digest.update(buffer, 0, count)
+        }
+        digest.digest().encodeHex().toString()
+    }
+    if (!destination.isFile() || sha256(destination) != dependency.sha256) {
+        if (gradle.startParameter.offline) throw new GradleException('SDK runtime dependency missing or corrupt: ' + dependency.path + '; run once online')
+        destination.parentFile.mkdirs()
+        def temporary = new File(destination.path + '.download')
+        try {
+            println 'Restoring pinned PICO runtime dependency: ' + dependency.path
+            def localSdk = System.getenv('PICO_SDK_PATH')
+            if (localSdk) {
+                def relativeSdkPath = dependency.url.split('/XR/', 2)[1]
+                def localFile = new File(localSdk, relativeSdkPath)
+                if (!localFile.isFile()) throw new GradleException('PICO_SDK_PATH file missing: ' + relativeSdkPath)
+                java.nio.file.Files.copy(localFile.toPath(), temporary.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING)
+            } else {
+                def mirror = dependency.url.replace('https://raw.githubusercontent.com/Pico-Developer/PICO-Unity-SDK/' + snapshot.sdkCommit + '/',
+                    'https://cdn.jsdelivr.net/gh/Pico-Developer/PICO-Unity-SDK@' + snapshot.sdkCommit + '/')
+                def downloaded = false
+                def failure = null
+                for (def address : [dependency.apiUrl, dependency.url, mirror].findAll { it }) {
+                    try {
+                        def connection = new URI(address).toURL().openConnection()
+                        connection.connectTimeout = 15000
+                        connection.readTimeout = 30000
+                        connection.setRequestProperty('User-Agent', 'RealmWardens-CloudBuild')
+                        connection.inputStream.withCloseable { input ->
+                            if (address == dependency.apiUrl) {
+                                def blob = new groovy.json.JsonSlurper().parse(input)
+                                if (blob.encoding != 'base64') throw new IOException('Unexpected GitHub blob encoding')
+                                temporary.bytes = java.util.Base64.mimeDecoder.decode(blob.content)
+                            } else {
+                                temporary.withOutputStream { output -> output << input }
+                            }
+                        }
+                        if (sha256(temporary) != dependency.sha256) throw new IOException('SDK SHA-256 mismatch')
+                        downloaded = true
+                        break
+                    } catch (Exception error) {
+                        failure = error
+                        temporary.delete()
+                    }
+                }
+                if (!downloaded) throw new GradleException('Cannot restore PICO runtime: ' + dependency.path + '; allow GitHub/CDN access or set PICO_SDK_PATH', failure)
+            }
+            if (sha256(temporary) != dependency.sha256) throw new GradleException('SDK SHA-256 mismatch: ' + dependency.path)
+            java.nio.file.Files.move(temporary.toPath(), destination.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING)
+        } finally {
+            temporary.delete()
+        }
+    }
+}

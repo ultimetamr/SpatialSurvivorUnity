@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest android:installLocation="preferExternal" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+  <application android:icon="@drawable/spatial_survivor_icon" android:label="幻域守卫" android:roundIcon="@drawable/spatial_survivor_icon">
+    <activity android:name="com.unity3d.player.UnityPlayerActivity" android:icon="@drawable/spatial_survivor_icon" android:label="幻域守卫" />
+  </application>
+  <supports-screens android:smallScreens="true" android:normalScreens="true" android:largeScreens="true" android:xlargeScreens="true" android:anyDensity="true" />
+</manifest>

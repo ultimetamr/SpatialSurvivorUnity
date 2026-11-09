@@ -20,3 +20,12 @@
 *.pfx
 .env
 .env.*
+# Portable cloud build: caches and publisher-restored SDK runtime binaries.
+/.gradle/
+/build/
+/local.properties
+/AndroidCloud/**/build/
+/AndroidCloud/**/*.aar
+/AndroidCloud/unityLibrary/libs/gson-*.jar
+/AndroidCloud/unityLibrary/src/main/jniLibs/arm64-v8a/libPico*.so
+/AndroidCloud/**/*.download

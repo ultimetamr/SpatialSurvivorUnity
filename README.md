@@ -14,7 +14,7 @@
 
 最新更名与剑方向修复见 [2.6.1 验证](Docs/BLADE_BRANDING_FIX.md)，完整回归 **142/142 通过**。
 
-**PICO 云打包审核：**使用 `main` 分支并固定提交 ID，Unity 项目位于仓库根目录。启动 Unity 前运行 `python3 Tools/Prepare-CloudBuild.py --fetch-pico-sdk` 恢复依赖；编辑器版本、构建方法和平台配置步骤见 [云打包交接](Docs/PICO_CLOUD_BUILD.md)。源码提交不代表云端审核通过。
+**PICO 云打包审核：**仓库根目录现提供标准 Gradle 工程，直接运行 `./gradlew assembleRelease`（Gradle 8.11.1 / JDK 17 / Android SDK 35）。`AndroidCloud` 包含 Unity 已编译运行快照和 Android 工程，SDK 运行依赖自动从官方固定版本恢复。完整 C# 源码仍在本仓库；改动游戏源码后需先经 Unity 重新生成运行快照。平台版本号与构建步骤见 [云打包交接](Docs/PICO_CLOUD_BUILD.md)。源码提交不代表云端审核通过。
 
 ## 游戏内容
 

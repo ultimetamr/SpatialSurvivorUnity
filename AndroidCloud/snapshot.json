@@ -1,0 +1,92 @@
+{
+  "version": "2.6.1",
+  "versionCode": 20,
+  "packageName": "com.example.spatialsurvivor.unity",
+  "sourceCommit": "262d78042719ffb9765dd0f802c783883966b286",
+  "unity": "6000.6.8f1",
+  "configuration": "Development player, Android release packaging",
+  "apkSha256": "7acdd3b9f05a7a7d0f3af722d217309a236cd4dae22a80aa166fb78bffd99576",
+  "iconSha256": "153c4fe3fc47563a05c7c4ba2e35be2cbb4cac2488212295ab7812046d619b2e",
+  "sdkCommit": "8ed808855c1dbc2a071abd709824b593977d6c24",
+  "dependencies": [
+    {
+      "path": "unityLibrary/libs/CameraRenderingPlugin.aar",
+      "url": "https://raw.githubusercontent.com/Pico-Developer/PICO-Unity-SDK/8ed808855c1dbc2a071abd709824b593977d6c24/XR/Enterprise/android/CameraRenderingPlugin.aar",
+      "sha256": "e1068343f7bc7231ffafdc6780477c43e2b2fe8604529ecb75dcbe7cad67c8d1",
+      "gitBlobSha": "a9a00a1c6256b9d6ae6e77ec49eba89a3817e739",
+      "apiUrl": "https://api.github.com/repos/Pico-Developer/PICO-Unity-SDK/git/blobs/a9a00a1c6256b9d6ae6e77ec49eba89a3817e739"
+    },
+    {
+      "path": "unityLibrary/libs/capturelib-release.aar",
+      "url": "https://raw.githubusercontent.com/Pico-Developer/PICO-Unity-SDK/8ed808855c1dbc2a071abd709824b593977d6c24/XR/Enterprise/android/capturelib-release.aar",
+      "sha256": "006c4a09963629bbe8a12232f951748d3028522b0acfb61236ef898fba2d5937",
+      "gitBlobSha": "0864aae1fe6b2b72759573d51be809c9efb0b7f5",
+      "apiUrl": "https://api.github.com/repos/Pico-Developer/PICO-Unity-SDK/git/blobs/0864aae1fe6b2b72759573d51be809c9efb0b7f5"
+    },
+    {
+      "path": "unityLibrary/libs/gson-2.10.1.jar",
+      "url": "https://raw.githubusercontent.com/Pico-Developer/PICO-Unity-SDK/8ed808855c1dbc2a071abd709824b593977d6c24/XR/Enterprise/android/gson-2.10.1.jar",
+      "sha256": "4241c14a7727c34feea6507ec801318a3d4a90f070e4525681079fb94ee4c593",
+      "gitBlobSha": "a88c5bd9b5f17af70ab9601a781388418e0b772f",
+      "apiUrl": "https://api.github.com/repos/Pico-Developer/PICO-Unity-SDK/git/blobs/a88c5bd9b5f17af70ab9601a781388418e0b772f"
+    },
+    {
+      "path": "unityLibrary/libs/LoaderForUnitySDK.aar",
+      "url": "https://raw.githubusercontent.com/Pico-Developer/PICO-Unity-SDK/8ed808855c1dbc2a071abd709824b593977d6c24/XR/Runtime/Android/LoaderForUnitySDK.aar",
+      "sha256": "163ce250ba005d236e12ea199d3338bb55332aecca7d8e3df5ba1e36955c5003",
+      "gitBlobSha": "625c0822e3c088a2bc15b188fd0a2c57a5dd73a3",
+      "apiUrl": "https://api.github.com/repos/Pico-Developer/PICO-Unity-SDK/git/blobs/625c0822e3c088a2bc15b188fd0a2c57a5dd73a3"
+    },
+    {
+      "path": "unityLibrary/libs/platformloader.aar",
+      "url": "https://raw.githubusercontent.com/Pico-Developer/PICO-Unity-SDK/8ed808855c1dbc2a071abd709824b593977d6c24/XR/Platform/Plugins/Android64/platformloader.aar",
+      "sha256": "3d398cf4cf3c1a4718c0b0e7fcb01773ccc91f885819f4de658a27e359f41351",
+      "gitBlobSha": "bc606260f46c1b7a604beeffc40b290cafde3d24",
+      "apiUrl": "https://api.github.com/repos/Pico-Developer/PICO-Unity-SDK/git/blobs/bc606260f46c1b7a604beeffc40b290cafde3d24"
+    },
+    {
+      "path": "unityLibrary/libs/PxrPlatform.aar",
+      "url": "https://raw.githubusercontent.com/Pico-Developer/PICO-Unity-SDK/8ed808855c1dbc2a071abd709824b593977d6c24/XR/Runtime/Android/PxrPlatform.aar",
+      "sha256": "e70059608bd44b414f26a15f4746308ec6cdf42243c0e04b86643eca94aab7d9",
+      "note": "Official PICO 6.1.1 archive replaces differing local development copy; headset smoke test required.",
+      "gitBlobSha": "bf83e55c7dcc8a603f1c300a146a320f8585c77f",
+      "apiUrl": "https://api.github.com/repos/Pico-Developer/PICO-Unity-SDK/git/blobs/bf83e55c7dcc8a603f1c300a146a320f8585c77f"
+    },
+    {
+      "path": "unityLibrary/libs/tobservicelib-release.aar",
+      "url": "https://raw.githubusercontent.com/Pico-Developer/PICO-Unity-SDK/8ed808855c1dbc2a071abd709824b593977d6c24/XR/Enterprise/android/tobservicelib-release.aar",
+      "sha256": "796fce21210664985fbc24682151d10f2364648065de6801559c674125a0d13f",
+      "gitBlobSha": "882634c2dfad5281dc1558b57fddcea0c3c8aec3",
+      "apiUrl": "https://api.github.com/repos/Pico-Developer/PICO-Unity-SDK/git/blobs/882634c2dfad5281dc1558b57fddcea0c3c8aec3"
+    },
+    {
+      "path": "unityLibrary/libs/tob_api-release.aar",
+      "url": "https://raw.githubusercontent.com/Pico-Developer/PICO-Unity-SDK/8ed808855c1dbc2a071abd709824b593977d6c24/XR/Enterprise/android/tob_api-release.aar",
+      "sha256": "1333fc68c358a722e7b1f8da1aafb99b30c2eb8e3c8a62ef3ff006ebdd61c68c",
+      "gitBlobSha": "d8baae3c667ff3362e88ba67ee31dd179c770aec",
+      "apiUrl": "https://api.github.com/repos/Pico-Developer/PICO-Unity-SDK/git/blobs/d8baae3c667ff3362e88ba67ee31dd179c770aec"
+    },
+    {
+      "path": "unityLibrary/src/main/jniLibs/arm64-v8a/libPicoAmbisonicDecoder.so",
+      "url": "https://raw.githubusercontent.com/Pico-Developer/PICO-Unity-SDK/8ed808855c1dbc2a071abd709824b593977d6c24/XR/SpatialAudio/Plugins/Android/libs/arm64-v8a/libPicoAmbisonicDecoder.so",
+      "sha256": "a90306834e8200e419b8786944b112129e2193b302544bc8b2ea6df340dcb8d4",
+      "gitBlobSha": "1949d4d16c92fa5eee04a359440e8e0d4d472715",
+      "apiUrl": "https://api.github.com/repos/Pico-Developer/PICO-Unity-SDK/git/blobs/1949d4d16c92fa5eee04a359440e8e0d4d472715"
+    },
+    {
+      "path": "unityLibrary/src/main/jniLibs/arm64-v8a/libPicoAudioRouter.so",
+      "url": "https://raw.githubusercontent.com/Pico-Developer/PICO-Unity-SDK/8ed808855c1dbc2a071abd709824b593977d6c24/XR/SpatialAudio/Plugins/Android/libs/arm64-v8a/libPicoAudioRouter.so",
+      "sha256": "8815989163d1b09f78c575eea7b8e0646d13ec4a81fa36ba6d565907b5153869",
+      "gitBlobSha": "321b68896307a6937f9bf239f38809df18139f2b",
+      "apiUrl": "https://api.github.com/repos/Pico-Developer/PICO-Unity-SDK/git/blobs/321b68896307a6937f9bf239f38809df18139f2b"
+    },
+    {
+      "path": "unityLibrary/src/main/jniLibs/arm64-v8a/libPicoAudioSDKUnityNativePlugin.so",
+      "url": "https://raw.githubusercontent.com/Pico-Developer/PICO-Unity-SDK/8ed808855c1dbc2a071abd709824b593977d6c24/XR/SpatialAudio/Plugins/Android/libs/arm64-v8a/libPicoAudioSDKUnityNativePlugin.so",
+      "sha256": "347d5f94c94774e181ab1649257c36e2169c6e786342da6a3041bd3e16172449",
+      "gitBlobSha": "b6226afe8aad7e92a2aa0c5da7701051357642e3",
+      "apiUrl": "https://api.github.com/repos/Pico-Developer/PICO-Unity-SDK/git/blobs/b6226afe8aad7e92a2aa0c5da7701051357642e3"
+    }
+  ],
+  "runtimeLibraryChange": "Official PICO 6.1.1 PxrPlatform AAR replaces local development archive; headset verification pending."
+}
