@@ -18,7 +18,7 @@ public static partial class SurvivorArtBuilder {
    // A narrow lid sits above the eye when open and covers it during a blink.
    m.Blob(bones[side<0?18:19],Vector3.zero,new Vector3(.069f,.078f,.018f),skin);
    if(type==2||type==9||type==11){
-    m.Blob(fore,new Vector3(side*.01f,-.027f,.059f),new Vector3(.085f,.078f,.029f),dark,.7f);
+    m.BevelBox(fore,new Vector3(side*.01f,-.027f,.059f),new Vector3(.085f,.078f,.029f),dark);
     m.Tube(fore,new[]{new Vector3(-.06f,.022f,.07f),new Vector3(0,.037f,.088f),new Vector3(.06f,.022f,.07f)},.009f,.009f,gold);
     m.Gem(knee,new Vector3(0,.005f,.069f),new Vector3(.05f,.068f,.028f),pale);
     m.Gem(arm,new Vector3(side*.05f,.07f,.104f),new Vector3(.028f,.041f,.019f),gold);
@@ -91,6 +91,13 @@ public static partial class SurvivorArtBuilder {
    m.Blob(head,new Vector3(0,-.045f,.205f),new Vector3(.13f,.075f,.064f),pale);
    for(int side=-1;side<=1;side+=2)m.Blob(head,new Vector3(side*.065f,-.024f,.26f),new Vector3(.017f,.012f,.006f),dark);
    m.Leaf(bones[16],Vector3.zero,new Vector3(.12f,.09f,-.17f),.085f,gold);
+  }
+  // Larger painted cheek and brow markings read at real combat scale.
+  if(type==0||type==1||type==7||type==8){
+   for(int side=-1;side<=1;side+=2){
+    m.Tube(head,new[]{new Vector3(side*.17f,-.035f,.158f),new Vector3(side*.19f,-.015f,.136f)},.007f,.004f,dark);
+    m.Tube(head,new[]{new Vector3(side*.17f,-.065f,.158f),new Vector3(side*.19f,-.045f,.136f)},.006f,.003f,dark);
+   }
   }
   if(type==7){
    for(int i=0;i<13;i++){float a=i*Mathf.PI*2/13;var from=new Vector3(Mathf.Cos(a)*.15f,.13f,Mathf.Sin(a)*.11f);var to=new Vector3(Mathf.Cos(a)*.37f,.14f,Mathf.Sin(a)*.28f);m.Tube(head,new[]{from,to},.007f,.003f,C("BA8C92"));}

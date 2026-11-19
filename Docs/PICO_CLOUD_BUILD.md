@@ -1,4 +1,4 @@
-# PICO 云打包审核交接 · 幻域守卫 2.6.1
+# PICO 云打包审核交接 · 幻域守卫 2.7.0
 
 ## 当前云平台入口（2026-11-09 修正）
 
@@ -6,7 +6,7 @@
 
 - 项目目录：仓库根目录 `.`；Android 构建任务：`assembleRelease`。
 - Gradle 8.11.1、AGP 8.10.1、JDK 17、Android SDK Platform 35 / Build Tools 35.0.0。
-- 默认 versionName 2.6.1、versionCode 20，平台 init script 可以覆盖版本号。平台日志曾注入 1；若要覆盖设备上已有 20 版本，应在平台把 versionCode 设为 21 或更高。
+- 默认 versionName 2.7.0、versionCode 21，平台 init script 可以覆盖版本号。平台日志曾注入 1；若要覆盖设备上已有 20 版本，应在平台把 versionCode 设为 21 或更高。
 - 产物：`AndroidCloud/launcher/build/outputs/apk/release/launcher-release.apk`。
 - 包名：`com.example.spatialsurvivor.unity`；应用名：幻域守卫；图标：翡翠符文剑与月冠（1024²）。
 - 云端需要访问 Google Maven / Maven Central / Gradle 分发源及 `api.github.com` / `raw.githubusercontent.com`（或校验相同哈希的 `cdn.jsdelivr.net` 备用地址）。没有本机绝对 SDK / NDK / JDK 路径，不需要 Unity 或 NDK 来重编译此 Android 快照。
@@ -21,7 +21,7 @@
 
 完整 Unity/C# 源码仍在 `Assets`、`Packages` 与 `ProjectSettings`。`AndroidCloud` 保存 Unity 已编译的游戏运行快照、Android Java 源码、清单和资源，Gradle 会执行真实 Android 编译、资源合并、DEX、打包与签名；**云端不会重新编译 C# / IL2CPP，也不是从 APK 直接复制出最终安装包**。
 
-当前快照来自已验证的 2.6.1 APK（SHA-256 `7acdd3b9f05a7a7d0f3af722d217309a236cd4dae22a80aa166fb78bffd99576`）。游戏 player 是 Development 配置，Android `release` 任务使用调试签名供审核测试；平台正式签名政策需要在其控制台另行满足。运行快照中原有资产的权利不因提交而改变。
+当前本地快照来自已编译验证的 2.7.0 APK（SHA-256 `4d9a732cf7a31b7ea66da532c19aac2cf158353bb430b5cda79ac9c3f995c4af`）。游戏 player 是 Development 配置，Android `release` 任务使用调试签名供审核测试；平台正式签名政策需要在其控制台另行满足。运行快照中原有资产的权利不因提交而改变。
 
 改 C#、场景、模型或游戏资源后，必须先用 Unity 重新构建，再运行：
 
@@ -44,7 +44,7 @@ python Tools/Export-CloudGradle.py
 - 分支：`main`；审核时固定使用本次提交的完整 Commit ID。
 - Unity 项目路径：仓库根目录（`.`），不是 `Assets`。
 - Unity：`6000.6.8f1`，需 Android Build Support、相应 SDK / NDK / OpenJDK 与有效编辑器授权。
-- 作品：幻域守卫 / Realm Wardens；版本 `2.6.1`，versionCode `20`。
+- 作品：幻域守卫 / Realm Wardens；版本 `2.7.0`，versionCode `21`。
 - 包名：`com.example.spatialsurvivor.unity`。
 - 平台：Android、ARM64、IL2CPP、OpenGLES3；minSdk 29。本地验证 APK targetSdk 35，现有构建配置使用安装环境的最高 API。
 - 场景：`Assets/Scenes/SpatialSurvivor.unity`。
@@ -99,3 +99,12 @@ PICO SDK 受原有许可约束，不复制进公开仓库。开源中文字体�
 ## 本次验证结果
 
 本地 Windows 以 Gradle 8.11.1 / JDK 17 从干净 Gradle 源码副本恢复全部 11 个官方依赖，`assembleRelease` 成功（86 项任务执行）；模拟平台 init-script 注入 versionCode=1，APK 回读确认为 1。默认构建回读为 2.6.1 / 20，名称为幻域守卫，1024² 图标字节与源文件一致，v2 签名通过。证据见 `Docs/Validation/v261-cloud-gradle-summary.json`。尚未执行平台的 Linux Jenkins 或头显验收，因此不能宣称云审核通过。
+
+
+## 2.7.0 本地复验（2026-11-19）
+
+Unity 6 回归 149/149 通过，Android APK 编译成功。重新导出运行快照后，仓库根目录 `gradlew.bat --no-daemon --console=plain assembleRelease --stacktrace` 在 Windows / JDK 17 / SDK 35 下通过，86 项任务执行。两个 APK 均回读为 2.7.0 / 21，应用名、包名、1024² 图标和 v2 签名检查通过，457 份游戏资产一致（boot.config 去除本机调试 IP 并统一换行后比较），四个游戏主库逐字节一致。
+
+Gradle APK SHA-256：`d61c6e57fc53f7a0ffbabdef321cba6e0338e7aea860dd85e76facca2ce14258`。本提交包含源码及对应运行快照；snapshot 的 sourceCommit 保留导出时的基准提交，sourceWorkingTreeDirty=true 记录导出时包含尚未提交的改动，不代表当前仓库状态。
+
+2026-11-19 Unity APK 已覆盖安装到 PICO B3110，回读版本 2.7.0 / 21，确认进入前台并记录到手柄点击「开始生存」。该记录仅覆盖 Unity APK 启动与一次输入；官方 SDK AAR 替换后的 Gradle APK、真实房间贴合、佩戴舒适度与 PICO Linux Jenkins / 平台审核仍需验收。启动报错与检查限制见 [2.7.0 记录](ROOM_REVIEW_V270.md)、[真机摘要](Validation/v270-device-smoke.json) 和 [构建验证摘要](Validation/v270-review-summary.json)。

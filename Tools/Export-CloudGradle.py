@@ -59,6 +59,17 @@ def main():
     with zipfile.ZipFile(apk) as archive:
         if archive.read("res/drawable-nodpi-v4/spatial_survivor_icon.png") != icon:
             raise ValueError("APK does not use the current icon; rebuild Unity first")
+        # The snapshot is a replacement: removed Unity bundles must not survive
+        # from an older player and inflate or contaminate the next cloud build.
+        asset_root = (output / "unityLibrary/src/main/assets").resolve()
+        if not asset_root.is_relative_to(output.resolve()):
+            raise ValueError("Snapshot assets escaped the AndroidCloud directory")
+        asset_files = {name[len("assets/"):] for name in archive.namelist()
+                       if name.startswith("assets/") and not name.endswith("/")}
+        if asset_root.is_dir():
+            for existing in asset_root.rglob("*"):
+                if existing.is_file() and existing.relative_to(asset_root).as_posix() not in asset_files:
+                    existing.unlink()
         for module in ("launcher", "unityLibrary"):
             for directory in ("java", "res", "resources"):
                 origin = source / module / "src/main" / directory
@@ -88,10 +99,19 @@ def main():
     libraries.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(source / "unityLibrary/libs/unity-classes.jar", libraries / "unity-classes.jar")
     shutil.copyfile(source / "unityLibrary/proguard-unity.txt", output / "unityLibrary/proguard-unity.txt")
+    # Keep the root Gradle entry point's release identity in sync with Unity.
+    import re
+    gradle_path = output / "launcher/build.gradle"
+    gradle = gradle_path.read_text(encoding="utf-8-sig")
+    gradle = re.sub(r"\bversionCode\s+\d+", "versionCode " + str(identity["versionCode"]), gradle)
+    gradle = re.sub(r"\bversionName\s+['\"][^'\"]+['\"]", "versionName '" + identity["version"] + "'", gradle)
+    gradle_path.write_text(gradle, encoding="utf-8", newline="\n")
     snapshot = {
         "version": identity["version"], "versionCode": identity["versionCode"],
         "packageName": identity["packageName"],
         "sourceCommit": __import__("subprocess").check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
+        "sourceWorkingTreeDirty": bool(__import__("subprocess").check_output(
+            ["git", "status", "--porcelain", "--untracked-files=normal"], cwd=ROOT, text=True).strip()),
         "unity": "6000.6.8f1", "configuration": "Development player, Android release packaging",
         "apkSha256": hashlib.sha256(apk.read_bytes()).hexdigest(),
         "runtimeLibraryChange": "Official PICO 6.1.1 PxrPlatform AAR replaces local development archive; headset verification pending.",

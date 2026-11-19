@@ -14,7 +14,7 @@ Shader "Survivor/Storybook" {
  #ifndef UNITY_COLORSPACE_GAMMA
  paint=GammaToLinearSpace(paint);
  #endif
- float3 rgb=paint*shade+float3(.12,.19,.28)*rim+spec;return fixed4(lerp(rgb,float3(1,.94,.75),saturate(_Hit)*.65),1);}
+ float3 shadow=float3(.72,.81,1.0),sun=float3(1.06,1.02,.90);float3 tone=lerp(shadow,sun,smoothstep(.28,.8,nd));float3 rgb=paint*shade*tone+float3(.12,.28,.30)*rim+spec*float3(1,.94,.78);return fixed4(lerp(rgb,float3(1,.94,.75),saturate(_Hit)*.65),1);}
  ENDCG }
  }
 }

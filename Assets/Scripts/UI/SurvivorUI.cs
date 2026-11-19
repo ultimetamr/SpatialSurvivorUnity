@@ -7,6 +7,7 @@ public sealed partial class SurvivorUI:MonoBehaviour {
  SurvivorGame game;SurvivorPlatform platform;Font font;Canvas panel,hud;Text healthText,expText,statusText,noticeText,bossText,statsText,modeText;Image healthFill,expFill,damageFlash,bossFill;CanvasGroup hudGroup;Button hudPause,hovered;LineRenderer rayLine;Text mrText;Button menuStart,mrScan,mrRetry,mrPreview;ScreenState returnFromMr=ScreenState.Menu;
  ScreenState previous=(ScreenState)(-1),returnFromProgression=ScreenState.Menu;int previousMoney=-1,previousOptions=-1,historyPage,clickCount;float nextHud,nextInputReport;Text inputText;Transform pointerDot;string lastClick="";
  readonly SurvivorUIPlacement placement=new SurvivorUIPlacement();
+ readonly SurvivorModalAnchor modalAnchor=new SurvivorModalAnchor();
  readonly SurvivorPointerClick pointerClick=new SurvivorPointerClick();
  readonly SurvivorPointerRayFilter pointerRayFilter=new SurvivorPointerRayFilter();
  SurvivorPointerSource lastPointerSource;int missedPresses,sourceSwitches,trackingLosses;

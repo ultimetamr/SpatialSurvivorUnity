@@ -1,18 +1,18 @@
 {
   "workName": "幻域守卫",
   "englishName": "Realm Wardens",
-  "versionName": "2.6.1 · 幻域守卫",
-  "version": "2.6.1",
-  "versionCode": 20,
+  "versionName": "2.7.0 · 翡翠符文庭院",
+  "version": "2.7.0",
+  "versionCode": 21,
   "packageName": "com.example.spatialsurvivor.unity",
   "tagline": "把客厅变成魔法战场，用挥剑与射击对抗怪潮，在混合现实中打造你的生存流派。",
   "description": "幻域守卫是一款面向 PICO 头显的混合现实肉鸽生存游戏。扫描真实房间后，地面与空中魔法生物进入你的现实空间；你可以真实走位、挥动近战武器，也可以使用星火手枪、符文霰弹枪和自动技能抵挡怪潮。\n\n游戏包含经验升级、随机强化与技能进化，搭配技能手册、怪物图鉴、武器商店和独立局外金币，让每局战斗都能形成不同成长路线。项目使用 Unity 6 与 C# 实现，采用卡通魔法生物、骨骼动画、空间 UI 和魔法特效，并提供编辑器模拟房间与 PICO 真机两种开发验证方式。",
   "versionNotes": [
-    "作品正式更名为「幻域守卫 / REALM WARDENS」，主菜单、章节页及 Android 桌面名称统一更新。",
-    "启用翡翠符文剑与月冠新图标，覆盖 Android 应用、启动 Activity 与备用图标。",
-    "所有剑统一以本地 +Z 为剑尖；手持剑去掉额外 90 度旋转，握柄与护手位置重新对齐。",
-    "环绕飞剑与万剑归宗沿实际圆周运动切线朝前；剑雨剑尖向下，拖尾保持在运动后方。",
-    "保留原应用包名与存档兼容，更新安装可继续原进度。"
+    "新增可开关的扫描房间魔法场景：依据房间语义、轮廓与家具包围盒生成符文地面、遗迹墙面、祭坛与封印箱。",
+    "修复翻页、购买和设置操作导致面板重新定位；打开期间保持位置和朝向，新增移到面前按钮。",
+    "精修八把手持武器，补充实体剑刃、倒角枪身、双管霰弹结构及各系法杖差异。",
+    "精修晶甲与盾牌等模型表面，调整卡通光照；优化闪电亮核、柔和光晕与法术拖尾。",
+    "保留原包名、图标与存档，房间装饰不增加碰撞体，开关不改变导航。"
   ],
   "engine": "Unity 6.6 / 6000.6.8f1",
   "platform": "PICO / Android ARM64 / MR",
@@ -20,9 +20,9 @@
   "icon": "Marketing/RealmWardens-icon.png",
   "poster": "Marketing/SpatialSurvivor-poster.png",
   "posterType": "旧名称概念海报，历史资料，非当前版本截图",
-  "sourcePublicationDate": "2026-11-08",
+  "sourcePublicationDate": "2026-11-19",
   "lastPublishedRelease": "https://github.com/ultimetamr/SpatialSurvivorUnity/releases/tag/v2.2.3",
-  "publicationStatus": "2.6.1 源码提交至 main 供 PICO 云打包审核；未发布新版 GitHub Release，PICO 云端构建与审核状态另行确认",
+  "publicationStatus": "2.7.0 源码与云打包快照提交；Unity APK 真机启动与手柄点击已检查，完整验收及 PICO 云端审核待完成；未新建 GitHub Release",
   "previousName": "空间幸存者（SpatialSurvivor）",
   "cloudBuildGuide": "Docs/PICO_CLOUD_BUILD.md"
 }

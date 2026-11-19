@@ -1,0 +1,62 @@
+{
+  "date": "2026-11-19",
+  "version": "2.7.0",
+  "versionCode": 21,
+  "unity": "6000.6.8f1",
+  "tests": {
+    "result": "Passed",
+    "total": "149",
+    "passed": "149",
+    "failed": "0"
+  },
+  "regressions": [
+    "modal anchor persists across content rebuild and tracking-origin change",
+    "actual UI refresh path across shop/codex/comfort/MR and explicit recenter",
+    "captured furniture pose and dimensions; no decorative colliders",
+    "concave floor recess, transparent door interior, 64-surface cap and invalid capture rejection",
+    "themed surfaces do not occlude actors or world UI; disabling restores passthrough alpha",
+    "tapered lightning core/halo, exact endpoints, pooled alpha reset"
+  ],
+  "headsetTested": false,
+  "picoCloudBuildExecuted": false,
+  "picoReviewStatus": "not submitted this iteration",
+  "previews": {
+    "v270-arsenal.png": "1fdb3da36bcababbb8081976532d5abcbe3f18f9072ef31fb8196fbd049eddf9",
+    "v270-creatures.png": "373a490477fae463aa877f2490a5596c6b5d6091db390b90e7a11350a6750ac3",
+    "v270-effects.png": "9502381cf887fc98230ba4ec83672a5c9e0de1511490e3ae27a3969ea4e3327d",
+    "v270-room-simulation.png": "7b856aafb2a5c0fc396aaaf1ed3409f308952893a37516bd32b35deb266f9f05",
+    "v270-ui-mr.png": "7ed83c2c37f54bc8c0ef9a3ef156192724864d3c39fbb3c09db806b1850952be",
+    "v270-ui-shop.png": "d2c157e0df21fde0e087d26e952e3e933aba43f0dc7576aeaba46db7ba8ba0d0"
+  },
+  "unityApk": {
+    "bytes": 80852999,
+    "sha256": "4d9a732cf7a31b7ea66da532c19aac2cf158353bb430b5cda79ac9c3f995c4af",
+    "version": "2.7.0",
+    "versionCode": 21,
+    "packageName": "com.example.spatialsurvivor.unity",
+    "appName": "幻域守卫",
+    "iconMatches1024Source": true,
+    "v2SignatureVerified": true,
+    "compiledNewRoomAndUiTypes": true
+  },
+  "gradleReleaseApk": {
+    "bytes": 74410023,
+    "sha256": "d61c6e57fc53f7a0ffbabdef321cba6e0338e7aea860dd85e76facca2ce14258",
+    "version": "2.7.0",
+    "versionCode": 21,
+    "packageName": "com.example.spatialsurvivor.unity",
+    "appName": "幻域守卫",
+    "iconMatches1024Source": true,
+    "v2SignatureVerified": true,
+    "compiledNewRoomAndUiTypes": true
+  },
+  "unityAssetsVerifiedAcrossApks": 457,
+  "localCloudEntryBuild": {
+    "result": "passed",
+    "gradle": "8.11.1",
+    "tasksExecuted": 86,
+    "sdkRuntimeDependencies": 11,
+    "host": "Windows/JDK17/AndroidSDK35",
+    "picoLinuxJenkinsTested": false
+  }
+}

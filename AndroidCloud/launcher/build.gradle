@@ -10,8 +10,8 @@ android {
         applicationId 'com.example.spatialsurvivor.unity'
         minSdk 29
         targetSdk 35
-        versionCode 20
-        versionName '2.6.1'
+        versionCode 21
+        versionName '2.7.0'
         ndk { abiFilters 'arm64-v8a' }
     }
     compileOptions {

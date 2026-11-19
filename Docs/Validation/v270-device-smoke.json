@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-19",
+  "version": "2.7.0",
+  "versionCode": 21,
+  "packageName": "com.example.spatialsurvivor.unity",
+  "deviceModel": "B3110",
+  "artifact": "Unity APK",
+  "apkSha256": "4d9a732cf7a31b7ea66da532c19aac2cf158353bb430b5cda79ac9c3f995c4af",
+  "previousVersion": "2.6.1",
+  "installation": "adb install -r: Success; no uninstall or data clear",
+  "installedVersionVerified": true,
+  "foregroundActivityVerified": true,
+  "processObserved": true,
+  "uiClickObserved": "RightController -> 开始生存",
+  "observedStartupErrors": [
+    "EyeTrackingClient GetTrackingDataSharedMemory failed ret:-10002",
+    "Unity ClassNotFoundException com.google.android.play.core.assetpacks.AssetPackManager"
+  ],
+  "screenshotCaptured": false,
+  "completeGameplayAccepted": false,
+  "roomFitAndUiComfortAccepted": false,
+  "gradleApkHeadsetTested": false,
+  "picoCloudReviewExecuted": false,
+  "limits": "Process continued and a controller click was logged; error causes remain unresolved. USB disconnected after log capture. No scan-fit, panel-stability or long-duration headset acceptance was completed."
+}

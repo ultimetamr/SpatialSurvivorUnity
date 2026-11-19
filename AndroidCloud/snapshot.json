@@ -1,11 +1,13 @@
 {
-  "version": "2.6.1",
-  "versionCode": 20,
+  "version": "2.7.0",
+  "versionCode": 21,
   "packageName": "com.example.spatialsurvivor.unity",
-  "sourceCommit": "262d78042719ffb9765dd0f802c783883966b286",
+  "sourceCommit": "d166127dbbd87b28f68e941f9a3eb042a89d469e",
+  "sourceWorkingTreeDirty": true,
   "unity": "6000.6.8f1",
   "configuration": "Development player, Android release packaging",
-  "apkSha256": "7acdd3b9f05a7a7d0f3af722d217309a236cd4dae22a80aa166fb78bffd99576",
+  "apkSha256": "4d9a732cf7a31b7ea66da532c19aac2cf158353bb430b5cda79ac9c3f995c4af",
+  "runtimeLibraryChange": "Official PICO 6.1.1 PxrPlatform AAR replaces local development archive; headset verification pending.",
   "iconSha256": "153c4fe3fc47563a05c7c4ba2e35be2cbb4cac2488212295ab7812046d619b2e",
   "sdkCommit": "8ed808855c1dbc2a071abd709824b593977d6c24",
   "dependencies": [
@@ -87,6 +89,5 @@
       "gitBlobSha": "b6226afe8aad7e92a2aa0c5da7701051357642e3",
       "apiUrl": "https://api.github.com/repos/Pico-Developer/PICO-Unity-SDK/git/blobs/b6226afe8aad7e92a2aa0c5da7701051357642e3"
     }
-  ],
-  "runtimeLibraryChange": "Official PICO 6.1.1 PxrPlatform AAR replaces local development archive; headset verification pending."
+  ]
 }

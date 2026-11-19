@@ -80,7 +80,7 @@ public static partial class SurvivorArtBuilder {
    m.Tube(body,new[]{new Vector3(-.16f,.15f,0),new Vector3(0,.11f,.16f),new Vector3(.16f,.15f,0)},.035f,.035f,C("8F5265"));
   }
   if(type==2){
-   for(int side=-1;side<=1;side+=2){var arm=side<0?la:ra;m.Blob(arm,new Vector3(side*.025f,.035f,0),new Vector3(.125f,.105f,.12f),dark,.55f);for(int i=0;i<3;i++)m.Gem(arm,new Vector3(side*(.03f+i*.026f),.08f+i*.018f,-.015f),new Vector3(.035f,.115f+i*.015f,.04f),C("87D8E5"));}
+   for(int side=-1;side<=1;side+=2){var arm=side<0?la:ra;m.BevelBox(arm,new Vector3(side*.025f,.035f,0),new Vector3(.125f,.105f,.12f),dark);for(int i=0;i<3;i++)m.Gem(arm,new Vector3(side*(.03f+i*.026f),.08f+i*.018f,-.015f),new Vector3(.035f,.115f+i*.015f,.04f),C("87D8E5"));}
    for(int i=0;i<5;i++)m.Gem(head,new Vector3((i-2)*.068f,.16f,-.02f),new Vector3(.045f,.12f+(.05f*(1-Mathf.Abs(i-2)/2f)),.055f),i%2==0?C("9ADBEC"):C("7B9FDC"));
    m.Gem(body,new Vector3(0,.02f,.19f),new Vector3(.09f,.12f,.035f),C("6BE0EE"));
   }
@@ -115,7 +115,7 @@ public static partial class SurvivorArtBuilder {
   }
   if(variant==11){
    // A shield-bearing bramble knight, with a broad asymmetric silhouette.
-   m.Blob(lf,new Vector3(-.12f,-.035f,.1f),new Vector3(.23f,.32f,.08f),C("456B59"),.5f);
+   m.BevelBox(lf,new Vector3(-.12f,-.035f,.1f),new Vector3(.23f,.32f,.08f),C("456B59"));
    for(int i=0;i<7;i++){float a=i*Mathf.PI*2/7;m.Gem(lf,new Vector3(-.12f+Mathf.Cos(a)*.2f,-.035f+Mathf.Sin(a)*.28f,.14f),new Vector3(.04f,.08f,.035f),C("B7C486"));}
    m.Gem(lf,new Vector3(-.12f,-.03f,.2f),new Vector3(.09f,.13f,.03f),C("E1CF83"));
    m.Tube(rf,new[]{new Vector3(.035f,-.3f,.025f),new Vector3(.035f,.45f,.025f)},.035f,.018f,C("75664C"));
@@ -153,7 +153,7 @@ public static partial class SurvivorArtBuilder {
   string[] names={"Runeblade","FrostCrystal","EmberSeed","ArcaneCore","ExperienceGem"};
   foreach(var name in names){var go=new GameObject(name);var m=new Writer();Color gold=C("DDBB76"),blue=C("97DDE8");
    if(name=="Runeblade"){
-    m.Leaf(null,new Vector3(0,0,0),new Vector3(0,.63f,0),.08f,blue);m.Leaf(null,new Vector3(0,.015f,.008f),new Vector3(0,.61f,.008f),.018f,C("F3F2D4"));m.Tube(null,new[]{new Vector3(-.14f,.02f,0),new Vector3(0,-.01f,0),new Vector3(.14f,.02f,0)},.022f,.022f,gold);m.Tube(null,new[]{new Vector3(0,-.03f,0),new Vector3(0,-.19f,0)},.028f,.025f,C("536389"));m.Gem(null,new Vector3(0,-.21f,0),new Vector3(.04f,.05f,.025f),gold);for(int i=0;i<3;i++)m.Gem(null,new Vector3(0,.12f+i*.1f,.018f),new Vector3(.012f,.019f,.004f),gold);
+    m.ForgedBlade(0,.63f,.08f,blue);m.Leaf(null,new Vector3(0,.015f,.008f),new Vector3(0,.61f,.008f),.018f,C("F3F2D4"));m.Tube(null,new[]{new Vector3(-.14f,.02f,0),new Vector3(0,-.01f,0),new Vector3(.14f,.02f,0)},.022f,.022f,gold);m.Tube(null,new[]{new Vector3(0,-.03f,0),new Vector3(0,-.19f,0)},.028f,.025f,C("536389"));m.Gem(null,new Vector3(0,-.21f,0),new Vector3(.04f,.05f,.025f),gold);for(int i=0;i<3;i++)m.Gem(null,new Vector3(0,.12f+i*.1f,.018f),new Vector3(.012f,.019f,.004f),gold);
    }else if(name=="FrostCrystal"){m.Gem(null,new Vector3(0,.18f,0),new Vector3(.11f,.42f,.085f),blue);m.Gem(null,new Vector3(-.08f,-.02f,0),new Vector3(.055f,.18f,.05f),C("D8F2EA"));m.Gem(null,new Vector3(.075f,-.04f,0),new Vector3(.05f,.16f,.05f),C("769FCD"));}
    else if(name=="EmberSeed"){m.Blob(null,Vector3.zero,Vector3.one*.18f,C("654B69"),.7f);for(int i=0;i<11;i++){float a=i*2.4f;var pos=new Vector3(Mathf.Cos(a),Mathf.Sin(a*.7f),Mathf.Sin(a))*.14f;m.Gem(null,pos,new Vector3(.045f,.09f,.04f),i%2==0?C("F5BB64"):C("D97A64"));}}
    else if(name=="ExperienceGem"){m.Gem(null,Vector3.zero,new Vector3(.055f,.095f,.055f),C("78D8AB"));m.Gem(null,new Vector3(0,.01f,.002f),new Vector3(.025f,.04f,.06f),C("C2F0C7"));}
@@ -165,24 +165,24 @@ public static partial class SurvivorArtBuilder {
   bool gun=definition.kind==HandWeaponKind.ArcPistol||definition.kind==HandWeaponKind.Scattergun;
   if(!gun){bool sword=definition.kind==HandWeaponKind.Runeblade;m.Tube(null,new[]{new Vector3(0,sword?-.11f:-.17f,0),new Vector3(0,sword?.1f:.25f,0)},.024f,.018f,C("4F486E"));for(int i=0;i<5;i++)m.Tube(null,new[]{new Vector3(-.025f,-.13f+i*.037f,0),new Vector3(.025f,-.115f+i*.037f,0)},.008f,.008f,gold);}
   if(gun){bool scatter=definition.kind==HandWeaponKind.Scattergun;float barrel=scatter?.36f:.28f;
-   m.Blob(null,new Vector3(0,.035f,.08f),new Vector3(scatter?.055f:.043f,.045f,.13f),C("42495F"),.25f);
+   m.BevelBox(null,new Vector3(0,.035f,.08f),new Vector3(scatter?.055f:.043f,.045f,.13f),C("42495F"));
    m.Tube(null,new[]{new Vector3(0,.035f,.13f),new Vector3(0,.035f,barrel)},scatter?.036f:.025f,scatter?.036f:.025f,gold);
    m.Tube(null,new[]{new Vector3(0,.035f,barrel-.012f),new Vector3(0,.035f,barrel+.002f)},scatter?.026f:.017f,scatter?.026f:.017f,C("182338"));
-   m.Blob(null,new Vector3(0,-.073f,-.018f),new Vector3(.032f,.105f,.042f),C("655B84"),.3f);
+   m.BevelBox(null,new Vector3(0,-.073f,-.018f),new Vector3(.032f,.105f,.042f),C("655B84"));
    m.Tube(null,new[]{new Vector3(-.034f,-.12f,-.03f),new Vector3(-.034f,-.04f,0)},.007f,.007f,gold);
    m.Tube(null,new[]{new Vector3(0,-.01f,.04f),new Vector3(0,-.075f,.04f),new Vector3(0,-.075f,.11f),new Vector3(0,-.01f,.12f)},.009f,.009f,gold);
    m.Gem(null,new Vector3(0,.09f,.05f),new Vector3(.034f,.04f,.05f),color);
    m.Gem(null,new Vector3(0,.082f,barrel-.025f),Vector3.one*.012f,color);
    if(scatter){m.Blob(null,new Vector3(0,-.015f,.2f),new Vector3(.047f,.03f,.065f),C("655B84"),.25f);m.Tube(null,new[]{new Vector3(-.047f,.04f,.015f),new Vector3(-.047f,.04f,.15f)},.012f,.012f,color);}
   }else
-  if(definition.kind==HandWeaponKind.Runeblade){m.Leaf(null,new Vector3(0,.14f,0),new Vector3(0,.83f,0),.065f,color);m.Leaf(null,new Vector3(0,.15f,.009f),new Vector3(0,.81f,.009f),.016f,C("F7F3DD"));m.Tube(null,new[]{new Vector3(-.14f,.14f,0),new Vector3(0,.12f,0),new Vector3(.14f,.14f,0)},.02f,.02f,gold);}else{m.Gem(null,new Vector3(0,.32f,0),new Vector3(.08f,.15f,.08f),color);for(int side=-1;side<=1;side+=2)m.Leaf(null,new Vector3(side*.025f,.15f,0),new Vector3(side*.12f,.43f,0),.035f,gold);if(definition.kind==HandWeaponKind.EmberStaff)m.Blob(null,new Vector3(0,.32f,0),Vector3.one*.09f,color);if(definition.kind==HandWeaponKind.VoidScepter||definition.kind==HandWeaponKind.StormWand){var ring=new Vector3[33];for(int i=0;i<33;i++){float a=i*Mathf.PI*2/32;ring[i]=new Vector3(Mathf.Cos(a)*.14f,.32f+Mathf.Sin(a)*.14f,0);}m.Tube(null,ring,.012f,.012f,gold);}}
-  var mesh=m.Finish(definition.model);if(definition.kind==HandWeaponKind.Runeblade)CanonicalBlade(go,mesh,true);Save(mesh,Root+"/Weapons/"+definition.model+".asset");go.AddComponent<MeshFilter>().sharedMesh=AssetDatabase.LoadAssetAtPath<Mesh>(Root+"/Weapons/"+definition.model+".asset");go.AddComponent<MeshRenderer>().sharedMaterial=material;PrefabUtility.SaveAsPrefabAsset(go,Root+"/Weapons/"+definition.model+".prefab");UnityEngine.Object.DestroyImmediate(go);
+  if(definition.kind==HandWeaponKind.Runeblade){m.ForgedBlade(.14f,.83f,.065f,color);m.Leaf(null,new Vector3(0,.15f,.009f),new Vector3(0,.81f,.009f),.016f,C("F7F3DD"));m.Tube(null,new[]{new Vector3(-.14f,.14f,0),new Vector3(0,.12f,0),new Vector3(.14f,.14f,0)},.02f,.02f,gold);}else{m.Gem(null,new Vector3(0,.32f,0),new Vector3(.08f,.15f,.08f),color);for(int side=-1;side<=1;side+=2)m.Leaf(null,new Vector3(side*.025f,.15f,0),new Vector3(side*.12f,.43f,0),.035f,gold);if(definition.kind==HandWeaponKind.EmberStaff)m.Blob(null,new Vector3(0,.32f,0),Vector3.one*.09f,color);if(definition.kind==HandWeaponKind.VoidScepter){var ring=new Vector3[33];for(int i=0;i<33;i++){float a=i*Mathf.PI*2/32;ring[i]=new Vector3(Mathf.Cos(a)*.14f,.32f+Mathf.Sin(a)*.14f,0);}m.Tube(null,ring,.012f,.012f,gold);}}
+  PolishHandWeapon(m,definition);var mesh=m.Finish(definition.model);if(definition.kind==HandWeaponKind.Runeblade)CanonicalBlade(go,mesh,true);Save(mesh,Root+"/Weapons/"+definition.model+".asset");go.AddComponent<MeshFilter>().sharedMesh=AssetDatabase.LoadAssetAtPath<Mesh>(Root+"/Weapons/"+definition.model+".asset");go.AddComponent<MeshRenderer>().sharedMaterial=material;PrefabUtility.SaveAsPrefabAsset(go,Root+"/Weapons/"+definition.model+".prefab");UnityEngine.Object.DestroyImmediate(go);
  }}
  static void ImportArt(){foreach(var name in new[]{"MenuIllustration","SkillAtlas"}){string path=Root+"/"+name+".png";if(!File.Exists(path))continue;AssetDatabase.ImportAsset(path,ImportAssetOptions.ForceSynchronousImport);var imp=(TextureImporter)AssetImporter.GetAtPath(path);imp.textureType=TextureImporterType.Default;imp.maxTextureSize=2048;imp.mipmapEnabled=false;imp.textureCompression=TextureImporterCompression.CompressedHQ;imp.wrapMode=TextureWrapMode.Clamp;imp.SaveAndReimport();}}
 
  // Paint and skin every generated vertex. Parts share one skinned renderer and
  // one material; there are no Unity primitive objects in the exported actors.
- sealed class Writer {
+ sealed partial class Writer {
   readonly List<Vector3> v=new List<Vector3>();readonly List<Color> c=new List<Color>();readonly List<int> ix=new List<int>();readonly List<BoneWeight> bw=new List<BoneWeight>();readonly Transform[] bones;
   public Writer(Transform[] bones=null){this.bones=bones;}
   int Vertex(Transform bone,Vector3 p,Color color){int b=bone&&bones!=null?Array.IndexOf(bones,bone):0;if(b<0)b=0;v.Add(bone?bone.localToWorldMatrix.MultiplyPoint3x4(p):p);c.Add(color);bw.Add(new BoneWeight{boneIndex0=b,weight0=1});return v.Count-1;}
