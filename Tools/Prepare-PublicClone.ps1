@@ -16,7 +16,7 @@ if (-not (Test-Path -LiteralPath (Join-Path $destination 'package.json'))) {
 }
 $installed = Get-Content -LiteralPath (Join-Path $destination 'package.json') -Raw | ConvertFrom-Json
 if ($installed.version -ne '6.1.1') { throw 'Installed PICO SDK must be 6.1.1.' }
-# Apply the project's two small SDK compatibility guards to the local copy.
+# Apply import-worker guards to the local SDK copy.
 $patches = @(
     @{ File = 'Editor/PXR_Utils.cs'; Method = 'public static void SetDefaultDefineSymbols()' },
     @{ File = 'Editor/PXR_PortalEditor.cs'; Method = 'private static void InitializeOnLoad()' }
@@ -32,6 +32,16 @@ foreach ($patch in $patches) {
         $text = $text.Insert($match.Index + $match.Length, "if (AssetDatabase.IsAssetImportWorkerProcess()) return;`n            ")
         [IO.File]::WriteAllText($file, $text, [Text.UTF8Encoding]::new($false))
     }
+}
+# Native log-level callbacks may run on Android's UI thread, where Unity's
+# frame counter is unavailable. Preserve the log without reading that counter.
+$loaderFile = Join-Path $destination 'Runtime/Scripts/PXR_Loader.cs'
+$loaderText = [IO.File]::ReadAllText($loaderFile)
+$originalLog = 'PLog.d(TAG, $"SDKLoglevelChanged logLevel ={status}");'
+$safeLog = 'PLog.d(TAG, $"SDKLoglevelChanged logLevel ={status}", false);'
+if (-not $loaderText.Contains($safeLog)) {
+    if (-not $loaderText.Contains($originalLog)) { throw 'SDK log callback patch location missing.' }
+    [IO.File]::WriteAllText($loaderFile, $loaderText.Replace($originalLog, $safeLog), [Text.UTF8Encoding]::new($false))
 }
 $font = Join-Path $projectFolder 'Assets/Resources/Fonts/Chinese.ttf'
 if (-not (Test-Path -LiteralPath $font)) {

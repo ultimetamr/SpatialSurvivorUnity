@@ -1,9 +1,26 @@
 using System;
+using System.Linq;
+using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using UnityEngine;
 
 namespace SpatialSurvivor.Tests {
 public class SurvivorMrTests {
+ [Test] public void NativeSdkLogLevelEventCanArriveOnAWorkerThread(){
+  var sdk=AppDomain.CurrentDomain.GetAssemblies().Single(a=>a.GetName().Name=="ByteDance.PICO.XR");
+  var loader=sdk.GetType("ByteDance.PICO.XR.PXR_Loader",true);var bufferType=sdk.GetType("ByteDance.PICO.XR.XrEventDataBuffer",true);
+  var callback=loader.GetMethod("XrEventDataBufferFunction",BindingFlags.Static|BindingFlags.NonPublic,null,new[]{bufferType.MakeByRefType()},null);
+  Assert.That(callback,Is.Not.Null);var buffer=Activator.CreateInstance(bufferType);var typeField=bufferType.GetField("type");
+  typeField.SetValue(buffer,Enum.Parse(typeField.FieldType,"XR_TYPE_EVENT_LOG_LEVEL_CHANGE"));
+  var logLevel=sdk.GetType("ByteDance.PICO.XR.PLog",true).GetField("logLevel");var previous=logLevel.GetValue(null);
+  var debug=Enum.Parse(logLevel.FieldType,"LogDebug");var data=new byte[4000];Array.Copy(BitConverter.GetBytes(Convert.ToInt32(debug)),0,data,4,4);bufferType.GetField("data").SetValue(buffer,data);
+  int mainThread=Thread.CurrentThread.ManagedThreadId;
+  try{int callbackThread=Task.Run(()=>{callback.Invoke(null,new[]{buffer});return Thread.CurrentThread.ManagedThreadId;}).GetAwaiter().GetResult();
+   Assert.That(callbackThread,Is.Not.EqualTo(mainThread));Assert.That(logLevel.GetValue(null),Is.EqualTo(debug));
+  }finally{logLevel.SetValue(null,previous);}
+ }
  [TestCase(SurvivorMrPhase.Booting)]
  [TestCase(SurvivorMrPhase.Permission)]
  [TestCase(SurvivorMrPhase.Starting)]

@@ -6,15 +6,13 @@
 
 面向 PICO 头显的 Unity/C# 混合现实肉鸽生存游戏。扫描真实房间后，玩家通过真实走位、近战挥击、枪械和自动技能迎战地面与飞行怪物，获得强化、技能进化与局外武器成长。原名「空间幸存者」，保留原包名与存档。编辑器与实机验证记录见下文。
 
-- 当前版本：**2.7.4 / versionCode 25**
+- 当前版本：**2.7.5 / versionCode 26**
 - Unity：**6.6 · 6000.6.8f1**
 - PICO Unity SDK：**6.1.1**
 - Android 包名：`com.example.spatialsurvivor.unity`
 - 平台：Android ARM64 / IL2CPP / OpenGLES3
 
-本轮改为近身接触伤害，移除怪物弹幕与远程法阵；直接追击不受扫描边界和家具限制，隐藏脚下常驻圆圈，保留冰冻和扫描房间主题。见 [2.7.4 近身追击](Docs/DIRECT_PURSUIT_V274.md)。
-
-自动回归、Unity / Gradle 构建及设备检查范围见 [2.7.4 验证摘要](Docs/Validation/v274-direct-summary.json)。PICO 云端审核尚未执行。
+本轮恢复脚下蓝色魔法光圈，保持此前缩小一半的尺寸，只隐藏走路的小黄圈。怪物直接追击、接触伤害、冰冻技能和扫描房间主题继续保留。见 [2.7.5 验证摘要](Docs/Validation/v275-halo-summary.json)；此前追击调整见 [2.7.4 实现说明](Docs/DIRECT_PURSUIT_V274.md)。PICO 云端审核尚未执行。
 
 **PICO 云打包审核：**仓库根目录现提供标准 Gradle 工程，直接运行 `./gradlew assembleRelease`（Gradle 8.11.1 / JDK 17 / Android SDK 35）。`AndroidCloud` 包含 Unity 已编译运行快照和 Android 工程，SDK 运行依赖自动从官方固定版本恢复。完整 C# 源码仍在本仓库；改动游戏源码后需先经 Unity 重新生成运行快照。平台版本号与构建步骤见 [云打包交接](Docs/PICO_CLOUD_BUILD.md)。源码提交不代表云端审核通过。
 

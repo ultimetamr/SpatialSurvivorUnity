@@ -79,6 +79,18 @@ def prepare(root, sdk_source, download, check_only):
                 raise ValueError("SDK compatibility guard missing: " + relative)
             content = content[:match.end()] + GUARD + "\n            " + content[match.end():]
             path.write_bytes(content.replace("\r\n", "\n").encode("utf-8"))
+    # Android may deliver a log-level event on its UI thread. Reading Unity's
+    # frame counter there throws across reverse P/Invoke and aborts IL2CPP.
+    loader = destination / "Runtime/Scripts/PXR_Loader.cs"
+    content = loader.read_text(encoding="utf-8-sig")
+    original = 'PLog.d(TAG, $"SDKLoglevelChanged logLevel ={status}");'
+    safe = 'PLog.d(TAG, $"SDKLoglevelChanged logLevel ={status}", false);'
+    if safe not in content:
+        if original not in content:
+            raise ValueError("SDK log callback patch location missing")
+        if check_only:
+            raise ValueError("SDK log callback thread guard missing")
+        loader.write_bytes(content.replace(original, safe).encode("utf-8"))
     font = root / "Assets/Resources/Fonts/Chinese.ttf"
     if not font.is_file():
         if check_only:

@@ -3,8 +3,8 @@ public static class SurvivorIdentity {
  public const string Name="幻域守卫";
  public const string EnglishName="REALM WARDENS";
  public const string MenuTitle="幻域\n守卫";
- public const string Version="2.7.4";
- public const int VersionCode=25;
+ public const string Version="2.7.5";
+ public const int VersionCode=26;
  public static string SaveDirectory {
   get {
 #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN

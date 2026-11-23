@@ -1,0 +1,103 @@
+{
+  "date": "2026-11-23",
+  "version": "2.7.5",
+  "versionCode": 26,
+  "packageName": "com.example.spatialsurvivor.unity",
+  "focus": "Restore blue magic halo at previous half-size while keeping walking gold circle hidden",
+  "tests": {
+    "result": "Passed",
+    "total": "12",
+    "passed": "12",
+    "failed": "0",
+    "start-time": "2026-11-23 10:42:18Z"
+  },
+  "testScope": [
+    "SurvivorContinuousPursuitTests",
+    "SurvivorDomainBossTests",
+    "SurvivorMrTests.NativeSdkLogLevelEventCanArriveOnAWorkerThread"
+  ],
+  "priorFullRegression": {
+    "version": "2.7.4",
+    "passed": 162,
+    "total": 162,
+    "notRerunForThisVisualFix": true
+  },
+  "regressions": [
+    "blue halo visible during combat at player.range * 0.5",
+    "blue halo hidden in menu",
+    "passive gold circle stays hidden even with magnetic pickup skill",
+    "actual player range and room theme unchanged",
+    "player damage domains remain animated and functional",
+    "native SDK log-level callback completes from worker thread without Unity frame counter access",
+    "contact-only enemies, free pursuit, freeze and tracking guards retained"
+  ],
+  "unityApk": {
+    "version": "2.7.5",
+    "versionCode": 26,
+    "bytes": 96353198,
+    "sha256": "fe9a04bd03def71b212311c909d723e66a55c215026ccc29b814bd3736b65036",
+    "manifest": {
+      "enable_mr_safeguard": 1,
+      "enable_vst": 1
+    },
+    "iconMatches1024Source": true,
+    "v2SignatureVerified": true,
+    "restoredThemeTypesCompiled": true
+  },
+  "gradleReleaseApk": {
+    "version": "2.7.5",
+    "versionCode": 26,
+    "bytes": 74409159,
+    "sha256": "2197cbf74e5f208f414f4fce6cb0347485a00e184568b88e4d17dccd134b1828",
+    "manifest": {
+      "enable_mr_safeguard": 1,
+      "enable_vst": 1
+    },
+    "iconMatches1024Source": true,
+    "v2SignatureVerified": true,
+    "restoredThemeTypesCompiled": true
+  },
+  "unityAssetsVerifiedAcrossApks": 457,
+  "nativeGameLibrariesVerifiedAcrossApks": 4,
+  "cloudGradleBuild": {
+    "result": "BUILD SUCCESSFUL",
+    "host": "Windows / JDK17 / SDK35"
+  },
+  "deviceDeployment": {
+    "date": "2026-11-23",
+    "version": "2.7.5",
+    "versionCode": 26,
+    "serial": "PB314XHGKC160016G",
+    "model": "B3110",
+    "packageName": "com.example.spatialsurvivor.unity",
+    "installed": true,
+    "installMode": "adb install -r",
+    "dataPreserved": true,
+    "firstInstallTimeUnchanged": true,
+    "launchResult": "Status ok",
+    "observedPid": 15029,
+    "sameProcessObservedSeconds": 55,
+    "capturedFatalMarkersAfterFix": 0,
+    "foregroundObserved": true,
+    "gameplayAccepted": false,
+    "initialAttemptNativeCrash": true,
+    "initialCrashCause": "SDK log-level event callback accessed Unity Time.frameCount from Android UI thread",
+    "fix": "Disable frame-count lookup for native log-level event log; reproduced worker callback in editor test",
+    "knownLogIssues": [
+      "AssetPackManager ClassNotFoundException",
+      "PXR tracking shared memory ret:-10002",
+      "SceneCapture snapshot query timeout"
+    ]
+  },
+  "picoLinuxJenkinsTested": false,
+  "picoReviewSubmitted": false,
+  "limitations": [
+    "Headset visual gameplay acceptance pending",
+    "Cloud official PICO runtime AAR differs from local Unity development AAR",
+    "Initial device attempt crashed in SDK log-level callback; final APK includes callback fix and passed scoped launch observation",
+    "AssetPackManager class lookup, eye-tracking shared-memory and scene-capture timeout logs remain unresolved"
+  ],
+  "preview": {
+    "v275-domains.png": "c8709f7d3707d56a6ffba0802237b65c4922d9d9ff7aa4d85556ac1bea54b307"
+  }
+}

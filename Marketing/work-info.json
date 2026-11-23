@@ -1,17 +1,17 @@
 {
   "workName": "幻域守卫",
   "englishName": "Realm Wardens",
-  "versionName": "2.7.4 · 近身追击",
-  "version": "2.7.4",
-  "versionCode": 25,
+  "versionName": "2.7.5 · 魔法光圈修复",
+  "version": "2.7.5",
+  "versionCode": 26,
   "packageName": "com.example.spatialsurvivor.unity",
   "tagline": "把客厅变成魔法战场，用挥剑与射击对抗怪潮，在混合现实中打造你的生存流派。",
   "description": "幻域守卫是一款面向 PICO 头显的混合现实肉鸽生存游戏。扫描真实房间后，地面与空中魔法生物进入你的现实空间；你可以真实走位、挥动近战武器，也可以使用星火手枪、符文霰弹枪和自动技能抵挡怪潮。\n\n游戏包含经验升级、随机强化与技能进化，搭配技能手册、怪物图鉴、武器商店和独立局外金币，让每局战斗都能形成不同成长路线。项目使用 Unity 6 与 C# 实现，采用卡通魔法生物、骨骼动画、空间 UI 和魔法特效，并提供编辑器模拟房间与 PICO 真机两种开发验证方式。",
   "versionNotes": [
-    "取消怪物弹幕、脚下伤害法阵及首领远程范围伤害，统一为实际近身接触才扣血。",
-    "怪物直接追踪当前目标，不受扫描地面边界、墙面和家具碰撞限制；拥堵无可用避让方向时沿最短方向继续靠近。",
-    "隐藏脚下常驻攻击范围圈与金色吸附圈，保留实际技能范围和吸附效果。",
-    "保留怪物避让、冰冻技能、扫描房间主题模型、应用图标、包名和已有进度；同步更新怪物图鉴说明。"
+    "恢复战斗时脚下的蓝色魔法光圈，沿用此前缩小一半的显示尺寸。",
+    "走路的小黄圈继续隐藏，实际吸附功能保留。",
+    "保留怪物直接追击、仅近身接触伤害、冰冻技能以及扫描房间模型。",
+    "修复 PICO SDK 日志回调跨线程访问帧号导致的启动崩溃，并同步依赖恢复脚本。"
   ],
   "engine": "Unity 6.6 / 6000.6.8f1",
   "platform": "PICO / Android ARM64 / MR",
@@ -21,7 +21,7 @@
   "posterType": "旧名称概念海报，历史资料，非当前版本截图",
   "sourcePublicationDate": "2026-11-23",
   "lastPublishedRelease": "https://github.com/ultimetamr/SpatialSurvivorUnity/releases/tag/v2.2.3",
-  "publicationStatus": "2.7.4 源码与云打包快照提交；162/162 回归及 Unity/Gradle APK 构建通过。头显未连接，本版尚未安装或真机验收，PICO 云端审核未执行，未新建 GitHub Release",
+  "publicationStatus": "2.7.5 光圈与 SDK 回调修复，12/12 针对性测试通过，Unity 与 Gradle APK 构建及一致性验证通过，已覆盖安装并观察同一进程运行 55 秒，最终观察无崩溃标记；头显画面体验与 PICO 云端审核待验收",
   "previousName": "空间幸存者（SpatialSurvivor）",
   "cloudBuildGuide": "Docs/PICO_CLOUD_BUILD.md"
 }

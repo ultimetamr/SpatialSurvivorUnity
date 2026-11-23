@@ -1,4 +1,4 @@
-# PICO 云打包审核交接 · 幻域守卫 2.7.4
+# PICO 云打包审核交接 · 幻域守卫 2.7.5
 
 ## 当前云平台入口（2026-11-09 修正）
 
@@ -6,7 +6,7 @@
 
 - 项目目录：仓库根目录 `.`；Android 构建任务：`assembleRelease`。
 - Gradle 8.11.1、AGP 8.10.1、JDK 17、Android SDK Platform 35 / Build Tools 35.0.0。
-- 默认 versionName 2.7.4、versionCode 25，平台 init script 可以覆盖版本号。平台日志曾注入 1；若要更新设备上已有 2.7.3 / 24，应在平台把 versionCode 设为 25 或更高。
+- 默认 versionName 2.7.5、versionCode 26，平台 init script 可以覆盖版本号。平台日志曾注入 1；若要更新设备上已有 2.7.4 / 25，应在平台把 versionCode 设为 26 或更高。
 - 产物：`AndroidCloud/launcher/build/outputs/apk/release/launcher-release.apk`。
 - 包名：`com.example.spatialsurvivor.unity`；应用名：幻域守卫；图标：翡翠符文剑与月冠（1024²）。
 - 云端需要访问 Google Maven / Maven Central / Gradle 分发源及 `api.github.com` / `raw.githubusercontent.com`（或校验相同哈希的 `cdn.jsdelivr.net` 备用地址）。没有本机绝对 SDK / NDK / JDK 路径，不需要 Unity 或 NDK 来重编译此 Android 快照。
@@ -21,7 +21,7 @@
 
 完整 Unity/C# 源码仍在 `Assets`、`Packages` 与 `ProjectSettings`。`AndroidCloud` 保存 Unity 已编译的游戏运行快照、Android Java 源码、清单和资源，Gradle 会执行真实 Android 编译、资源合并、DEX、打包与签名；**云端不会重新编译 C# / IL2CPP，也不是从 APK 直接复制出最终安装包**。
 
-当前快照来自 2.7.4 Unity APK，校验值记录在 `AndroidCloud/snapshot.json` 与 `Docs/Validation/v274-direct-summary.json`。游戏 player 是 Development 配置，Android `release` 任务使用调试签名供审核测试；平台正式签名政策需要在其控制台另行满足。运行快照中原有资产的权利不因提交而改变。
+当前快照来自 2.7.5 Unity APK，校验值记录在 `AndroidCloud/snapshot.json` 与 `Docs/Validation/v275-halo-summary.json`。游戏 player 是 Development 配置，Android `release` 任务使用调试签名供审核测试；平台正式签名政策需要在其控制台另行满足。运行快照中原有资产的权利不因提交而改变。
 
 改 C#、场景、模型或游戏资源后，必须先用 Unity 重新构建，再运行：
 
@@ -64,7 +64,7 @@ PICO SDK 受原有许可约束，不复制进公开仓库。开源中文字体�
    python3 Tools/Prepare-CloudBuild.py --check
    ```
 
-   脚本从官方 `Pico-Developer/PICO-Unity-SDK` 获取固定提交 `8ed808855c1dbc2a071abd709824b593977d6c24` 的 `XR` 目录，核对 SDK 6.1.1，恢复到 `Packages/com.bytedance.pico.xr`，应用两个导入兼容守卫，并恢复 Noto Sans SC 到原有字体 GUID 路径。原 SDK 许可继续适用，详见 `THIRD_PARTY_NOTICES.md`。
+   脚本从官方 `Pico-Developer/PICO-Unity-SDK` 获取固定提交 `8ed808855c1dbc2a071abd709824b593977d6c24` 的 `XR` 目录，核对 SDK 6.1.1，恢复到 `Packages/com.bytedance.pico.xr`，应用两个导入兼容守卫和运行时日志回调线程修复，并恢复 Noto Sans SC 到原有字体 GUID 路径。原 SDK 许可继续适用，详见 `THIRD_PARTY_NOTICES.md`。
 
    云端已有获授权 SDK 时，可用以下命令替代在线获取：
 
@@ -131,3 +131,9 @@ Unity 初始化启用 MR Safeguard，Android 构建和导出要求 `enable_mr_sa
 ## 2.7.4 · 近身追击（2026-11-23）
 
 怪物伤害统一为近身接触，取消弹幕与远程伤害法阵；地面、空中与首领追击不再受扫描网格或家具碰撞限制，脚下常驻圈隐藏，房间模型继续保留。须使用本轮源码与重新生成的 2.7.4 / 25 快照，见 [实现说明](DIRECT_PURSUIT_V274.md) 和 [验证摘要](Validation/v274-direct-summary.json)。
+
+## 2.7.5 · 魔法光圈修复（2026-11-23）
+
+恢复战斗中的蓝色魔法范围圈（沿用半尺寸），走路的小黄圈保持隐藏。接触伤害、自由追击和扫描房间模型保留。源码与运行快照均更新为 2.7.5 / 26，验证范围见 [验证摘要](Validation/v275-halo-summary.json)。
+
+2.7.5 真机首轮启动曾在 SDK 日志等级变化回调中发生原生崩溃：非 Unity 线程读取 Time.frameCount，异常穿越 reverse P/Invoke。当前快照已包含修复（该回调日志不再读取帧号），两个依赖恢复脚本也会自动应用此修改；不公开重分发 SDK 源文件。新增线程回调回归验证，实际设备运行范围见本版本摘要。

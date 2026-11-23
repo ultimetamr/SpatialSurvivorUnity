@@ -46,12 +46,12 @@ public class SurvivorContinuousPursuitTests {
   for(int i=0;i<24;i++){var before=boss.go.transform.position;game.Step(1/90f);Assert.That(SurvivorGame.Distance(before,boss.go.transform.position),Is.GreaterThan(.001f),"Boss casting must not stop chase");Assert.That(((Vector3[])Get(game,"bossTargets"))[0],Is.EqualTo(warning),"A locked telegraph must remain avoidable");}
   game.Menu();yield return new ExitPlayMode();
  }
- [UnityTest]public IEnumerator FootRingIsHiddenWithoutReducingAttackRangeOrRoomTheme(){
+ [UnityTest]public IEnumerator MagicHaloReturnsWhileWalkingGoldCircleStaysHidden(){
   EditorSceneManager.OpenScene("Assets/Scenes/SpatialSurvivor.unity");yield return new EnterPlayMode();yield return null;yield return null;
   var game=Begin();game.player.range=3;var theme=game.platform.MR.Theme;int surfaces=theme.Count;Call(game,"Visuals");var ring=(LineRenderer)Get(game,"halo");
-  Assert.That(ring.enabled,Is.False);game.player.stacks[(int)UpgradeId.MAGNETIC_FIELD]=1;Call(game,"Visuals");Assert.That(((GameObject)Get(game.skillVisuals,"magnet")).activeSelf,Is.False,"Passive gold pickup circle must stay hidden");
+  Assert.That(ring.enabled,Is.True);for(int i=0;i<ring.positionCount;i++)Assert.That(SurvivorGame.Distance(ring.GetPosition(i),game.PlayerPosition),Is.EqualTo(1.5f).Within(.0001f));game.player.stacks[(int)UpgradeId.MAGNETIC_FIELD]=1;Call(game,"Visuals");Assert.That(((GameObject)Get(game.skillVisuals,"magnet")).activeSelf,Is.False,"Passive gold pickup circle must stay hidden");
   Assert.That(game.player.range,Is.EqualTo(3));Assert.That(game.platform.MR.Theme,Is.SameAs(theme));Assert.That(theme.Count,Is.EqualTo(surfaces).And.GreaterThan(0));
-  game.Menu();yield return new ExitPlayMode();
+  game.Menu();Call(game,"Visuals");Assert.That(ring.enabled,Is.False,"Magic halo hides outside combat");yield return new ExitPlayMode();
  }
  [UnityTest]public IEnumerator AllSpeciesAndBossPatternsRequireActualContact(){
   EditorSceneManager.OpenScene("Assets/Scenes/SpatialSurvivor.unity");yield return new EnterPlayMode();yield return null;yield return null;
