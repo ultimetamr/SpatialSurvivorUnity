@@ -1,0 +1,72 @@
+{
+  "date": "2026-11-23",
+  "version": "2.7.1",
+  "versionCode": 22,
+  "packageName": "com.example.spatialsurvivor.unity",
+  "tests": {
+    "result": "Passed",
+    "total": "156",
+    "passed": "156",
+    "failed": "0",
+    "start-time": "2026-11-23 07:18:44Z"
+  },
+  "regressions": [
+    "partial live mesh retains the invisible full captured floor",
+    "walking player refreshes navigation and pursuer crosses the initial window",
+    "unreachable exact target chooses nearest reachable floor",
+    "small creature traverses a 0.35m gap",
+    "navigation rebuild preserves existing enemy floor and limits new spawns to player component",
+    "flying creature routes around a full-height wall",
+    "runtime room dressing and scan visualization controls removed"
+  ],
+  "cloudExportNegativeChecks": [
+    "MR Safeguard disabled export rejected before mutation",
+    "VST disabled export rejected before mutation"
+  ],
+  "unityApk": {
+    "version": "2.7.1",
+    "versionCode": 22,
+    "bytes": 96199427,
+    "sha256": "a94ad2971697820562bcb254e42b4fd29f18f71b51618ff3d628094a67713188",
+    "manifest": {
+      "enable_mr_safeguard": 1,
+      "enable_vst": 1
+    },
+    "iconMatches1024Source": true,
+    "v2SignatureVerified": true
+  },
+  "gradleReleaseApk": {
+    "version": "2.7.1",
+    "versionCode": 22,
+    "bytes": 74408047,
+    "sha256": "4acfd980db66355b95ff417b67015444e582117e6444ad3858a8dfb03ef913c7",
+    "manifest": {
+      "enable_mr_safeguard": 1,
+      "enable_vst": 1
+    },
+    "iconMatches1024Source": true,
+    "v2SignatureVerified": true
+  },
+  "unityAssetsVerifiedAcrossApks": 457,
+  "nativeGameLibrariesVerifiedAcrossApks": 4,
+  "cloudGradleBuild": {
+    "result": "BUILD SUCCESSFUL",
+    "host": "Windows / JDK17 / SDK35",
+    "seconds": 23,
+    "tasks": 86,
+    "executed": 31,
+    "upToDate": 55
+  },
+  "headsetTested": false,
+  "picoLinuxJenkinsTested": false,
+  "picoReviewSubmitted": false,
+  "limitations": [
+    "No headset connected; room pursuit and passthrough require device acceptance",
+    "Real walls and missing scanned floor still constrain enemies",
+    "Cloud official PICO runtime AAR differs from local Unity development AAR; both need device testing"
+  ],
+  "previews": {
+    "v271-guide.png": "8fd42b991e547bfeca4fc340914c2a9dfb4951f7821fd6d4e6518ce84fb4a9d3",
+    "v271-ui-mr.png": "9a638d496d7c440a07edce2b2f2db94edb9134442f38e7f6e5ba10ce8a3aab7e"
+  }
+}

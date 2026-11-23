@@ -42,7 +42,7 @@
     <meta-data android:name="pvr.app.splash" android:value="0" />
     <meta-data android:name="PICO.swift.feature" android:value="0" />
     <meta-data android:name="adaptive_resolution" android:value="0" />
-    <meta-data android:name="enable_mr_safeguard" android:value="0" />
+    <meta-data android:name="enable_mr_safeguard" android:value="1" />
     <meta-data android:name="enable_vst" android:value="1" />
     <meta-data android:name="enable_anchor" android:value="0" />
     <meta-data android:name="mr_map_mgr_auto_start" android:value="0" />

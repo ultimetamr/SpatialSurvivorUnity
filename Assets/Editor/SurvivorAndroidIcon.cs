@@ -11,6 +11,14 @@ public sealed class SurvivorAndroidIcon : IPostGenerateGradleAndroidProject {
  public int callbackOrder=>int.MaxValue;
 
  public void OnPostGenerateGradleAndroidProject(string path){
+  // A passthrough game must declare MR safety; VST alone keeps VR policy.
+  var roomManifest=new XmlDocument();roomManifest.Load(Path.Combine(path,"src/main/AndroidManifest.xml"));
+  var roomNamespaces=Namespaces(roomManifest);
+  foreach(var flag in new[]{"enable_mr_safeguard","enable_vst"}){
+   var metadata=roomManifest.SelectNodes("/manifest/application/meta-data[@android:name='"+flag+"']",roomNamespaces);
+   if(metadata.Count!=1||((XmlElement)metadata[0]).GetAttribute("value",AndroidNamespace)!="1")
+    throw new BuildFailedException("Room-scale MR requires "+flag+"=1. Enable MR Safeguard and Video SeeThrough in PICO project settings.");
+  }
   var source=Path.Combine(Application.dataPath,"Resources/Icons/AppIcon.png");
   var launcher=Path.Combine(Directory.GetParent(Path.GetFullPath(path)).FullName,"launcher/src/main");
   var manifest=Path.Combine(launcher,"AndroidManifest.xml");

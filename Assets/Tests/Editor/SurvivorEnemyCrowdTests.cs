@@ -26,5 +26,24 @@ public class SurvivorEnemyCrowdTests {
   for(int i=0;i<18;i++){Assert.That(travel[i],Is.GreaterThan(.2f),"Live wave must keep moving: "+i);Assert.That(wave[i].active&&!wave[i].falling,Is.True);Assert.That(game.platform.Navigation.Contains(wave[i].go.transform.position,wave[i].radius),Is.True);for(int j=i+1;j<18;j++)Assert.That(SurvivorGame.Distance(wave[i].go.transform.position,wave[j].go.transform.position),Is.GreaterThanOrEqualTo(SurvivorEnemyCrowd.Radius(wave[i])+SurvivorEnemyCrowd.Radius(wave[j])+.02f),"Combat pair "+i+" / "+j);}Assert.That(game.player.health,Is.LessThan(1000000),"Circling creatures must still attack");float clock=game.player.elapsed;var pos=wave[0].go.transform.position;game.Pause();game.Step(1);Assert.That(wave[0].go.transform.position,Is.EqualTo(pos));Assert.That(game.player.elapsed,Is.EqualTo(clock));yield return new ExitPlayMode();
  }
  [Test]public void PausedResolverDoesNotMoveAnOverlap(){At(0,Vector3.zero);At(1,Vector3.zero);SurvivorEnemyCrowd.Resolve(crowd,nav,0);Assert.That(crowd[0].go.transform.position,Is.EqualTo(center));Assert.That(crowd[1].go.transform.position,Is.EqualTo(center));}
+ [Test]public void TargetInsideFurnitureDoesNotFreezeAReachablePursuer(){
+  var box=GameObject.CreatePrimitive(PrimitiveType.Cube);box.transform.SetParent(root.transform);box.layer=RoomNavigation.Layer;box.transform.position=center+new Vector3(1,.7f,0);box.transform.localScale=new Vector3(1,1.4f,1);Physics.SyncTransforms();nav.Rebuild(center+Vector3.up*1.65f);
+  At(0,Vector3.left*3);var start=crowd[0].go.transform.position;var target=center+Vector3.right;
+  var goal=start;for(int i=0;i<180;i++){var e=crowd[0];if(i%24==0||Vector3.Distance(goal,e.go.transform.position)<.1f)goal=nav.Waypoint(e.go.transform.position,target,e.radius);e.go.transform.position=SurvivorEnemyCrowd.Move(0,crowd,goal,.015f,nav);Assert.That(nav.Contains(e.go.transform.position,e.radius));}
+  Assert.That(SurvivorGame.Distance(crowd[0].go.transform.position,target),Is.LessThan(SurvivorGame.Distance(start,target)-1.5f),"An unreachable exact target must use the nearest reachable floor, not return the start");
+ }
+ [Test]public void SmallCreatureTraversesAnOpeningNarrowerThanOldFixedClearance(){
+  for(int i=0;i<2;i++){var wall=GameObject.CreatePrimitive(PrimitiveType.Cube);wall.transform.SetParent(root.transform);wall.layer=RoomNavigation.Layer;wall.transform.position=center+new Vector3(i==0?-2.05f:2.3f,.7f,0);wall.transform.localScale=new Vector3(4,1.4f,.25f);}
+  Physics.SyncTransforms();nav.Rebuild(center+new Vector3(.125f,1.65f,1));At(0,new Vector3(.125f,0,-2));var target=center+new Vector3(.125f,0,2);
+  for(int i=0;i<330;i++){var e=crowd[0];var goal=nav.Waypoint(e.go.transform.position,target,e.radius);e.go.transform.position=SurvivorEnemyCrowd.Move(0,crowd,goal,.015f,nav);}
+  Assert.That(crowd[0].go.transform.position.z,Is.GreaterThan(center.z+1),"Small creatures fit through a .35m opening; raster clearance must not impose a .44m disc plus cell alignment");
+ }
+ [Test]public void RebuildAcrossDisconnectedFloorDoesNotDeleteExistingEnemyNavigation(){
+  var floor=root.transform.GetChild(0);floor.gameObject.SetActive(false);
+  for(int i=0;i<2;i++){var island=GameObject.CreatePrimitive(PrimitiveType.Cube);island.transform.SetParent(root.transform);island.layer=RoomNavigation.Layer;island.transform.position=center+new Vector3(i==0?-2:2,-.1f,0);island.transform.localScale=new Vector3(3,.2f,4);}
+  Physics.SyncTransforms();nav.Rebuild(center+new Vector3(-2,1.65f,0));Assert.That(nav.Contains(center+Vector3.right*2,.1f),Is.True);
+  nav.Rebuild(center+new Vector3(2,1.65f,0));Assert.That(nav.Contains(center-Vector3.right*2,.1f),Is.True);
+  for(int i=0;i<10;i++){Assert.That(nav.Spawn(center+Vector3.right*2,.5f,.1f,new System.Random(i),out var point,out _));Assert.That(point.x,Is.GreaterThan(center.x),"Spawns remain on the player's component");}
+ }
 }
 }

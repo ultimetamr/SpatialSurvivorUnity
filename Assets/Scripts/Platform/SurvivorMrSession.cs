@@ -14,12 +14,6 @@ namespace SpatialSurvivor {
 [DefaultExecutionOrder(-150)]
 public sealed class SurvivorMrSession:MonoBehaviour {
  public SurvivorMrState State {get;}=new SurvivorMrState();
- public bool ShowMesh {get;private set;}
- public SurvivorRoomTheme Theme {get;private set;}
- public bool ThemeVisible=>Theme!=null&&Theme.Visible;
- public void ToggleTheme(){EnsureTheme();Theme.SetVisible(!Theme.Visible);if(platform.Simulation)platform.SetSimulationThemeVisible(Theme.Visible);PlayerPrefs.SetInt("RealmWardens.RoomTheme",Theme.Visible?1:0);PlayerPrefs.Save();}
- void EnsureTheme(){if(Theme!=null)return;Theme=new SurvivorRoomTheme(platform.Origin);Theme.SetVisible(PlayerPrefs.GetInt("RealmWardens.RoomTheme",1)!=0);}
-
  public int MeshCount=>liveRoom?.Count??0;
  public int SurfaceCount=>capturedRoom?.Count??0;
  public int TriangleCount=>(liveRoom?.Triangles??0)+(capturedRoom?.Triangles??0);
@@ -28,10 +22,10 @@ public sealed class SurvivorMrSession:MonoBehaviour {
  public bool HandPermissionGranted {get;private set;}
  public bool MeshRunning=>meshSubsystem!=null&&meshSubsystem.running;
  public bool SceneProviderReady {get;private set;}
- public string Diagnostics=>platform.Simulation?"当前为编辑器模拟；真实透视和系统扫描只在 PICO 头显中运行\n魔法场景依据模拟房间尺寸生成":
+ public string Diagnostics=>platform.Simulation?"当前为编辑器模拟；真实透视和系统扫描只在 PICO 头显中运行":
   "透视 "+(PassthroughActive?"已开启":"等待")+" · 定位 "+(platform.Tracking?"正常":"丢失")+"\n"+
   platform.TrackingOriginStatus+" · 实时网格 "+MeshCount+" · 场景表面 "+SurfaceCount+"\n"+
-  "魔法场景 "+(ThemeVisible?"开启":"关闭")+" · "+(Theme?.Count??0)+" 处扫描装饰\n"+
+  "房间模型隐藏 · 扫描数据仅用于导航\n"+
   "手势权限 "+(HandPermissionGranted?"已授权":"未授权（手柄备用）")+"\n"+
   "通行地面 "+(platform.Navigation.Count*RoomNavigation.Cell*RoomNavigation.Cell).ToString("F1")+" m² · "+TriangleCount+" 三角形\n"+State.Detail+
   (string.IsNullOrEmpty(LastError)?"":"\n"+LastError);
@@ -41,7 +35,7 @@ public sealed class SurvivorMrSession:MonoBehaviour {
  const string SpatialPermission="com.picovr.permission.SPATIAL_DATA";
 
  void Awake(){platform=GetComponent<SurvivorPlatform>();}
- void Start(){EnsureTheme();if(platform.Simulation){BuildSimulationTheme();State.Set(SurvivorMrPhase.Simulation,"编辑器模拟房间");return;}Begin(Initialize(false));}
+ void Start(){if(platform.Simulation){State.Set(SurvivorMrPhase.Simulation,"编辑器模拟房间");return;}Begin(Initialize(false));}
  void Begin(IEnumerator work){operation=StartCoroutine(Run(work));}
  IEnumerator Run(IEnumerator work){yield return work;operation=null;}
  public void Retry(){if(operation!=null)return;if(platform.Simulation){platform.RebuildRoom();return;}Begin(Initialize(false));}
@@ -51,23 +45,12 @@ public sealed class SurvivorMrSession:MonoBehaviour {
 #endif
  }
  public void ReloadRoom(){reloadPending=true;}
- public void ToggleMesh(){ShowMesh=!ShowMesh;if(roomMaterial)roomMaterial.SetFloat("_Preview",ShowMesh?1:0);liveRoom?.SetPreview(ShowMesh);capturedRoom?.SetPreview(ShowMesh);}
  public void RebuildNavigation(){
-  // A partial live scan can contain walls before the floor arrives. Retain captured floor in that case.
-  if(capturedRoom!=null)capturedRoom.SetActive(MeshCount==0);
+  // Capture contains the complete floor; partial live meshes only supplement it.
+  capturedRoom?.SetActive(true);
   Physics.SyncTransforms();platform.Navigation.Rebuild(platform.Head.transform.position);
-  if(!platform.Navigation.Ready&&MeshCount>0&&SurfaceCount>0){capturedRoom.SetActive(true);Physics.SyncTransforms();platform.Navigation.Rebuild(platform.Head.transform.position);}
  }
 
- void BuildSimulationTheme(){
-  platform.SetSimulationThemeVisible(Theme.Visible);
-  Theme.Clear();var square=new[]{new Vector2(-5,-5),new Vector2(5,-5),new Vector2(5,5),new Vector2(-5,5)};
-  Theme.UpsertPolygon(new Guid(1,0,0,new byte[8]),RoomThemeKind.Floor,Vector3.up*.008f,Quaternion.Euler(90,0,0),square);
-  var wall=new[]{new Vector2(-5,0),new Vector2(5,0),new Vector2(5,2.6f),new Vector2(-5,2.6f)};
-  for(int i=0;i<4;i++){var q=Quaternion.Euler(0,i*90,0);Theme.UpsertPolygon(new Guid(2+i,0,0,new byte[8]),RoomThemeKind.Wall,q*new Vector3(0,0,4.92f),q,wall);}
-  Theme.UpsertBox(new Guid(6,0,0,new byte[8]),RoomThemeKind.Table,new Vector3(2,.5f,1),Quaternion.identity,Vector3.zero,Quaternion.identity,new Vector3(1.2f,1,1.5f));
-  Theme.UpsertBox(new Guid(7,0,0,new byte[8]),RoomThemeKind.Cabinet,new Vector3(-2,.4f,-1.5f),Quaternion.identity,Vector3.zero,Quaternion.identity,new Vector3(1.5f,.8f,1));
- }
  IEnumerator Initialize(bool scan) {
   lifetime?.Cancel();lifetime?.Dispose();lifetime=new CancellationTokenSource();LastError="";SceneProviderReady=false;
   State.Set(SurvivorMrPhase.Booting,"正在启动 PICO XR（最长 20 秒）");
@@ -121,8 +104,8 @@ public sealed class SurvivorMrSession:MonoBehaviour {
  }
  void EnsureGeometry(){
   if(roomMaterial)return;var shader=Resources.Load<Shader>("Shaders/RoomOcclusion");roomMaterial=new Material(shader);
-  roomMaterial.SetFloat("_Preview",ShowMesh?1:0);liveRoom=new SurvivorRoomGeometry(platform.Origin,"Live Spatial Mesh - Navigation Only",roomMaterial);capturedRoom=new SurvivorRoomGeometry(platform.Origin,"Captured Room - Floor Walls Furniture",roomMaterial);
-  liveRoom.SetPreview(ShowMesh);capturedRoom.SetPreview(ShowMesh);
+  roomMaterial.SetFloat("_Preview",0);liveRoom=new SurvivorRoomGeometry(platform.Origin,"Live Spatial Mesh - Navigation Only",roomMaterial);capturedRoom=new SurvivorRoomGeometry(platform.Origin,"Captured Room - Floor Walls Furniture",roomMaterial);
+  liveRoom.SetPreview(false);capturedRoom.SetPreview(false);
   RenderSettings.ambientMode=UnityEngine.Rendering.AmbientMode.Flat;RenderSettings.ambientLight=new Color(.65f,.7f,.8f);
   var fill=new GameObject("MR Model Light",typeof(Light));fill.transform.SetParent(transform,false);fill.transform.rotation=Quaternion.Euler(45,-30,0);fill.GetComponent<Light>().type=LightType.Directional;fill.GetComponent<Light>().intensity=.7f;
   if(!GetComponent<SurvivorTrackedHands>())gameObject.AddComponent<SurvivorTrackedHands>();
@@ -144,7 +127,7 @@ public sealed class SurvivorMrSession:MonoBehaviour {
   var capture=PXR_MixedReality.StartSceneCaptureAsync(lifetime.Token);yield return Wait(capture,240);
   if(operationError!=null){Fail(operationError);yield break;}
   if(capture.Result!=PxrResult.SUCCESS){LastError="扫描未完成："+capture.Result+"，可再次扫描";State.Set(SurvivorMrPhase.Running,"保留原房间数据");yield break;}
-  liveRoom.Clear();capturedRoom.Clear();Theme?.Clear();platform.RoomChanged();
+  liveRoom.Clear();capturedRoom.Clear();platform.RoomChanged();
   yield return LoadCapturedRoom();
   if(State.Phase!=SurvivorMrPhase.Failed)State.Set(SurvivorMrPhase.Running,"房间扫描完成，等待地面网格就绪");
  }
@@ -154,21 +137,15 @@ public sealed class SurvivorMrSession:MonoBehaviour {
   if(operationError!=null){Fail(operationError);yield break;}
   if(query.Result.result!=PxrResult.SUCCESS){LastError="读取场景失败："+query.Result.result;State.Set(SurvivorMrPhase.Running,"请扫描房间或重试");yield break;}
   // Reconcile the complete snapshot, including deletion and changed room layout.
-  capturedRoom.Clear();Theme?.Clear();
+  capturedRoom.Clear();
   foreach(var item in query.Result.anchorDictionary)AddSceneSurface(item.Key,item.Value);
-  capturedRoom.SetActive(MeshCount==0);platform.RoomChanged();
+  capturedRoom.SetActive(true);platform.RoomChanged();
   State.Set(SurvivorMrPhase.Running,SurfaceCount==0?"没有已扫描房间，请点击扫描 / 重扫房间":"房间表面已加载；实时网格持续更新");
  }
  void AddSceneSurface(ulong handle,Guid id){
   if(PXR_MixedReality.LocateAnchor(handle,out var position,out var rotation)!=PxrResult.SUCCESS)return;
-  EnsureTheme();
-  PXR_MixedReality.GetSceneSemanticLabel(handle,out var label);
-  Enum.TryParse(label.ToString(),out RoomThemeKind kind);
-  // Volumetric furniture needs the full box, even if a planar component exists.
-  if(kind>=RoomThemeKind.Table&&PXR_MixedReality.GetSceneBox3DData(handle,out var furnitureOffset,out var furnitureRotation,out var furnitureSize)==PxrResult.SUCCESS)
-   Theme.UpsertBox(id,kind,position,rotation,furnitureOffset,furnitureRotation,furnitureSize);
   if(PXR_MixedReality.GetScenePolygonData(handle,out var polygon)==PxrResult.SUCCESS&&polygon.Length>=3){
-   var indices=SurvivorRoomGeometry.Triangulate(polygon);var vertices=Array.ConvertAll(polygon,p=>new Vector3(p.x,p.y,0));capturedRoom.Upsert(id,position,rotation,vertices,indices);Theme.UpsertPolygon(id,kind,position,rotation,polygon);return;
+   var indices=SurvivorRoomGeometry.Triangulate(polygon);var vertices=Array.ConvertAll(polygon,p=>new Vector3(p.x,p.y,0));capturedRoom.Upsert(id,position,rotation,vertices,indices);return;
   }
   if(PXR_MixedReality.GetSceneBox3DData(handle,out var offset,out var boxRotation,out var extent)==PxrResult.SUCCESS){
    var v=new Vector3[8];for(int i=0;i<8;i++)v[i]=offset+boxRotation*Vector3.Scale(new Vector3((i&1)==0?-.5f:.5f,(i&2)==0?-.5f:.5f,(i&4)==0?-.5f:.5f),extent);
@@ -176,7 +153,7 @@ public sealed class SurvivorMrSession:MonoBehaviour {
   }
   if(PXR_MixedReality.GetSceneBox2DData(handle,out var center,out var size)==PxrResult.SUCCESS){
    var p=new[]{center+new Vector2(-size.x,-size.y)*.5f,center+new Vector2(size.x,-size.y)*.5f,center+size*.5f,center+new Vector2(-size.x,size.y)*.5f};
-   capturedRoom.Upsert(id,position,rotation,Array.ConvertAll(p,v=>new Vector3(v.x,v.y,0)),SurvivorRoomGeometry.Triangulate(p));Theme.UpsertPolygon(id,kind,position,rotation,p);
+   capturedRoom.Upsert(id,position,rotation,Array.ConvertAll(p,v=>new Vector3(v.x,v.y,0)),SurvivorRoomGeometry.Triangulate(p));
   }
  }
  void OnMeshData(List<PxrSpatialMeshInfo> infos){
@@ -188,7 +165,7 @@ public sealed class SurvivorMrSession:MonoBehaviour {
    if(info.vertices==null||info.indices==null)continue;
    changed|=liveRoom.Upsert(info.uuid,info.position,info.rotation,info.vertices,Array.ConvertAll(info.indices,index=>(int)index));
   }
-  if(changed){capturedRoom.SetActive(MeshCount==0);platform.RoomChanged();}
+  if(changed){capturedRoom.SetActive(true);platform.RoomChanged();}
  }
  void OnSceneChanged(){reloadPending=true;}
  void OnApplicationPause(bool paused){if(!paused&&PassthroughActive){EnablePassthrough();reloadPending=true;
@@ -211,7 +188,7 @@ public sealed class SurvivorMrSession:MonoBehaviour {
   if(subscribed){PXR_Manager.SpatialMeshDataUpdated-=OnMeshData;PXR_Manager.SceneAnchorDataUpdated-=OnSceneChanged;}
   if(!platform.Simulation&&SceneProviderReady)PXR_MixedReality.StopSenseDataProvider(PxrSenseDataProviderType.SceneCapture);
 #endif
-  Theme?.Dispose();if(meshSubsystem!=null&&meshSubsystem.running)meshSubsystem.Stop();liveRoom?.Dispose();capturedRoom?.Dispose();if(roomMaterial)Destroy(roomMaterial);
+  if(meshSubsystem!=null&&meshSubsystem.running)meshSubsystem.Stop();liveRoom?.Dispose();capturedRoom?.Dispose();if(roomMaterial)Destroy(roomMaterial);
  }
 }
 }

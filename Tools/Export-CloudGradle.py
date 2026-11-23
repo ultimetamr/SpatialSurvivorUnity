@@ -7,6 +7,7 @@ from pathlib import Path
 import shutil
 import zipfile
 import urllib.request
+import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parent.parent
 SDK_COMMIT = "8ed808855c1dbc2a071abd709824b593977d6c24"
@@ -25,6 +26,15 @@ def main():
     launcher_gradle = (source / "launcher/build.gradle").read_text(encoding="utf-8-sig")
     if ('versionName "' + identity["version"] + '"') not in launcher_gradle:
         raise ValueError("Unity export version differs from work-info.json; rebuild Unity first")
+    # Fail before modifying the snapshot if Unity exported the old VR policy.
+    android = "{http://schemas.android.com/apk/res/android}"
+    application = ET.parse(source / "unityLibrary/src/main/AndroidManifest.xml").getroot().find("application")
+    if application is None:
+        raise ValueError("Unity library manifest has no application")
+    for flag in ("enable_mr_safeguard", "enable_vst"):
+        metadata = [node for node in application.findall("meta-data") if node.get(android + "name") == flag]
+        if len(metadata) != 1 or metadata[0].get(android + "value") != "1":
+            raise ValueError("Unity export requires " + flag + "=1; rebuild with MR Safeguard and passthrough enabled")
     output = ROOT / "AndroidCloud"
     sdk = ROOT / "Packages/com.bytedance.pico.xr"
     dependencies = []

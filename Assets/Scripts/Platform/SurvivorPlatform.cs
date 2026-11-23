@@ -34,6 +34,7 @@ public sealed class SurvivorPlatform:MonoBehaviour {
   }
  }
  readonly List<XRInputSubsystem> inputs=new List<XRInputSubsystem>();
+ Vector3 navigationPosition;
  float lastPose=-100,stable,nextRebuild;bool dirty=true,focused=true,menuHeld,poseSampleGood;Vector2 look;
  // Also called by editor setup so the XR rig is visible before Play.
  public void EnsureRig() {
@@ -50,7 +51,7 @@ public sealed class SurvivorPlatform:MonoBehaviour {
  }
  void OriginUpdated(XRInputSubsystem input){RoomChanged();if(MR)MR.ReloadRoom();}
  public void RoomChanged(){dirty=true;}
- public void RebuildRoom(){if(MR)MR.RebuildNavigation();else{Physics.SyncTransforms();Navigation.Rebuild(Head.transform.position);}dirty=false;nextRebuild=Time.realtimeSinceStartup+1.5f;}
+ public void RebuildRoom(){if(MR)MR.RebuildNavigation();else{Physics.SyncTransforms();Navigation.Rebuild(Head.transform.position);}navigationPosition=Head.transform.position;dirty=false;nextRebuild=Time.realtimeSinceStartup+1.5f;}
  void OnApplicationFocus(bool value){focused=Application.isBatchMode||value;if(!focused){Tracking=false;stable=0;}}
  void OnApplicationPause(bool value){focused=Application.isBatchMode||!value;if(!focused){Tracking=false;stable=0;}}
  void SampleHead(){poseSampleGood=false;var d=InputDevices.GetDeviceAtXRNode(XRNode.Head);if(d.isValid&&d.TryGetFeatureValue(CommonUsages.isTracked,out bool tracked)&&tracked&&d.TryGetFeatureValue(CommonUsages.devicePosition,out var p)&&d.TryGetFeatureValue(CommonUsages.deviceRotation,out var q)){Head.transform.SetLocalPositionAndRotation(p,q);lastPose=Time.realtimeSinceStartup;poseSampleGood=true;}}
@@ -61,7 +62,7 @@ public sealed class SurvivorPlatform:MonoBehaviour {
    bool menu=false;foreach(var node in new[]{XRNode.LeftHand,XRNode.RightHand}){var d=InputDevices.GetDeviceAtXRNode(node);if(d.TryGetFeatureValue(CommonUsages.menuButton,out bool down))menu|=down;}MenuPressed=menu&&!menuHeld;menuHeld=menu;
    SampleHead();if(!focused||Time.realtimeSinceStartup-lastPose>.35f){Tracking=false;stable=0;}else if(poseSampleGood){stable+=Time.unscaledDeltaTime;if(stable>=.15f)Tracking=true;}else stable=0;
   }
-  if(dirty&&Tracking&&Time.realtimeSinceStartup>=nextRebuild)RebuildRoom();
+  if(Tracking&&Time.realtimeSinceStartup>=nextRebuild&&(dirty||RoomNavigation.Horizontal(Head.transform.position-navigationPosition).sqrMagnitude>=1))RebuildRoom();
  }
  public bool Pointer(out Ray ray,out bool pressed) {
   SurvivorPointerSample sample=default;
@@ -107,8 +108,8 @@ public sealed class SurvivorPlatform:MonoBehaviour {
  SurvivorPointerSample HandPointer(HandType type,SurvivorPointerSource source,out Quaternion rotation){rotation=Quaternion.identity;var hand=new HandAimState();if(!PXR_HandTracking.GetAimState(type,ref hand)||(hand.aimStatus&HandAimStatus.AimRayValid)==0)return default;var p=hand.aimRayPose.Position.ToVector3();var q=hand.aimRayPose.Orientation.ToQuat();bool down=(hand.aimStatus&(HandAimStatus.AimRayTouched|HandAimStatus.AimIndexPinching))!=0;rotation=Origin.rotation*q;return new SurvivorPointerSample(source,new Ray(Origin.TransformPoint(p),rotation*Vector3.forward),down);}
 #endif
  void OnDestroy(){Application.onBeforeRender-=SampleHead;foreach(var input in inputs)input.trackingOriginUpdated-=OriginUpdated;}
- public void SetSimulationThemeVisible(bool visible){if(!Simulation)return;foreach(var r in GetComponentsInChildren<MeshRenderer>(true))if(r.gameObject.layer==RoomNavigation.Layer)r.enabled=!visible;}
+
  void CreateRoom(){Head.backgroundColor=new Color(.018f,.028f,.05f);Box("Floor",new Vector3(0,-.1f,0),new Vector3(10,.2f,10));Box("Ceiling",new Vector3(0,2.7f,0),new Vector3(10,.15f,10));Box("Wall N",new Vector3(0,1.3f,5),new Vector3(10,2.6f,.15f));Box("Wall S",new Vector3(0,1.3f,-5),new Vector3(10,2.6f,.15f));Box("Wall E",new Vector3(5,1.3f,0),new Vector3(.15f,2.6f,10));Box("Wall W",new Vector3(-5,1.3f,0),new Vector3(.15f,2.6f,10));Box("Furniture",new Vector3(2,.5f,1),new Vector3(1.2f,1,1.5f));Box("Furniture",new Vector3(-2,.4f,-1.5f),new Vector3(1.5f,.8f,1));var sun=new GameObject("Room Light",typeof(Light));sun.transform.SetParent(transform,false);sun.GetComponent<Light>().type=LightType.Directional;sun.transform.rotation=Quaternion.Euler(45,-30,0);RenderSettings.ambientLight=new Color(.4f,.5f,.65f);}
- void Box(string name,Vector3 position,Vector3 scale){var go=GameObject.CreatePrimitive(PrimitiveType.Cube);go.name=name;go.layer=RoomNavigation.Layer;go.transform.SetParent(transform,false);go.transform.position=position;go.transform.localScale=scale;go.GetComponent<Renderer>().sharedMaterial=new Material(Shader.Find("Standard")){color=new Color(.07f,.11f,.17f)};}
+ void Box(string name,Vector3 position,Vector3 scale){var go=GameObject.CreatePrimitive(PrimitiveType.Cube);go.name=name;go.layer=RoomNavigation.Layer;go.transform.SetParent(transform,false);go.transform.position=position;go.transform.localScale=scale;go.GetComponent<Renderer>().sharedMaterial=new Material(Shader.Find("Standard")){color=new Color(.07f,.11f,.17f)};go.GetComponent<Renderer>().enabled=false;}
 }
 }

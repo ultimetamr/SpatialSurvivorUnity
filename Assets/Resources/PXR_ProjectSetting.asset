@@ -49,7 +49,7 @@ MonoBehaviour:
   objectTracking: 0
   keyboardPassthrough: 0
   arFoundation: 0
-  mrSafeguard: 0
+  mrSafeguard: 1
   enableRecommendMSAA: 0
   recommendSubsamping: 0
   recommendMSAA: 0

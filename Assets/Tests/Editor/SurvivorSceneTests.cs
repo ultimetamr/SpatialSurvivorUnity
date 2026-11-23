@@ -25,7 +25,7 @@ namespace SpatialSurvivor.Tests {
    game.screen=ScreenState.MR;yield return null;yield return null;
    Assert.That(Object.FindObjectsOfType<UnityEngine.UI.Button>().Any(button=>button.name=="刷新编辑器模拟房间"),Is.True,"MR menu must expose room scan action");
    Assert.That(Object.FindObjectsOfType<UnityEngine.UI.Button>().Any(button=>button.name=="重新授权 / 重试 MR 服务"),Is.True);
-   game.platform.MR.ToggleMesh();Assert.That(game.platform.MR.ShowMesh,Is.True);game.platform.MR.ToggleMesh();
+   Assert.That(typeof(SurvivorMrSession).GetMethod("ToggleMesh"),Is.Null,"Scan visualization controls were removed");
    Capture(game,"mr-settings");game.screen=ScreenState.Menu;yield return null;
    game.StartRun();
    game.player.maxHealth=100000;game.player.health=100000;
