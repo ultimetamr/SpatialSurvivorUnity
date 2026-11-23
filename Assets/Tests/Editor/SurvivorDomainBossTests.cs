@@ -76,10 +76,10 @@ public class SurvivorDomainBossTests {
         game.Boss.go.transform.position=game.PlayerPosition+Vector3.forward*2.3f;
         Call(game,"BossCombatStep",game.Boss,2.3f);Assert.That(game.Boss.telegraph,Is.GreaterThan(1));
         var fixedTarget=((Vector3[])Get(game,"bossTargets"))[0];Call(game,"Visuals");
-        Assert.That(((LineRenderer[])Get(game,"bossWarnings")).Count(l=>l.enabled),Is.EqualTo(2));
+        Assert.That(((LineRenderer[])Get(game,"bossWarnings")).Count(l=>l.enabled),Is.Zero,"Non-contact ground warnings are removed");
         game.Pause();float charge=game.Boss.telegraph;game.Step(1);Assert.That(game.Boss.telegraph,Is.EqualTo(charge));game.Pause();
-        Vector3 origin=game.platform.Head.transform.position;game.platform.Head.transform.position=fixedTarget+Vector3.up*1.65f;
-        float health=game.player.health;Call(game,"BossCombatStep",game.Boss,1.6f);Assert.That(game.player.health,Is.LessThan(health),"Standing in a completed telegraph causes damage");
+        Vector3 origin=game.platform.Head.transform.position;game.platform.Head.transform.position=origin+Vector3.right*4;
+        float health=game.player.health;Call(game,"BossCombatStep",game.Boss,1.6f);Assert.That(game.player.health,Is.EqualTo(health),"Completed telegraph cannot cause remote damage");
         game.platform.Head.transform.position=origin;
         game.Boss.hp=220;Assert.That(game.BossPhase,Is.EqualTo(3));Call(game,"BossCombatStep",game.Boss,5f);
         Assert.That((int)Get(game,"bossPattern"),Is.EqualTo(2),"First boss uses its own directional thrust");
@@ -109,7 +109,7 @@ public class SurvivorDomainBossTests {
         game.platform.Navigation.Rebuild(game.platform.Head.transform.position);
         Assert.That(game.platform.Navigation.Ready);Assert.That(game.platform.Navigation.Spawn(game.PlayerPosition,3,.475f,new System.Random(3),out _,out _),Is.False);
         game.player.elapsed=120;Assert.That((bool)Call(game,"BossSpawnStep"),Is.True,"Small rooms must still spawn the scheduled boss");
-        Assert.That(game.Boss.active);Assert.That(game.platform.Navigation.Contains(game.Boss.go.transform.position,game.Boss.radius));
+        Assert.That(game.Boss.active);Assert.That(game.platform.Navigation.Contains(game.Boss.go.transform.position,game.Boss.radius),Is.False,"Boss spawn is independent of the scanned boundary");
         Assert.That(SurvivorGame.Distance(game.PlayerPosition,game.Boss.go.transform.position),Is.GreaterThanOrEqualTo(1.2f));
         game.Menu();Object.DestroyImmediate(room);Physics.SyncTransforms();game.platform.Head.transform.position=originalHead;game.platform.Navigation.Rebuild(originalHead);
         game.Menu();if(Directory.Exists(dir))Directory.Delete(dir,true);

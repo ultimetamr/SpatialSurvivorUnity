@@ -43,15 +43,15 @@ public class SurvivorRoomPursuitTests {
   Assert.That(SurvivorGame.Distance(enemy.go.transform.position,game.PlayerPosition),Is.LessThan(2));
   Assert.That(platform.Navigation.Contains(game.PlayerPosition,.1f));game.Menu();Object.DestroyImmediate(floor);yield return new ExitPlayMode();
  }
- [UnityTest]public IEnumerator FlyingCreatureKeepsPursuingAroundAFullHeightWall(){
+ [UnityTest]public IEnumerator FlyingCreaturePursuesDirectlyThroughScannedWall(){
   EditorSceneManager.OpenScene("Assets/Scenes/SpatialSurvivor.unity");yield return new EnterPlayMode();yield return null;yield return null;
   var game=Object.FindFirstObjectByType<SurvivorGame>();game.enabled=false;game.GetComponent<SurvivorUI>().enabled=false;game.platform.Head.transform.position=new Vector3(0,1.65f,-2.5f);
   var wall=GameObject.CreatePrimitive(PrimitiveType.Cube);wall.layer=RoomNavigation.Layer;wall.transform.position=new Vector3(0,1.2f,0);wall.transform.localScale=new Vector3(3,2.4f,.2f);Physics.SyncTransforms();game.platform.RebuildRoom();game.StartRun();
   game.player.health=game.player.maxHealth=1000000;game.player.damage=0;Array.Clear(game.player.stacks,0,game.player.stacks.Length);Set(game,"spawn",1000f);
   var pool=(SurvivorGame.Enemy[])typeof(SurvivorGame).GetField("enemies",Private).GetValue(game);var enemy=pool[19];Assert.That((bool)typeof(SurvivorGame).GetMethod("Spawn",Private).Invoke(game,new object[]{enemy,5}));
   enemy.go.transform.position=new Vector3(0,1.25f,2.5f);enemy.y=1.25f;enemy.speed=1.1f;enemy.abilityCooldown=1000;
-  for(int i=0;i<1100;i++){game.Step(1/90f);Assert.That(game.platform.Navigation.ContainsAir(enemy.go.transform.position,enemy.radius));}
-  Assert.That(enemy.go.transform.position.z,Is.LessThan(-1),"Flying enemy must get around the wall and keep following the player");
+  for(int i=0;i<1100;i++){game.Step(1/90f);}
+  Assert.That(enemy.go.transform.position.z,Is.LessThan(-1),"Flying enemy crosses virtual wall and keeps following the player");
   game.Menu();Object.DestroyImmediate(wall);yield return new ExitPlayMode();
  }
  [UnityTest]public IEnumerator RuntimeRoomThemeIsPreservedWhileRawNavigationMeshesRemainHidden(){

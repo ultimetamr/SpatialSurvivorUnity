@@ -66,7 +66,7 @@ public class SurvivorQualityTests {
         Call(game,"CombatFeelStep",.01f);var block=new MaterialPropertyBlock();target.visual.GetComponent<Renderer>().GetPropertyBlock(block);Assert.That(block.GetFloat("_Hit"),Is.GreaterThan(0));
         var wall=GameObject.CreatePrimitive(PrimitiveType.Cube);wall.layer=RoomNavigation.Layer;wall.transform.position=target.go.transform.position+Vector3.forward*.35f;wall.transform.localScale=new Vector3(1,1,.1f);Physics.SyncTransforms();
         var stopped=target.go.transform.position;target.knockDirection=Vector3.forward;target.knockRemaining=2;for(int i=0;i<20;i++)Call(game,"ImpactMovement",target,.02f);
-        Assert.That(target.go.transform.position.z,Is.LessThan(wall.transform.position.z));Object.DestroyImmediate(wall);
+        Assert.That(target.go.transform.position.z,Is.GreaterThan(wall.transform.position.z),"Virtual creature recoil crosses scanned furniture");Object.DestroyImmediate(wall);
         game.Pause();int hp=target.hp;game.Step(1);Assert.That(target.hp,Is.EqualTo(hp));game.Pause();
         Call(game,"Visuals");yield return null;Capture(game,"v250-impact",true);
         game.Menu();Directory.Delete(dir,true);yield return new ExitPlayMode();
@@ -80,17 +80,12 @@ public class SurvivorQualityTests {
             game.Boss.go.transform.position=game.PlayerPosition+Vector3.forward*2;Set(game,"bossAttackIndex",i==2?2:1);game.Boss.telegraph=game.Boss.aoe=0;
             Call(game,"BossCombatStep",game.Boss,.01f);Assert.That((int)Get(game,"bossPattern"),Is.EqualTo(i==0?2:i==1?3:4));
             Call(game,"Visuals");yield return null;Capture(game,"v250-boss-"+(i+1),true);
-            if(i==0){
-                var start=(Vector3)Get(game,"bossChargeStart");var end=(Vector3)Get(game,"bossChargeEnd");head.position=Vector3.Lerp(start,end,.5f)+Vector3.up*1.65f;
-                float health=game.player.health;Call(game,"BossCombatStep",game.Boss,2f);Assert.That(game.player.health,Is.LessThan(health));
-                Set(game,"bossDash",0f);game.Boss.aoe=0;Set(game,"bossAttackIndex",1);Call(game,"BossCombatStep",game.Boss,.01f);
-                head.position+=Vector3.right;health=game.player.health;Call(game,"BossCombatStep",game.Boss,2f);Assert.That(game.player.health,Is.EqualTo(health),"Step sideways to dodge the thrust");
-            }else if(i==1){
-                var center=((Vector3[])Get(game,"bossTargets"))[0];head.position=center+Vector3.up*1.65f;float health=game.player.health;
-                Call(game,"BossCombatStep",game.Boss,2f);Assert.That(game.player.health,Is.EqualTo(health),"Moon ring centre is safe");
-                game.Boss.aoe=0;Set(game,"bossAttackIndex",1);Call(game,"BossCombatStep",game.Boss,.01f);center=((Vector3[])Get(game,"bossTargets"))[0];head.position=center+Vector3.right*1.3f+Vector3.up*1.65f;
-                Call(game,"BossCombatStep",game.Boss,2f);Assert.That(game.player.health,Is.LessThan(health),"Standing between moon rings causes damage");
-            }else{Call(game,"BossCombatStep",game.Boss,2f);Assert.That(game.HostileBoltCount,Is.EqualTo(5));}
+            float health=game.player.health;Call(game,"BossCombatStep",game.Boss,.02f);
+            Assert.That(game.player.health,Is.EqualTo(health),"A distant boss warning cannot deal damage");
+            game.Boss.telegraph=0;Set(game,"bossDash",0f);game.Boss.aoe=1000;
+            game.Boss.go.transform.position=game.PlayerPosition+Vector3.forward*(game.Boss.radius+.12f);game.Boss.y=game.PlayerPosition.y;game.Boss.attack=0;
+            Assert.That((bool)Call(game,"TryEnemyContact",game.Boss,1f),Is.True);Assert.That(game.player.health,Is.LessThan(health));
+            Assert.That(game.HostileBoltCount,Is.Zero);
             head.position=origin;game.Damage(game.Boss,999999,false);Call(game,"DeathStep",.5f);
         }
         Assert.That(meshes.Count,Is.EqualTo(3));Assert.That(game.screen,Is.EqualTo(ScreenState.Victory));Assert.That(game.meta.totalBosses,Is.EqualTo(3));

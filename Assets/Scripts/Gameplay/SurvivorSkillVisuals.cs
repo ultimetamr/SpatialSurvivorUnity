@@ -73,7 +73,7 @@ public sealed class SurvivorSkillVisuals:MonoBehaviour {
   float poisonRadius=player.range*1.35f*(poisonEvolved?2:1);
   SetPoison(poison,position,poisonRadius);SetPoison(nether,position,poisonRadius);
   field.SetActive(visible&&player.Owns(UpgradeId.LIGHTNING_DOMAIN));field.transform.position=position+Vector3.up*.05f;field.GetComponent<SurvivorDomainField>().SetRadius(player.range*1.55f);
-  magnet.SetActive(visible&&player.Owns(UpgradeId.MAGNETIC_FIELD));magnet.transform.position=position+Vector3.up*.065f;magnet.GetComponent<SurvivorDomainField>().SetRadius(player.pickup*2);
+  magnet.SetActive(false);magnet.transform.position=position+Vector3.up*.065f;magnet.GetComponent<SurvivorDomainField>().SetRadius(player.pickup*2);
   for(int i=0;i<orbit.Length;i++){bool evo=player.Owns(UpgradeId.MYRIAD_SWORDS);orbit[i].SetActive(!evo);evolved[i].SetActive(evo);}
   if(victoryTime>0){victoryTime=Mathf.Max(0,victoryTime-Time.unscaledDeltaTime);victory.transform.position=position+Vector3.up*.2f;victory.transform.localScale=Vector3.one*(.36f/1.1f)*(1+5*(1-victoryTime));victory.SetActive(victoryTime>0);}
  }

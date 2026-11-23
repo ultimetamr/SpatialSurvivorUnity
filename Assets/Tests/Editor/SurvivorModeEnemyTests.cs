@@ -86,13 +86,11 @@ public class SurvivorModeEnemyTests {
             }else if(type==2){
                 Assert.That(enemy.ward,Is.EqualTo(hp*.2f));game.Damage(enemy,10,false);Assert.That(enemy.hp,Is.EqualTo(hp));
                 Call(game,"EnemyAbilityStep",enemy,3.1f);game.Damage(enemy,10,false);Assert.That(enemy.hp,Is.EqualTo(hp-10));
-            }else if(type==0||type==3||type==10){
-                Assert.That(game.HostileZoneCount,Is.GreaterThan(0));float health=game.player.health;
-                Call(game,"HostileSpellStep",1f);Call(game,"HostileSpellStep",.02f);Assert.That(game.player.health,Is.LessThan(health));
             }else{
-                Assert.That(game.HostileBoltCount,Is.GreaterThan(0));float health=game.player.health;
+                float health=game.player.health;
                 for(int i=0;i<120;i++)Call(game,"HostileSpellStep",.02f);
-                Assert.That(game.player.health,Is.LessThan(health),"Projectile must hit: "+type);
+                Assert.That(game.HostileZoneCount,Is.Zero);Assert.That(game.HostileBoltCount,Is.Zero);
+                Assert.That(game.player.health,Is.EqualTo(health),"Distant ability cannot damage the player: "+type);
             }
             Call(game,"PromoteElite",enemy);Assert.That(enemy.elite);Assert.That(enemy.maxHp,Is.EqualTo(Mathf.CeilToInt(hp*2.6f)));
             Assert.That(enemy.exp,Is.EqualTo(exp*4));Assert.That(enemy.baseScale,Is.EqualTo(scale),"Elites retain small creature size");

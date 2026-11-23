@@ -1,0 +1,76 @@
+{
+  "date": "2026-11-23",
+  "version": "2.7.4",
+  "versionCode": 25,
+  "packageName": "com.example.spatialsurvivor.unity",
+  "focus": "Contact-only enemy damage; direct unrestricted pursuit with jam fallback; passive foot rings hidden",
+  "tests": {
+    "result": "Passed",
+    "total": "162",
+    "passed": "162",
+    "failed": "0",
+    "start-time": "2026-11-23 08:26:47Z"
+  },
+  "restoredFeatures": [
+    "measured room theme retained, including toggle and scan lifecycle",
+    "weapon models, player skill domains and save compatibility retained"
+  ],
+  "rawScanMeshesVisible": false,
+  "pursuitFixesRetained": true,
+  "regressions": [
+    "all regular species and boss patterns cannot deal remote damage",
+    "actual ground and air contact still deals damage",
+    "direct ground pursuit across missing floor and furniture colliders",
+    "crowd completely blocked falls back toward nearest target",
+    "active tracked run continues without scanned floor; tracking loss still blocks combat",
+    "flying pursuit crosses scanned walls; crowd separation retained",
+    "passive foot and gold pickup rings hidden without changing attack range or pickup behavior",
+    "freeze, manual pause, room theme, weapons, saves and 12-minute soak"
+  ],
+  "unityApk": {
+    "version": "2.7.4",
+    "versionCode": 25,
+    "bytes": 96357361,
+    "sha256": "e14cb4901f29b8d75b7435876933aaad6b4a96a0db2011dc7d65448b69f2522b",
+    "manifest": {
+      "enable_mr_safeguard": 1,
+      "enable_vst": 1
+    },
+    "iconMatches1024Source": true,
+    "v2SignatureVerified": true,
+    "restoredThemeTypesCompiled": true
+  },
+  "gradleReleaseApk": {
+    "version": "2.7.4",
+    "versionCode": 25,
+    "bytes": 74409435,
+    "sha256": "127f3a711d7d038b995e6625ce8f012112978cd331d0bed68135bb4d8cff6cab",
+    "manifest": {
+      "enable_mr_safeguard": 1,
+      "enable_vst": 1
+    },
+    "iconMatches1024Source": true,
+    "v2SignatureVerified": true,
+    "restoredThemeTypesCompiled": true
+  },
+  "unityAssetsVerifiedAcrossApks": 457,
+  "nativeGameLibrariesVerifiedAcrossApks": 4,
+  "cloudGradleBuild": {
+    "result": "BUILD SUCCESSFUL",
+    "host": "Windows / JDK17 / SDK35",
+    "taskSummary": "86 actionable tasks: 29 executed, 57 up-to-date"
+  },
+  "headsetTested": false,
+  "boundaryMovementAcceptedOnDevice": false,
+  "picoLinuxJenkinsTested": false,
+  "picoReviewSubmitted": false,
+  "limitations": [
+    "Headset is not connected; this build has not been installed or accepted on device",
+    "PICO Linux Jenkins build and cloud review were not run",
+    "Cloud uses official PICO runtime AAR; local Unity build uses existing development AAR"
+  ],
+  "previews": {
+    "v274-combat.png": "2c9a48c90b1391d0ebe745ac3fa6665b5a6545002d9431b6e3e4a819a9d582de",
+    "v274-ui.png": "4d53d056a49aa9192bd963afab0104d83cfb64d107098719b8bf3adf9434d441"
+  }
+}

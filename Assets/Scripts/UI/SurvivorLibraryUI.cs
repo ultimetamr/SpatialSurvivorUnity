@@ -22,8 +22,8 @@ public sealed partial class SurvivorUI {
   if(elite){var block=new MaterialPropertyBlock();block.SetColor("_Tint",new Color(1,.83f,.45f));previewModel.GetComponent<Renderer>().SetPropertyBlock(block);}
   if(index!=4)Action(elite?"切换为普通形态":"切换为精英形态",310,78,355,36,()=>{elitePreview=!elitePreview;previous=(ScreenState)(-1);},elite);
   else Action("切换首领 · "+(bossPreview+1)+" / 3",310,78,355,36,()=>{bossPreview=(bossPreview+1)%3;previous=(ScreenState)(-1);});
-  Copy(panel.transform,elite?SurvivorBestiary.EliteSkills[index]+"。生命 ×2.6，伤害 ×1.25，经验 ×4，额外金币 +12。":index==4?new[]{"荆棘圆震与盾矛突刺交替；突刺锁定后沿长方形警示区冲锋。","交替释放荆棘标记与月环；月环的圆心与外侧安全。","古树圆震、三点荆棘与五连星种弹幕轮换；越受伤攻击越快。"}[bossPreview]:creature.description,310,10,360,97,21,Cream);
-  Copy(panel.transform,index==4?new[]{"离开震地圆；看到突刺长框时横向移动，避免沿冲锋方向后退。","荆棘标记出现后离开原地；月环可走入内圈或退到外圈。","避开红圈，横向走位穿过弹幕空隙；保留移动空间。"}[bossPreview]:creature.tactic,310,-89,360,90,20,Muted);
+  Copy(panel.transform,elite?SurvivorBestiary.EliteSkills[index]+"。生命 ×2.6，伤害 ×1.25，经验 ×4，额外金币 +12。":index==4?new[]{"盾矛追击与破阵突刺交替；伤害必须近身接触。","月冠护体与持续追击；不再在玩家脚下释放伤害法阵。","古树护体与狂怒追击，越受伤攻击越快；不会远程发射弹幕。"}[bossPreview]:creature.description,310,10,360,97,21,Cream);
+  Copy(panel.transform,index==4?new[]{"保持距离；看到突刺长框时横向移动，避免与首领身体接触。","持续走位，使用冰冻与减速技能拉开距离。","保留移动空间，用手部武器与自动魔法阻止近身。"}[bossPreview]:creature.tactic,310,-89,360,90,20,Muted);
   Copy(panel.transform,"生命 "+Mathf.CeilToInt((index==4?new[]{900,2400,6000}[bossPreview]:creature.health)*(elite?2.6f:1))+"   伤害 "+((index==4?new[]{15,23,30}[bossPreview]:creature.damage)*(elite?1.25f:1)).ToString("0.#")+"   速度 "+((index==4?new[]{.40f,.46f,.52f}[bossPreview]:creature.speed)*(elite?1.12f:1)).ToString("F2")+" m/s\n"+(index==4?"经典 2 / 5 / 10 分钟 · 无尽每 2 分钟":"第 "+creature.wave+" 波起出现 · 普通 / 精英"),180,-168,655,56,19,Mint,TextAnchor.MiddleCenter);
  }
 

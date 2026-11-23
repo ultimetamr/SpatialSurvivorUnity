@@ -13,7 +13,7 @@ public sealed partial class SurvivorGame {
     public int BossEncounter => bossEncounter;
     public int BossPhase => !Boss.active?0:Boss.hp>Boss.maxHp*.65f?1:Boss.hp>Boss.maxHp*.30f?2:3;
     public string BossName => BossNames[Mathf.Clamp(bossEncounter-1,0,2)];
-    public string BossAction => Boss.telegraph>0?new[]{"震地冲击 · 离开圆内","荆棘锁定 · 离开标记","破阵突刺 · 横向避让","月环绽放 · 圆心或圆外安全","星种齐射 · 横向躲弹"}[bossPattern]:BossPhase>1?"狂怒追击":"追击中";
+    public string BossAction => Boss.telegraph>0?new[]{"盾矛追击 · 保持距离","荆棘护体 · 避免近身","破阵突刺 · 横向避让","月冠护体 · 避免近身","古树狂怒 · 保持距离"}[bossPattern]:BossPhase>1?"狂怒追击":"追击中";
     public float NextBossTime => RunMode==SurvivorMode.Endless?(completedBosses+1)*120:BossSchedule[Mathf.Clamp(completedBosses,0,2)];
     public string BossCountdown => Boss.active?"首领战 · 阶段 "+BossPhase:"首领 "+Mathf.Max(0,Mathf.CeilToInt(NextBossTime-player.elapsed))+"秒";
 
@@ -54,7 +54,7 @@ public sealed partial class SurvivorGame {
         renderer.SetPropertyBlock(bossTint);
         bossSpawned=due==3&&RunMode==SurvivorMode.Classic;
         foreach(var enemy in enemies)if(enemy!=Boss){enemy.active=false;enemy.deathRemaining=0;enemy.go.SetActive(false);}
-        notice="BOSS · "+BossName+"  /  留意红色地面预警";feedback=5;
+        notice="BOSS · "+BossName+"  /  避免近身接触，突刺时横向避让";feedback=5;
         Cue(FeedbackCue.Boss,Boss.go.transform.position);
         return true;
     }
@@ -77,58 +77,52 @@ public sealed partial class SurvivorGame {
             boss.go.transform.position=SurvivorEnemyCrowd.Move(18,enemies,bossChargeEnd,step*3.2f,platform.Navigation);boss.repath=0;
             bool moved=Distance(before,boss.go.transform.position)>.00001f;
             if(!moved||Distance(boss.go.transform.position,bossChargeEnd)<.08f)bossDash=0;
-            return moved;
+            TryEnemyContact(boss,1.2f);return moved;
         }
         if(boss.telegraph>0){
             MoveDuringBossWindup(boss,dt);
             if(bossPattern==2)bossChargeStart=boss.go.transform.position;
             boss.telegraph=Mathf.Max(0,boss.telegraph-dt);
             if(boss.telegraph<=0){
-                bool hit=false;
-                if(bossPattern==2){
-                    hit=Distance(NearestOnSegment(bossChargeStart,bossChargeEnd,PlayerPosition),PlayerPosition)<=BossAttackRadius;
-                    bossDash=.55f;
-                }else if(bossPattern==3){
-                    float distance=Distance(bossTargets[0],PlayerPosition);hit=distance>=BossAttackRadius*.48f&&distance<=BossAttackRadius;
-                    Ring(bossTargets[0],BossAttackRadius,new Color(.8f,.6f,1),.5f);
-                }else if(bossPattern==4){ShootHostile(boss,5);}
-                else for(int i=0;i<bossTargetCount;i++){
-                    if(Distance(bossTargets[i],PlayerPosition)<=BossAttackRadius)hit=true;
-                    Ring(bossTargets[i],BossAttackRadius,new Color(1,.4f,.15f),.48f);
-                    if(!meta.lowEffects)skillVisuals.Emit(SkillVisual.Explosion,bossTargets[i],.42f,Quaternion.identity);
-                }
-                if(hit)Hurt(boss.damage*(bossPattern==2?1.2f:bossPattern==0?1.1f:.8f));
+                if(bossPattern==2)bossDash=.55f;
+                else if(!meta.lowEffects)skillVisuals.Emit(SkillVisual.Explosion,EnemyCenter(boss),.35f,Quaternion.identity);
                 boss.aoe=BossPhase==3?2.4f:BossPhase==2?3.1f:4.2f;bossTargetCount=0;
             }
-            return true;
+            TryEnemyContact(boss);return true;
         }
         boss.aoe-=dt;if(boss.aoe>0)return false;
         int sequence=bossAttackIndex++;
         bossPattern=bossEncounter==1?(sequence%2==0?0:2):bossEncounter==2?(sequence%2==0?1:3):sequence%3==0?0:sequence%3==1?1:4;
-        bossAttackRadius=(bossPattern==0?(BossPhase==3?1.9f:1.65f):bossPattern==3?1.8f:bossPattern==2?.36f:.62f)*RoomSpellScale;
+        bossAttackRadius=bossPattern==2?.36f:boss.radius+.22f;
         bossChargeDuration=bossPattern==2?1.15f:bossPattern==0?1.5f:1.35f;
-        boss.telegraph=bossChargeDuration;boss.animator.Attack(bossChargeDuration);bossTargetCount=bossPattern==1&&BossPhase>1?3:1;
-        bossTargets[0]=bossPattern==0||bossPattern==3?boss.go.transform.position:PlayerPosition;
-        if(bossTargetCount>1){var side=RoomNavigation.Horizontal(platform.Head.transform.right).normalized*.9f*RoomSpellScale;bossTargets[1]=PlayerPosition+side;bossTargets[2]=PlayerPosition-side;}
+        boss.telegraph=bossChargeDuration;boss.animator.Attack(bossChargeDuration);bossTargetCount=1;
+        bossTargets[0]=boss.go.transform.position;
         if(bossPattern==2){
             bossChargeStart=boss.go.transform.position;var direction=RoomNavigation.Horizontal(PlayerPosition-bossChargeStart).normalized;
             bossChargeEnd=bossChargeStart+direction*Mathf.Min(2.8f,Distance(PlayerPosition,bossChargeStart)+.6f);
-            while(!platform.Navigation.Contains(bossChargeEnd,boss.radius)&&Distance(bossChargeEnd,bossChargeStart)>.2f)bossChargeEnd=Vector3.MoveTowards(bossChargeEnd,bossChargeStart,.15f);
         }
         notice=BossName+" · "+BossAction;feedback=bossChargeDuration;Cue(FeedbackCue.Boss,boss.go.transform.position);return false;
     }
     void MoveDuringBossWindup(Enemy boss,float dt){
         var goal=bossPattern==2?bossChargeEnd:SurvivorEnemyCrowd.PursuitGoal(18,enemies,EnemyGoal,platform.Navigation);
-        var waypoint=platform.Navigation.Waypoint(boss.go.transform.position,goal,boss.radius);
+        var waypoint=goal;
         boss.go.transform.position=SurvivorEnemyCrowd.Move(18,enemies,waypoint,boss.speed*(boss.slow>0?.7f:1)*dt,platform.Navigation);boss.repath=0;
     }
     float BossAttackRadius => bossAttackRadius;
+    bool FindFreeSpawn(float distance,float radius,System.Func<Vector3,bool> clear,out Vector3 position){
+        // Spawn around the current target even outside the captured floor. Room
+        // models remain visible, but never constrain virtual creature movement.
+        float angle=(float)rng.NextDouble()*Mathf.PI*2;
+        for(int i=0;i<96;i++){
+            float a=angle+i*2.399963f;float ring=distance+radius+.12f+(i/24)*.45f;
+            var p=PlayerPosition+new Vector3(Mathf.Cos(a)*ring,0,Mathf.Sin(a)*ring);
+            if(clear(p)){position=p;return true;}
+        }
+        position=PlayerPosition;return false;
+    }
     bool FindGroundSpawn(int type,float radius,out Vector3 position,out float ceiling){
-        if(platform.Navigation.Spawn(PlayerPosition,type==4?3:Mathf.Min(2,Mathf.Max(1.15f,Mathf.Sqrt(RoomArea)*.42f)),radius,rng,out position,out ceiling,type==3,
-            point=>type==4||SurvivorEnemyCrowd.SpawnClear(point,type,null,enemies)))return true;
-        // A valid small MR room may have no point three metres from its player.
-        // Keep the same footprint/wall clearance and require safe body separation.
-        return type==4&&platform.Navigation.Spawn(PlayerPosition,1.2f,radius,rng,out position,out ceiling);
+        ceiling=platform.Navigation.Floor+2.4f;
+        return FindFreeSpawn(type==4?3:2,radius,p=>SurvivorEnemyCrowd.SpawnClear(p,type,null,enemies),out position);
     }
     void BossDefeated(){
         completedBosses=Mathf.Max(completedBosses,bossEncounter);TacticalBossDefeated();
@@ -139,7 +133,7 @@ public sealed partial class SurvivorGame {
         notice=BossName+"已击败 · 恢复 20% 生命，继续生存";feedback=6;spawn=2;
     }
     void RefreshBossPresentation(bool visible){
-        bool warning=visible&&Boss.active&&Boss.telegraph>0;
+        bool warning=visible&&Boss.active&&Boss.telegraph>0&&bossPattern==2;
         if(warning&&bossPattern==2)bossChargeStart=Boss.go.transform.position;
         for(int i=0;i<3;i++){
             var edge=bossWarnings[i*2];var progress=bossWarnings[i*2+1];
