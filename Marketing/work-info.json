@@ -1,17 +1,17 @@
 {
   "workName": "幻域守卫",
   "englishName": "Realm Wardens",
-  "versionName": "2.7.2 · 房间漫游",
-  "version": "2.7.2",
-  "versionCode": 23,
+  "versionName": "2.7.3 · 连续追击",
+  "version": "2.7.3",
+  "versionCode": 24,
   "packageName": "com.example.spatialsurvivor.unity",
   "tagline": "把客厅变成魔法战场，用挥剑与射击对抗怪潮，在混合现实中打造你的生存流派。",
   "description": "幻域守卫是一款面向 PICO 头显的混合现实肉鸽生存游戏。扫描真实房间后，地面与空中魔法生物进入你的现实空间；你可以真实走位、挥动近战武器，也可以使用星火手枪、符文霰弹枪和自动技能抵挡怪潮。\n\n游戏包含经验升级、随机强化与技能进化，搭配技能手册、怪物图鉴、武器商店和独立局外金币，让每局战斗都能形成不同成长路线。项目使用 Unity 6 与 C# 实现，采用卡通魔法生物、骨骼动画、空间 UI 和魔法特效，并提供编辑器模拟房间与 PICO 真机两种开发验证方式。",
   "versionNotes": [
-    "恢复并保留扫描房间的魔法主题替换，地面、墙面及支持的家具继续呈现符文庭院、祭坛与封印箱。",
-    "启用 PICO MR 安全策略，修正透视玩法沿用 VR 安全边界策略的问题，支持房间空地内真实走位。",
-    "保留完整扫描地面、随走动刷新导航及绕障追击修复；原始扫描网格隐藏。",
-    "保留魔法场景开关、固定 UI、武器与生物模型、应用名称、图标、包名和已有进度。"
+    "优化怪物连续追击：移除远处怪物的分帧移动，蓄力、施法及普通受击不再原地停顿。",
+    "保留冰冻技能定身、主动暂停、系统失去定位时的保护及怪物避让。",
+    "脚下攻击范围圈显示半径与直径缩小至原来的一半，不改变技能实际范围或其他法阵预警。",
+    "保留扫描房间主题模型和开关、原始扫描数据、MR 安全策略、图标、包名和原有进度。"
   ],
   "engine": "Unity 6.6 / 6000.6.8f1",
   "platform": "PICO / Android ARM64 / MR",
@@ -21,7 +21,7 @@
   "posterType": "旧名称概念海报，历史资料，非当前版本截图",
   "sourcePublicationDate": "2026-11-23",
   "lastPublishedRelease": "https://github.com/ultimetamr/SpatialSurvivorUnity/releases/tag/v2.2.3",
-  "publicationStatus": "2.7.2 房间主题恢复与 MR 边界策略修正；156/156 回归、Unity 和 Gradle APK 本地构建核验通过，本轮真机验收及 PICO 云端审核待完成，未新建 GitHub Release",
+  "publicationStatus": "2.7.3 源码与云打包快照提交；160/160 回归及两种 APK 构建通过，Unity APK 已真机覆盖安装和前台启动，完整体验与 PICO 云端审核待完成，未新建 GitHub Release",
   "previousName": "空间幸存者（SpatialSurvivor）",
   "cloudBuildGuide": "Docs/PICO_CLOUD_BUILD.md"
 }

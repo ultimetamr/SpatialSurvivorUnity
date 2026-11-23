@@ -73,9 +73,15 @@ public sealed partial class SurvivorGame {
     bool BossCombatStep(Enemy boss,float dt){
         if(bossDash>0){
             float step=Mathf.Min(dt,bossDash);bossDash-=step;
-            boss.go.transform.position=SurvivorEnemyCrowd.Move(18,enemies,bossChargeEnd,step*3.2f,platform.Navigation);boss.repath=0;return true;
+            var before=boss.go.transform.position;
+            boss.go.transform.position=SurvivorEnemyCrowd.Move(18,enemies,bossChargeEnd,step*3.2f,platform.Navigation);boss.repath=0;
+            bool moved=Distance(before,boss.go.transform.position)>.00001f;
+            if(!moved||Distance(boss.go.transform.position,bossChargeEnd)<.08f)bossDash=0;
+            return moved;
         }
         if(boss.telegraph>0){
+            MoveDuringBossWindup(boss,dt);
+            if(bossPattern==2)bossChargeStart=boss.go.transform.position;
             boss.telegraph=Mathf.Max(0,boss.telegraph-dt);
             if(boss.telegraph<=0){
                 bool hit=false;
@@ -109,7 +115,12 @@ public sealed partial class SurvivorGame {
             bossChargeEnd=bossChargeStart+direction*Mathf.Min(2.8f,Distance(PlayerPosition,bossChargeStart)+.6f);
             while(!platform.Navigation.Contains(bossChargeEnd,boss.radius)&&Distance(bossChargeEnd,bossChargeStart)>.2f)bossChargeEnd=Vector3.MoveTowards(bossChargeEnd,bossChargeStart,.15f);
         }
-        notice=BossName+" · "+BossAction;feedback=bossChargeDuration;Cue(FeedbackCue.Boss,boss.go.transform.position);return true;
+        notice=BossName+" · "+BossAction;feedback=bossChargeDuration;Cue(FeedbackCue.Boss,boss.go.transform.position);return false;
+    }
+    void MoveDuringBossWindup(Enemy boss,float dt){
+        var goal=bossPattern==2?bossChargeEnd:SurvivorEnemyCrowd.PursuitGoal(18,enemies,EnemyGoal,platform.Navigation);
+        var waypoint=platform.Navigation.Waypoint(boss.go.transform.position,goal,boss.radius);
+        boss.go.transform.position=SurvivorEnemyCrowd.Move(18,enemies,waypoint,boss.speed*(boss.slow>0?.7f:1)*dt,platform.Navigation);boss.repath=0;
     }
     float BossAttackRadius => bossAttackRadius;
     bool FindGroundSpawn(int type,float radius,out Vector3 position,out float ceiling){
@@ -129,6 +140,7 @@ public sealed partial class SurvivorGame {
     }
     void RefreshBossPresentation(bool visible){
         bool warning=visible&&Boss.active&&Boss.telegraph>0;
+        if(warning&&bossPattern==2)bossChargeStart=Boss.go.transform.position;
         for(int i=0;i<3;i++){
             var edge=bossWarnings[i*2];var progress=bossWarnings[i*2+1];
             edge.enabled=progress.enabled=warning&&i<bossTargetCount;

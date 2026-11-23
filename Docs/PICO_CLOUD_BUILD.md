@@ -1,4 +1,4 @@
-# PICO 云打包审核交接 · 幻域守卫 2.7.2
+# PICO 云打包审核交接 · 幻域守卫 2.7.3
 
 ## 当前云平台入口（2026-11-09 修正）
 
@@ -6,7 +6,7 @@
 
 - 项目目录：仓库根目录 `.`；Android 构建任务：`assembleRelease`。
 - Gradle 8.11.1、AGP 8.10.1、JDK 17、Android SDK Platform 35 / Build Tools 35.0.0。
-- 默认 versionName 2.7.2、versionCode 23，平台 init script 可以覆盖版本号。平台日志曾注入 1；若要更新设备上已有 2.7.1 / 22，应在平台把 versionCode 设为 23 或更高。
+- 默认 versionName 2.7.3、versionCode 24，平台 init script 可以覆盖版本号。平台日志曾注入 1；若要更新设备上已有 2.7.2 / 23，应在平台把 versionCode 设为 24 或更高。
 - 产物：`AndroidCloud/launcher/build/outputs/apk/release/launcher-release.apk`。
 - 包名：`com.example.spatialsurvivor.unity`；应用名：幻域守卫；图标：翡翠符文剑与月冠（1024²）。
 - 云端需要访问 Google Maven / Maven Central / Gradle 分发源及 `api.github.com` / `raw.githubusercontent.com`（或校验相同哈希的 `cdn.jsdelivr.net` 备用地址）。没有本机绝对 SDK / NDK / JDK 路径，不需要 Unity 或 NDK 来重编译此 Android 快照。
@@ -21,7 +21,7 @@
 
 完整 Unity/C# 源码仍在 `Assets`、`Packages` 与 `ProjectSettings`。`AndroidCloud` 保存 Unity 已编译的游戏运行快照、Android Java 源码、清单和资源，Gradle 会执行真实 Android 编译、资源合并、DEX、打包与签名；**云端不会重新编译 C# / IL2CPP，也不是从 APK 直接复制出最终安装包**。
 
-当前快照来自 2.7.2 Unity APK，校验值记录在 `AndroidCloud/snapshot.json` 与 `Docs/Validation/v272-mr-theme-summary.json`。游戏 player 是 Development 配置，Android `release` 任务使用调试签名供审核测试；平台正式签名政策需要在其控制台另行满足。运行快照中原有资产的权利不因提交而改变。
+当前快照来自 2.7.3 Unity APK，校验值记录在 `AndroidCloud/snapshot.json` 与 `Docs/Validation/v273-continuous-summary.json`。游戏 player 是 Development 配置，Android `release` 任务使用调试签名供审核测试；平台正式签名政策需要在其控制台另行满足。运行快照中原有资产的权利不因提交而改变。
 
 改 C#、场景、模型或游戏资源后，必须先用 Unity 重新构建，再运行：
 
@@ -122,3 +122,8 @@ Unity 初始化启用 MR Safeguard，Android 构建和导出要求 `enable_mr_sa
 恢复并保留房间主题模型与开关，原始扫描网格隐藏，持续追击修复保留。本轮针对默认边界限制移动，继续要求 MR Safeguard 与 VST metadata 为 1；最终头显行为由系统执行，不能用配置检查代替活动范围验收。
 
 必须拉取本次提交，使用已重新生成的 2.7.2 / 23 快照；2.7.1 的包会移除主题。实现见 [房间漫游](ROOM_MR_V272.md)，本地构建与配置证据见 [2.7.2 验证摘要](Validation/v272-mr-theme-summary.json)。未执行 PICO 云端审核或本轮真机验收。
+
+
+## 2.7.3 · 连续追击（2026-11-23）
+
+移除距离导致的分帧移动，蓄力和普通受击继续追击，脚下圈仅显示缩小一半，冰冻与扫描主题继续保留。须拉取本轮源码和重新生成的 2.7.3 / 24 快照。实现与验证见 [连续追击](CONTINUOUS_PURSUIT_V273.md) 和 [验证摘要](Validation/v273-continuous-summary.json)。本地构建不代表 PICO 云端审核通过。

@@ -88,7 +88,7 @@ public class SurvivorQualityTests {
             }else if(i==1){
                 var center=((Vector3[])Get(game,"bossTargets"))[0];head.position=center+Vector3.up*1.65f;float health=game.player.health;
                 Call(game,"BossCombatStep",game.Boss,2f);Assert.That(game.player.health,Is.EqualTo(health),"Moon ring centre is safe");
-                game.Boss.aoe=0;Set(game,"bossAttackIndex",1);Call(game,"BossCombatStep",game.Boss,.01f);head.position=center+Vector3.right*1.3f+Vector3.up*1.65f;
+                game.Boss.aoe=0;Set(game,"bossAttackIndex",1);Call(game,"BossCombatStep",game.Boss,.01f);center=((Vector3[])Get(game,"bossTargets"))[0];head.position=center+Vector3.right*1.3f+Vector3.up*1.65f;
                 Call(game,"BossCombatStep",game.Boss,2f);Assert.That(game.player.health,Is.LessThan(health),"Standing between moon rings causes damage");
             }else{Call(game,"BossCombatStep",game.Boss,2f);Assert.That(game.HostileBoltCount,Is.EqualTo(5));}
             head.position=origin;game.Damage(game.Boss,999999,false);Call(game,"DeathStep",.5f);

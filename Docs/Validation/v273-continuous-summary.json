@@ -1,0 +1,95 @@
+{
+  "date": "2026-11-23",
+  "version": "2.7.3",
+  "versionCode": 24,
+  "packageName": "com.example.spatialsurvivor.unity",
+  "focus": "Continuous per-step pursuit, half-size foot circle, freeze and measured room theme preserved",
+  "tests": {
+    "result": "Passed",
+    "total": "160",
+    "passed": "160",
+    "failed": "0",
+    "start-time": "2026-11-23 07:57:01Z"
+  },
+  "rawScanMeshesVisible": false,
+  "pursuitFixesRetained": true,
+  "regressions": [
+    "distant enemy moves on every combat step",
+    "charge anticipation and hit reaction continue movement",
+    "freeze and manual pause still stop movement",
+    "boss telegraph keeps moving while locked warning stays fixed",
+    "rendered foot circle radius is 50 percent while damage range and room theme stay unchanged",
+    "existing room theme, scan navigation, weapons and save compatibility regressions"
+  ],
+  "unityApk": {
+    "version": "2.7.3",
+    "versionCode": 24,
+    "bytes": 80853307,
+    "sha256": "8b302737bedff455973361b262ba5026ec3baa687c8736300faee9eb51829cd9",
+    "manifest": {
+      "enable_mr_safeguard": 1,
+      "enable_vst": 1
+    },
+    "iconMatches1024Source": true,
+    "v2SignatureVerified": true,
+    "restoredThemeTypesCompiled": true
+  },
+  "gradleReleaseApk": {
+    "version": "2.7.3",
+    "versionCode": 24,
+    "bytes": 74412843,
+    "sha256": "cbfd5840612542ecee36b9048c24f6fc5195e6adf4355fbf9142d4b3f3bf71f3",
+    "manifest": {
+      "enable_mr_safeguard": 1,
+      "enable_vst": 1
+    },
+    "iconMatches1024Source": true,
+    "v2SignatureVerified": true,
+    "restoredThemeTypesCompiled": true
+  },
+  "unityAssetsVerifiedAcrossApks": 457,
+  "nativeGameLibrariesVerifiedAcrossApks": 4,
+  "cloudGradleBuild": {
+    "result": "BUILD SUCCESSFUL",
+    "host": "Windows / JDK17 / SDK35",
+    "taskSummary": "86 actionable tasks: 29 executed, 57 up-to-date"
+  },
+  "headsetTested": false,
+  "boundaryMovementAcceptedOnDevice": false,
+  "picoLinuxJenkinsTested": false,
+  "picoReviewSubmitted": false,
+  "limitations": [
+    "MR safety metadata requests the system policy; actual boundary behavior requires headset verification",
+    "System Guardian was not disabled or forcibly hidden",
+    "Cloud official PICO runtime AAR differs from local Unity development AAR; device testing remains pending"
+  ],
+  "previews": {
+    "v273-combat.png": "d10c251ef3432d9617e59be08def44c11cdf566fabcbc495bf1ba3e73765c7d8",
+    "v273-ui-mr.png": "c7eb0ede55ae03575cc720e37334d437f000f3057e034224fb987b48306b3aaa"
+  },
+  "preservedFeatures": [
+    "captured semantic room replacement, measured furniture and floor polygons",
+    "persistent room theme toggle and scan snapshot lifecycle",
+    "editor room theme generated through measured geometry APIs"
+  ],
+  "footCircleDisplayScale": 0.5,
+  "freezeSkillPreserved": true,
+  "deviceSmokeTest": {
+    "date": "2026-11-23",
+    "deviceModel": "B3110",
+    "previousVersion": "2.7.2 / 23",
+    "installedVersion": "2.7.3 / 24",
+    "install": "adb install -r: Success",
+    "applicationDataPreserved": true,
+    "foregroundVerified": true,
+    "processObserved": true,
+    "gameplayAccepted": false,
+    "userFeedback": "pending",
+    "observedIssues": [
+      "SceneCapture snapshot query timeout",
+      "EyeTrackingClient shared memory failure",
+      "AssetPackManager missing class at startup"
+    ]
+  },
+  "headsetInstallationAndForegroundVerified": true
+}

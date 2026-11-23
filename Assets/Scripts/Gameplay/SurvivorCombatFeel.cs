@@ -59,7 +59,8 @@ public sealed partial class SurvivorGame {
             else enemy.go.transform.position=SurvivorEnemyCrowd.Move(System.Array.IndexOf(enemies,enemy),enemies,goal,step,platform.Navigation);
             enemy.repath=0;
         }
-        bool staggered=enemy.stagger>0;enemy.stagger=Mathf.Max(0,enemy.stagger-dt);return staggered;
+        // Recoil remains visible without suspending the pursuit step.
+        enemy.stagger=Mathf.Max(0,enemy.stagger-dt);return false;
     }
     void CombatFeelStep(float dt){
         foreach(var label in damageLabels)if(label.remaining>0){label.remaining=Mathf.Max(0,label.remaining-dt);label.root.position=label.origin+Vector3.up*(.55f-label.remaining)*.25f;}
