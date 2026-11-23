@@ -1,4 +1,4 @@
-# PICO 云打包审核交接 · 幻域守卫 2.7.1
+# PICO 云打包审核交接 · 幻域守卫 2.7.2
 
 ## 当前云平台入口（2026-11-09 修正）
 
@@ -6,7 +6,7 @@
 
 - 项目目录：仓库根目录 `.`；Android 构建任务：`assembleRelease`。
 - Gradle 8.11.1、AGP 8.10.1、JDK 17、Android SDK Platform 35 / Build Tools 35.0.0。
-- 默认 versionName 2.7.1、versionCode 22，平台 init script 可以覆盖版本号。平台日志曾注入 1；若要更新设备上已有 2.7.0 / 21，应在平台把 versionCode 设为 22 或更高。
+- 默认 versionName 2.7.2、versionCode 23，平台 init script 可以覆盖版本号。平台日志曾注入 1；若要更新设备上已有 2.7.1 / 22，应在平台把 versionCode 设为 23 或更高。
 - 产物：`AndroidCloud/launcher/build/outputs/apk/release/launcher-release.apk`。
 - 包名：`com.example.spatialsurvivor.unity`；应用名：幻域守卫；图标：翡翠符文剑与月冠（1024²）。
 - 云端需要访问 Google Maven / Maven Central / Gradle 分发源及 `api.github.com` / `raw.githubusercontent.com`（或校验相同哈希的 `cdn.jsdelivr.net` 备用地址）。没有本机绝对 SDK / NDK / JDK 路径，不需要 Unity 或 NDK 来重编译此 Android 快照。
@@ -21,7 +21,7 @@
 
 完整 Unity/C# 源码仍在 `Assets`、`Packages` 与 `ProjectSettings`。`AndroidCloud` 保存 Unity 已编译的游戏运行快照、Android Java 源码、清单和资源，Gradle 会执行真实 Android 编译、资源合并、DEX、打包与签名；**云端不会重新编译 C# / IL2CPP，也不是从 APK 直接复制出最终安装包**。
 
-当前快照来自 2.7.1 Unity APK，校验值记录在 `AndroidCloud/snapshot.json` 与 `Docs/Validation/v271-room-scale-summary.json`。游戏 player 是 Development 配置，Android `release` 任务使用调试签名供审核测试；平台正式签名政策需要在其控制台另行满足。运行快照中原有资产的权利不因提交而改变。
+当前快照来自 2.7.2 Unity APK，校验值记录在 `AndroidCloud/snapshot.json` 与 `Docs/Validation/v272-mr-theme-summary.json`。游戏 player 是 Development 配置，Android `release` 任务使用调试签名供审核测试；平台正式签名政策需要在其控制台另行满足。运行快照中原有资产的权利不因提交而改变。
 
 改 C#、场景、模型或游戏资源后，必须先用 Unity 重新构建，再运行：
 
@@ -115,3 +115,10 @@ Gradle APK SHA-256：`d61c6e57fc53f7a0ffbabdef321cba6e0338e7aea860dd85e76facca2c
 修复完整扫描地面被局部实时网格替代、走动后导航缓存未更新、不可达目标返回原地及小怪通行检测过宽的问题；飞行怪增加绕墙路径。运行时移除扫描网格和房间替换模型显示，原有设备保存的主题开关不再生效。
 
 Unity 初始化启用 MR Safeguard，Android 构建和导出要求 `enable_mr_safeguard=1`、`enable_vst=1`。必须使用本轮重新生成的快照，不应仅修改旧的 Android 清单来代替 C# 逻辑更新。回归与产物校验见 [验证摘要](Validation/v271-room-scale-summary.json)，实现与头显验收范围见 [自由追击说明](ROOM_SCALE_V271.md)。未执行本轮 PICO 云端构建、审核或头显验收。
+
+
+## 2.7.2 · 房间漫游（2026-11-23）
+
+恢复并保留房间主题模型与开关，原始扫描网格隐藏，持续追击修复保留。本轮针对默认边界限制移动，继续要求 MR Safeguard 与 VST metadata 为 1；最终头显行为由系统执行，不能用配置检查代替活动范围验收。
+
+必须拉取本次提交，使用已重新生成的 2.7.2 / 23 快照；2.7.1 的包会移除主题。实现见 [房间漫游](ROOM_MR_V272.md)，本地构建与配置证据见 [2.7.2 验证摘要](Validation/v272-mr-theme-summary.json)。未执行 PICO 云端审核或本轮真机验收。

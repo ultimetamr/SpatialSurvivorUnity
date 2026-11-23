@@ -6,15 +6,15 @@
 
 面向 PICO 头显的 Unity/C# 混合现实肉鸽生存游戏。扫描真实房间后，玩家通过真实走位、近战挥击、枪械和自动技能迎战地面与飞行怪物，获得强化、技能进化与局外武器成长。原名「空间幸存者」，保留原包名与存档。编辑器与实机验证记录见下文。
 
-- 当前版本：**2.7.1 / versionCode 22**
+- 当前版本：**2.7.2 / versionCode 23**
 - Unity：**6.6 · 6000.6.8f1**
 - PICO Unity SDK：**6.1.1**
 - Android 包名：`com.example.spatialsurvivor.unity`
 - 平台：Android ARM64 / IL2CPP / OpenGLES3
 
-本轮怪物持续追击、隐藏扫描模型与 MR 策略修复见 [2.7.1 更新与验证](Docs/ROOM_SCALE_V271.md)。房间场景、固定面板与美术优化见 [2.7.0 更新与验证](Docs/ROOM_REVIEW_V270.md)。此前更名与剑方向修复见 [2.6.1 验证](Docs/BLADE_BRANDING_FIX.md)。
+本轮保留房间主题替换，重点修正默认 VR 边界策略，见 [2.7.2 房间漫游](Docs/ROOM_MR_V272.md)。持续追击修复保留，原始扫描网格隐藏；此前房间美术见 [2.7.0 更新](Docs/ROOM_REVIEW_V270.md)。
 
-2.7.1 回归 **156/156 通过**，覆盖局部网格与完整地面融合、移动追击、窄通道、不可达目标、飞行怪绕墙及隐藏房间模型。新的 APK 构建与配置校验见 [2.7.1 记录](Docs/ROOM_SCALE_V271.md)。本轮尚未进行头显验收或 PICO 云端审核；此前 2.7.0 的真机启动记录保留在 [历史检查范围](Docs/Validation/v270-device-smoke.json)。
+自动回归、Unity / Gradle 构建和最终包配置证据见 [2.7.2 验证摘要](Docs/Validation/v272-mr-theme-summary.json)。本轮尚未进行头显活动范围验收或 PICO 云端审核。
 
 **PICO 云打包审核：**仓库根目录现提供标准 Gradle 工程，直接运行 `./gradlew assembleRelease`（Gradle 8.11.1 / JDK 17 / Android SDK 35）。`AndroidCloud` 包含 Unity 已编译运行快照和 Android 工程，SDK 运行依赖自动从官方固定版本恢复。完整 C# 源码仍在本仓库；改动游戏源码后需先经 Unity 重新生成运行快照。平台版本号与构建步骤见 [云打包交接](Docs/PICO_CLOUD_BUILD.md)。源码提交不代表云端审核通过。
 

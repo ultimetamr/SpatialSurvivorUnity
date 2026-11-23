@@ -54,10 +54,17 @@ public class SurvivorRoomPursuitTests {
   Assert.That(enemy.go.transform.position.z,Is.LessThan(-1),"Flying enemy must get around the wall and keep following the player");
   game.Menu();Object.DestroyImmediate(wall);yield return new ExitPlayMode();
  }
- [UnityTest]public IEnumerator RuntimeRoomModelsAndScanMeshControlsAreRemoved(){
+ [UnityTest]public IEnumerator RuntimeRoomThemeIsPreservedWhileRawNavigationMeshesRemainHidden(){
   EditorSceneManager.OpenScene("Assets/Scenes/SpatialSurvivor.unity");yield return new EnterPlayMode();yield return null;yield return null;
   var platform=Object.FindFirstObjectByType<SurvivorPlatform>();Assert.That(platform.Navigation.Ready);
-  Assert.That(GameObject.Find("Enchanted Room - Scanned Measurements"),Is.Null);
+  var session=platform.MR;Assert.That(session.Theme,Is.Not.Null);Assert.That(session.Theme.Count,Is.GreaterThan(0));
+  bool wasVisible=session.ThemeVisible;
+  if(!wasVisible)session.ToggleTheme();
+  Assert.That(GameObject.Find("Enchanted Room - Scanned Measurements"),Is.Not.Null);
+  Assert.That(session.Theme.Root.GetComponentsInChildren<MeshRenderer>().Length,Is.GreaterThan(0));
+  session.ToggleTheme();Assert.That(session.Theme.Root.gameObject.activeSelf,Is.False);
+  foreach(var renderer in platform.GetComponentsInChildren<MeshRenderer>())if(renderer.gameObject.layer==RoomNavigation.Layer)Assert.That(renderer.enabled,Is.False,"Turning theme off must not show raw simulation meshes");
+  if(wasVisible)session.ToggleTheme();
   foreach(var renderer in platform.GetComponentsInChildren<MeshRenderer>())if(renderer.gameObject.layer==RoomNavigation.Layer)Assert.That(renderer.enabled,Is.False,"Navigation geometry must remain invisible");
   yield return new ExitPlayMode();
  }

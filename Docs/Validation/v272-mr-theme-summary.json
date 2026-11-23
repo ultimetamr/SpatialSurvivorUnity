@@ -1,0 +1,74 @@
+{
+  "date": "2026-11-23",
+  "version": "2.7.2",
+  "versionCode": 23,
+  "packageName": "com.example.spatialsurvivor.unity",
+  "focus": "Keep measured room theme; correct default VR safety policy for MR movement",
+  "tests": {
+    "result": "Passed",
+    "total": "156",
+    "passed": "156",
+    "failed": "0",
+    "start-time": "2026-11-23 07:27:18Z"
+  },
+  "restoredFeatures": [
+    "captured semantic room replacement, measured furniture and floor polygons",
+    "persistent room theme toggle and scan snapshot lifecycle",
+    "editor room theme generated through measured geometry APIs"
+  ],
+  "rawScanMeshesVisible": false,
+  "pursuitFixesRetained": true,
+  "regressions": [
+    "theme present at runtime and toggle does not expose raw navigation geometry",
+    "theme toggle keeps modal pose and navigation unchanged",
+    "room theme does not depth-occlude creatures or UI",
+    "partial live mesh retains full floor and moving player refreshes pursuit navigation",
+    "flying enemy routes around a wall and small creatures traverse narrow passage"
+  ],
+  "unityApk": {
+    "version": "2.7.2",
+    "versionCode": 23,
+    "bytes": 80855459,
+    "sha256": "2de6e70cfd4a3563ec0d575a6491ef401113dcbab2af09e2f82f851a8336e921",
+    "manifest": {
+      "enable_mr_safeguard": 1,
+      "enable_vst": 1
+    },
+    "iconMatches1024Source": true,
+    "v2SignatureVerified": true,
+    "restoredThemeTypesCompiled": true
+  },
+  "gradleReleaseApk": {
+    "version": "2.7.2",
+    "versionCode": 23,
+    "bytes": 74412147,
+    "sha256": "a8e3af4993fe91955dd2c15789c3cfcbf4e15e2d651f077cb5d59a980f32df45",
+    "manifest": {
+      "enable_mr_safeguard": 1,
+      "enable_vst": 1
+    },
+    "iconMatches1024Source": true,
+    "v2SignatureVerified": true,
+    "restoredThemeTypesCompiled": true
+  },
+  "unityAssetsVerifiedAcrossApks": 457,
+  "nativeGameLibrariesVerifiedAcrossApks": 4,
+  "cloudGradleBuild": {
+    "result": "BUILD SUCCESSFUL",
+    "host": "Windows / JDK17 / SDK35",
+    "taskSummary": "86 actionable tasks: 29 executed, 57 up-to-date"
+  },
+  "headsetTested": false,
+  "boundaryMovementAcceptedOnDevice": false,
+  "picoLinuxJenkinsTested": false,
+  "picoReviewSubmitted": false,
+  "limitations": [
+    "MR safety metadata requests the system policy; actual boundary behavior requires headset verification",
+    "System Guardian was not disabled or forcibly hidden",
+    "Cloud official PICO runtime AAR differs from local Unity development AAR; device testing remains pending"
+  ],
+  "previews": {
+    "v272-guide.png": "ddf5c97535cd654b72260bef0816549506b356a85eddb0150b6f49949be9dc17",
+    "v272-ui-mr.png": "c7eb0ede55ae03575cc720e37334d437f000f3057e034224fb987b48306b3aaa"
+  }
+}

@@ -74,9 +74,9 @@ public class SurvivorRoomReviewTests {
    Assert.That(panel.name,Is.EqualTo(page.ToString()),"The new page must actually rebuild");
    Assert.That(Vector3.Distance(position,panel.transform.position),Is.LessThan(.001f));Assert.That(Quaternion.Angle(rotation,panel.transform.rotation),Is.LessThan(.01f));
   }
-  int navigationCount=game.platform.Navigation.Count;
-  Assert.That(Array.Exists(panel.GetComponentsInChildren<Button>(),b=>b.name.StartsWith("魔法场景：")||b.name=="空间网格预览"),Is.False);
-  game.platform.RebuildRoom();Assert.That(game.platform.Navigation.Count,Is.EqualTo(navigationCount));
+  int navigationCount=game.platform.Navigation.Count;var themeButton=Array.Find(panel.GetComponentsInChildren<Button>(),b=>b.name.StartsWith("魔法场景："));Assert.That(themeButton,Is.Not.Null);themeButton.onClick.Invoke();update.Invoke(ui,null);yield return null;
+  panel=(Canvas)field.GetValue(ui);Assert.That(Vector3.Distance(position,panel.transform.position),Is.LessThan(.001f));game.platform.RebuildRoom();Assert.That(game.platform.Navigation.Count,Is.EqualTo(navigationCount));
+  game.platform.MR.ToggleTheme(); // Restore the saved preference after testing.
   var recenter=Array.Find(panel.GetComponentsInChildren<Button>(),b=>b.name=="移到面前");recenter.onClick.Invoke();Assert.That(Vector3.Distance(position,panel.transform.position),Is.GreaterThan(.2f));
   game.screen=ScreenState.Playing;update.Invoke(ui,null);yield return null;game.screen=ScreenState.Paused;update.Invoke(ui,null);yield return null;
   Assert.That(field.GetValue(ui),Is.Not.Null);yield return new ExitPlayMode();
